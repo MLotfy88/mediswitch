@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "com.example.mediswitch"
-    compileSdk = flutter.compileSdkVersion
+    compileSdk = 35
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -24,7 +24,6 @@ android {
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion
-        compileSdk = 35
         targetSdk = 35
         versionCode = flutter.versionCode
         versionName = flutter.versionName

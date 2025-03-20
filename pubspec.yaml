@@ -39,7 +39,7 @@ dependencies:
   
   # Database
   sqflite: ^2.3.2
-  sqlcipher_flutter_libs: ^0.5.4
+  sqlcipher_flutter_libs: ^0.6.5
   path: ^1.8.3
   csv: ^5.1.1
   
