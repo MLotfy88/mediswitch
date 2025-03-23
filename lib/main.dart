@@ -3,17 +3,13 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 // Removed unused import: import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
 import 'package:mediswitch/blocs/language_bloc.dart';
 import 'package:mediswitch/blocs/notification_bloc.dart';
 import 'package:mediswitch/blocs/theme_bloc.dart';
-import 'package:mediswitch/screens/dose_comparison_screen.dart';
-import 'package:mediswitch/screens/home_screen.dart';
+import 'package:mediswitch/screens/example_screen.dart';
 import 'package:mediswitch/screens/search_screen.dart';
-import 'package:mediswitch/screens/favorites_screen.dart';
-import 'package:mediswitch/screens/settings_screen.dart';
-import 'package:mediswitch/screens/weight_dose_calculator_screen.dart';
 import 'package:mediswitch/utils/app_theme.dart';
-import 'package:mediswitch/services/database_service.dart';
 import 'package:mediswitch/services/database_update.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
@@ -31,9 +27,6 @@ void main() async {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
-
-  // Initialize database
-  await DatabaseService.instance.initDatabase();
 
   // Update database with new tables for dose comparison and weight calculator
   await DatabaseUpdate.instance.updateDatabase();
@@ -110,11 +103,7 @@ class _MainScreenState extends State<MainScreen> {
 
   final List<Widget> _screens = [
     const SearchScreen(),
-    const HomeScreen(),
-    const DoseComparisonScreen(),
-    const WeightDoseCalculatorScreen(),
-    const FavoritesScreen(),
-    const SettingsScreen(),
+    const ExampleScreen(),
   ];
 
   @override
@@ -130,17 +119,7 @@ class _MainScreenState extends State<MainScreen> {
         },
         destinations: const [
           NavigationDestination(icon: Icon(Icons.search), label: 'بحث'),
-          NavigationDestination(icon: Icon(Icons.home), label: 'الرئيسية'),
-          NavigationDestination(
-            icon: Icon(Icons.compare_arrows),
-            label: 'مقارنة الجرعات',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.monitor_weight),
-            label: 'حاسبة الجرعة',
-          ),
-          NavigationDestination(icon: Icon(Icons.favorite), label: 'المفضلة'),
-          NavigationDestination(icon: Icon(Icons.settings), label: 'الإعدادات'),
+          NavigationDestination(icon: Icon(TablerIcons.components), label: 'المكونات'),
         ],
       ),
     );

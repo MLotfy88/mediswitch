@@ -1,218 +1,178 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mediswitch/blocs/language_bloc.dart';
-import 'package:mediswitch/blocs/notification_bloc.dart';
 import 'package:mediswitch/blocs/theme_bloc.dart';
-import 'package:mediswitch/screens/privacy_policy_screen.dart';
-import 'package:mediswitch/utils/app_theme.dart';
-import 'package:in_app_review/in_app_review.dart';
+import 'package:mediswitch/utils/tailwind_utils.dart';
 
-class SettingsScreen extends StatefulWidget {
+class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
 
   @override
-  State<SettingsScreen> createState() => _SettingsScreenState();
-}
-
-class _SettingsScreenState extends State<SettingsScreen> {
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    
     return Scaffold(
       appBar: AppBar(
         title: const Text('الإعدادات'),
         centerTitle: true,
       ),
       body: ListView(
-        padding: const EdgeInsets.all(16.0),
+        padding: TailwindUtils.p4,
         children: [
           // Theme settings
-          _buildSectionHeader('المظهر', theme),
-          _buildThemeSettings(theme),
-          const Divider(),
+          _buildSectionTitle(context, 'المظهر'),
+          _buildThemeSelector(context),
+          const SizedBox(height: 16),
           
           // Language settings
-          _buildSectionHeader('اللغة', theme),
-          _buildLanguageSettings(theme),
-          const Divider(),
+          _buildSectionTitle(context, 'اللغة'),
+          _buildLanguageSelector(context),
+          const SizedBox(height: 16),
           
-          // Notification settings
-          _buildSectionHeader('الإشعارات', theme),
-          _buildNotificationSettings(theme),
-          const Divider(),
-          
-          // About section
-          _buildSectionHeader('حول التطبيق', theme),
-          _buildAboutSettings(theme),
+          // App info
+          _buildSectionTitle(context, 'معلومات التطبيق'),
+          _buildInfoCard(
+            context,
+            'الإصدار',
+            '1.0.0',
+            Icons.info_outline,
+          ),
         ],
       ),
     );
   }
   
-  Widget _buildSectionHeader(String title, ThemeData theme) {
+  Widget _buildSectionTitle(BuildContext context, String title) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      padding: const EdgeInsets.only(bottom: 8.0),
       child: Text(
         title,
-        style: theme.textTheme.titleLarge?.copyWith(
+        style: Theme.of(context).textTheme.titleMedium?.copyWith(
           fontWeight: FontWeight.bold,
-          color: theme.colorScheme.primary,
         ),
       ),
     );
   }
   
-  Widget _buildThemeSettings(ThemeData theme) {
-    return BlocBuilder<ThemeBloc, ThemeState>(builder: (context, state) {
-      final isDarkMode = state is ThemeLoaded ? state.isDarkMode : false;
-      
-      return SwitchListTile(
-        title: const Text('الوضع الداكن'),
-        subtitle: const Text('تفعيل المظهر الداكن للتطبيق'),
-        value: isDarkMode,
-        onChanged: (value) {
-          context.read<ThemeBloc>().add(ThemeChanged(value));
-        },
-        secondary: Icon(
-          isDarkMode ? Icons.dark_mode : Icons.light_mode,
-          color: theme.colorScheme.primary,
-        ),
-      );
-    });
-  }
-  
-  Widget _buildLanguageSettings(ThemeData theme) {
-    return BlocBuilder<LanguageBloc, LanguageState>(builder: (context, state) {
-      final selectedLanguage = state is LanguageLoaded ? state.languageCode : 'ar';
-      
-      return Column(
-        children: [
-          RadioListTile<String>(
-            title: const Text('العربية'),
-            value: 'ar',
-            groupValue: selectedLanguage,
-            onChanged: (value) {
-              if (value != null) {
-                context.read<LanguageBloc>().add(LanguageChanged(value));
-              }
-            },
-            secondary: const Icon(Icons.language),
+  Widget _buildThemeSelector(BuildContext context) {
+    return BlocBuilder<ThemeBloc, ThemeState>(
+      builder: (context, state) {
+        final themeMode = state is ThemeLoaded ? state.themeMode : ThemeMode.system;
+        
+        return Card(
+          child: Column(
+            children: [
+              _buildThemeOption(
+                context,
+                'نظام',
+                'استخدام إعدادات النظام',
+                Icons.settings_suggest,
+                themeMode == ThemeMode.system,
+                () => context.read<ThemeBloc>().add(ThemeChanged(themeMode == ThemeMode.system)),
+              ),
+              const Divider(),
+              _buildThemeOption(
+                context,
+                'فاتح',
+                'وضع النهار',
+                Icons.light_mode,
+                themeMode == ThemeMode.light,
+                () => context.read<ThemeBloc>().add(ThemeChanged(false)),
+              ),
+              const Divider(),
+              _buildThemeOption(
+                context,
+                'داكن',
+                'وضع الليل',
+                Icons.dark_mode,
+                themeMode == ThemeMode.dark,
+                () => context.read<ThemeBloc>().add(ThemeChanged(true)),
+              ),
+            ],
           ),
-          RadioListTile<String>(
-            title: const Text('English'),
-            value: 'en',
-            groupValue: selectedLanguage,
-            onChanged: (value) {
-              if (value != null) {
-                context.read<LanguageBloc>().add(LanguageChanged(value));
-              }
-            },
-            secondary: const Icon(Icons.language),
-          ),
-        ],
-      );
-    });
-  }
-  
-  Widget _buildNotificationSettings(ThemeData theme) {
-    return BlocBuilder<NotificationBloc, NotificationState>(builder: (context, state) {
-      final notificationsEnabled = state is NotificationLoaded ? state.isEnabled : true;
-      
-      return SwitchListTile(
-        title: const Text('تفعيل الإشعارات'),
-        subtitle: const Text('الحصول على إشعارات عند تحديث أسعار الأدوية'),
-        value: notificationsEnabled,
-        onChanged: (value) {
-          context.read<NotificationBloc>().add(NotificationStatusChanged(value));
-        },
-        secondary: Icon(
-          notificationsEnabled ? Icons.notifications_active : Icons.notifications_off,
-          color: theme.colorScheme.primary,
-        ),
-      );
-    });
-  }
-  
-  Widget _buildAboutSettings(ThemeData theme) {
-    return Column(
-      children: [
-        ListTile(
-          title: const Text('عن التطبيق'),
-          subtitle: const Text('معلومات عن التطبيق والمطورين'),
-          leading: Icon(
-            Icons.info_outline,
-            color: theme.colorScheme.primary,
-          ),
-          onTap: () {
-            _showAboutDialog();
-          },
-        ),
-        ListTile(
-          title: const Text('سياسة الخصوصية'),
-          subtitle: const Text('قراءة سياسة الخصوصية للتطبيق'),
-          leading: Icon(
-            Icons.privacy_tip_outlined,
-            color: theme.colorScheme.primary,
-          ),
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const PrivacyPolicyScreen()),
-            );
-          },
-        ),
-        ListTile(
-          title: const Text('تقييم التطبيق'),
-          subtitle: const Text('قم بتقييم التطبيق على متجر التطبيقات'),
-          leading: Icon(
-            Icons.star_outline,
-            color: theme.colorScheme.primary,
-          ),
-          onTap: () {
-            // Implement app rating
-            final InAppReview inAppReview = InAppReview.instance;
-            inAppReview.openStoreListing(
-              appStoreId: '123456789', // Replace with your iOS App Store ID when available
-            );
-          },
-        ),
-        ListTile(
-          title: const Text('الإصدار'),
-          subtitle: const Text('1.0.0'),
-          leading: Icon(
-            Icons.update,
-            color: theme.colorScheme.primary,
-          ),
-        ),
-      ],
+        );
+      },
     );
   }
   
-  void _showAboutDialog() {
-    showDialog(
-      context: context,
-      builder: (context) => AboutDialog(
-        applicationName: 'ميديسويتش',
-        applicationVersion: '1.0.0',
-        applicationIcon: const Icon(
-          Icons.medication_rounded,
-          size: 48,
-          color: AppTheme.primaryColor,
-        ),
-        applicationLegalese: '© 2023 ميديسويتش. جميع الحقوق محفوظة.',
-        children: [
-          const SizedBox(height: 16),
-          const Text(
-            'تطبيق ميديسويتش هو دليل شامل للأدوية يساعدك على البحث عن الأدوية ومعرفة أسعارها والبدائل المتاحة.',
-            textAlign: TextAlign.center,
+  Widget _buildLanguageSelector(BuildContext context) {
+    return BlocBuilder<LanguageBloc, LanguageState>(
+      builder: (context, state) {
+        final locale = state is LanguageLoaded ? state.locale : const Locale('ar');
+        
+        return Card(
+          child: Column(
+            children: [
+              _buildLanguageOption(
+                context,
+                'العربية',
+                'Arabic',
+                Icons.language,
+                locale.languageCode == 'ar',
+                () => context.read<LanguageBloc>().add(LanguageChanged('ar')),
+              ),
+              const Divider(),
+              _buildLanguageOption(
+                context,
+                'English',
+                'الإنجليزية',
+                Icons.language,
+                locale.languageCode == 'en',
+                () => context.read<LanguageBloc>().add(LanguageChanged('en')),
+              ),
+            ],
           ),
-        ],
+        );
+      },
+    );
+  }
+  
+  Widget _buildThemeOption(
+    BuildContext context,
+    String title,
+    String subtitle,
+    IconData icon,
+    bool isSelected,
+    VoidCallback onTap,
+  ) {
+    return ListTile(
+      leading: Icon(icon),
+      title: Text(title),
+      subtitle: Text(subtitle),
+      trailing: isSelected ? const Icon(Icons.check_circle, color: Colors.green) : null,
+      onTap: onTap,
+    );
+  }
+  
+  Widget _buildLanguageOption(
+    BuildContext context,
+    String title,
+    String subtitle,
+    IconData icon,
+    bool isSelected,
+    VoidCallback onTap,
+  ) {
+    return ListTile(
+      leading: Icon(icon),
+      title: Text(title),
+      subtitle: Text(subtitle),
+      trailing: isSelected ? const Icon(Icons.check_circle, color: Colors.green) : null,
+      onTap: onTap,
+    );
+  }
+  
+  Widget _buildInfoCard(
+    BuildContext context,
+    String title,
+    String value,
+    IconData icon,
+  ) {
+    return Card(
+      child: ListTile(
+        leading: Icon(icon),
+        title: Text(title),
+        trailing: Text(
+          value,
+          style: const TextStyle(fontWeight: FontWeight.bold),
+        ),
       ),
     );
   }
