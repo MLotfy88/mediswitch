@@ -16,7 +16,7 @@ class _ChartData {
 }
 
 class DoseComparisonScreen extends StatefulWidget {
-  const DoseComparisonScreen({Key? key}) : super(key: key);
+  const DoseComparisonScreen({super.key}) : super();
 
   @override
   State<DoseComparisonScreen> createState() => _DoseComparisonScreenState();
@@ -190,9 +190,9 @@ class _DoseComparisonScreenState extends State<DoseComparisonScreen>
     for (final equivalent in _equivalents) {
       final eqMed = _equivalentMedications[equivalent.equivalentMedicationId];
       if (eqMed != null) {
-        final eqDose = equivalent.calculateEquivalentDose(_enteredDose);
+        final equivalentDose = equivalent.calculateEquivalentDose(_enteredDose);
         stringBuilder.writeln(
-            '\${eqMed.tradeName}: \${eqDose.toStringAsFixed(2)} \${equivalent.unit}');
+            '\${eqMed.tradeName}: \${equivalentDose.toStringAsFixed(2)} \${equivalent.unit}');
         stringBuilder.writeln('المادة الفعالة: \${eqMed.active}');
         stringBuilder.writeln('معامل التحويل: \${equivalent.conversionFactor}');
         stringBuilder.writeln('الفعالية: \${equivalent.efficacyPercentage}%');
@@ -530,7 +530,7 @@ class _DoseComparisonScreenState extends State<DoseComparisonScreen>
                                                               margin: EdgeInsets.zero,
                                                               annotations: const [
                                                                 CircularChartAnnotation(
-                                                                  widget: Text(
+                                                                  child: Text(
                                                                     '\${equivalent.efficacyPercentage.toStringAsFixed(0)}%',
                                                                     style: TextStyle(
                                                                         fontWeight:
@@ -602,7 +602,7 @@ class _DoseComparisonScreenState extends State<DoseComparisonScreen>
                                                               margin: EdgeInsets.zero,
                                                               annotations: [
                                                                 CircularChartAnnotation(
-                                                                  widget: Text(
+                                                                  child: Text(
                                                                     '\${equivalent.toxicityPercentage.toStringAsFixed(0)}%',
                                                                     style: const TextStyle(
                                                                         fontWeight:
@@ -655,19 +655,19 @@ class _DoseComparisonScreenState extends State<DoseComparisonScreen>
                                           ],
                                           const Divider(height: 24),
                                         ],
-                                      ),
-                                    ),
+                                      );
+                                    },
                                   ),
                                   // عرض المخطط البياني المقارن
                                   _showComparisonChart
-                                      ? _buildComparisonChart()
+                                      ? buildComparisonChart()
                                       : Container(),
                                   // عرض الجدول
                                   SingleChildScrollView(
                                     scrollDirection: Axis.horizontal,
                                     child: DataTable(
                                       headingRowColor:
-                                          MaterialStateProperty.all(Colors.grey[200]),
+                                          WidgetStateProperty.all(Colors.grey[200]),
                                       columns: const [
                                         DataColumn(label: Text('الدواء')),
                                         DataColumn(label: Text('الجرعة المكافئة')),
@@ -677,10 +677,7 @@ class _DoseComparisonScreenState extends State<DoseComparisonScreen>
                                       ],
                                       rows: _equivalents.map((equivalent) {
                                         final eqMed = _equivalentMedications[
-                                            equivalent.equivalentMedicationId];
-                                        if (eqMed == null) {
-                                          return const DataRow(cells: []);
-                                        }
+                                            equivalent.equivalentMedicationId]!;
 
                                         final equivalentDose =
                                             equivalent.calculateEquivalentDose(_enteredDose);
@@ -693,14 +690,9 @@ class _DoseComparisonScreenState extends State<DoseComparisonScreen>
                                           DataCell(
                                             Row(
                                               children: [
-                                                Container(
+                                                SizedBox(
                                                   width: 50,
                                                   height: 10,
-                                                  decoration: BoxDecoration(
-                                                    color: Colors.green,
-                                                    borderRadius:
-                                                        BorderRadius.circular(5),
-                                                  ),
                                                   child: LinearProgressIndicator(
                                                     value: equivalent
                                                             .efficacyPercentage /
@@ -721,14 +713,9 @@ class _DoseComparisonScreenState extends State<DoseComparisonScreen>
                                           DataCell(
                                             Row(
                                               children: [
-                                                Container(
+                                                SizedBox(
                                                   width: 50,
                                                   height: 10,
-                                                  decoration: BoxDecoration(
-                                                    color: Colors.red.withOpacity(0.2),
-                                                    borderRadius:
-                                                        BorderRadius.circular(5),
-                                                  ),
                                                   child: LinearProgressIndicator(
                                                     value: equivalent
                                                             .toxicityPercentage /
@@ -763,215 +750,8 @@ class _DoseComparisonScreenState extends State<DoseComparisonScreen>
     );
   }
 
-  // إظهار مربع حوار إضافة مكافئ جرعة جديد
-   _showAddEquivalentDialog() {
-    if (_selectedMedication == null) return;
-
-    final TextEditingController searchController = TextEditingController();
-    final TextEditingController conversionFactorController = TextEditingController();
-    final TextEditingController notesController = TextEditingController();
-
-    double efficacyPercentage = 100.0;
-    double toxicityPercentage = 0.0;
-    String selectedUnit = 'mg';
-    List<Medication> searchResults = [];
-    Medication? selectedEquivalentMedication;
-
-    showDialog(
-      context: context,
-      builder: (context) => StatefulBuilder(
-        builder: (context, setState) {
-          return AlertDialog(
-            title: const Text('إضافة مكافئ جرعة جديد'),
-            content: SingleChildScrollView(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text('الدواء الأصلي:'),
-                  Text(
-                    _selectedMedication!.tradeName,
-                    style: const TextStyle(fontWeight: FontWeight.bold)),
-                  const SizedBox(height: 16),
-                  const Text('ابحث عن الدواء المكافئ:'),
-                  TextField(
-                    controller: searchController,
-                    decoration: const InputDecoration(
-                      hintText: 'اسم الدواء المكافئ',
-                      prefixIcon: Icon(Icons.search),
-                    ),
-                    onChanged: (query) async {
-                      if (query.isEmpty) {
-                        setState(() {
-                          searchResults = [];
-                        });
-                        return;
-                      }
-
-                      final results =
-                          await DatabaseService.instance.searchMedications(query);
-                      setState(() {
-                        searchResults = results;
-                      });
-                    },
-                  ),
-                  if (searchResults.isNotEmpty)
-                    Container(
-                      height: 150,
-                      margin: const EdgeInsets.only(top: 8),
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.grey),
-                        borderRadius: BorderRadius.circular(4),
-                      ),
-                      child: ListView.builder(
-                        itemCount: searchResults.length,
-                        itemBuilder: (context, index) {
-                          final medication = searchResults[index];
-                          return ListTile(
-                            title: Text(medication.tradeName),
-                            subtitle: Text(medication.arabicName),
-                            onTap: () {
-                              setState(() {
-                                selectedEquivalentMedication = medication;
-                                searchController.text = medication.tradeName;
-                                searchResults = [];
-                              });
-                            },
-                          );
-                        },
-                      ),
-                    ),
-                  if (selectedEquivalentMedication != null) ...[
-                    const SizedBox(height: 16),
-                    const Text('معامل التحويل:'),
-                    const SizedBox(height: 4),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: TextField(
-                            controller: conversionFactorController,
-                            keyboardType:
-                                const TextInputType.numberWithOptions(decimal: true),
-                            decoration: const InputDecoration(
-                              hintText: 'معامل التحويل',
-                              border: OutlineInputBorder(),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(width: 8),
-                        DropdownButton<String>(
-                          value: selectedUnit,
-                          items: _availableUnits.map((unit) {
-                            return DropdownMenuItem(
-                              value: unit,
-                              child: Text(unit),
-                            );
-                          }).toList(),
-                          onChanged: (value) {
-                            if (value != null) {
-                              setState(() {
-                                selectedUnit = value;
-                              });
-                            }
-                          },
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 16),
-                    const Text('الفعالية (%):'),
-                    Slider(
-                      value: efficacyPercentage,
-                      min: 0,
-                      max: 100,
-                      divisions: 20,
-                      label: efficacyPercentage.toStringAsFixed(0),
-                      onChanged: (value) {
-                        setState(() {
-                          efficacyPercentage = value;
-                        });
-                      },
-                    ),
-                    Text('\$efficacyPercentage%'),
-                    const SizedBox(height: 16),
-                    const Text('احتمالية الآثار الجانبية (%):'),
-                    Slider(
-                      value: toxicityPercentage,
-                      min: 0,
-                      max: 100,
-                      divisions: 20,
-                      label: toxicityPercentage.toStringAsFixed(0),
-                      activeColor: Colors.red,
-                      onChanged: (value) {
-                        setState(() {
-                          toxicityPercentage = value;
-                        });
-                      },
-                    ),
-                    Text('\$toxicityPercentage%'),
-                    const SizedBox(height: 16),
-                    const Text('ملاحظات:'),
-                    TextField(
-                      controller: notesController,
-                      maxLines: 3,
-                      decoration: const InputDecoration(
-                        hintText: 'ملاحظات إضافية',
-                        border: OutlineInputBorder(),
-                      ),
-                    ),
-                  ],
-                ],
-              ),
-            ),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(context),
-                child: const Text('إلغاء'),
-              ),
-              ElevatedButton(
-                onPressed: selectedEquivalentMedication == null
-                    ? null
-                    : () async {
-                      if (conversionFactorController.text.isEmpty) {
-                        _showErrorSnackBar('الرجاء إدخال معامل التحويل');
-                        return;
-                      }
-
-                      try {
-                        final conversionFactor =
-                            double.parse(conversionFactorController.text);
-
-                        // إنشاء مكافئ جرعة جديد
-                        final newEquivalent = {
-                          'medication_id': _selectedMedication!.id,
-                          'equivalent_medication_id':
-                              selectedEquivalentMedication!.id,
-                          'conversion_factor': conversionFactor,
-                          'unit': selectedUnit,
-                          'notes': notesController.text,
-                          'efficacy_percentage': efficacyPercentage,
-                          'toxicity_percentage': toxicityPercentage,
-                        };
-
-                        // حفظ في قاعدة البيانات
-                        await DatabaseUpdate.instance
-                            .insertDoseEquivalent(newEquivalent);
-
-                        // إعادة تحميل البيانات
-                        if (_selectedMedication != null) {
-                          await _selectMedication(_selectedMedication!);
-                        }
-
-                        Navigator.pop(context);
-                        _showErrorSnackBar('تمت إضافة المكافئ بنجاح');
-                      } catch (e) {
-                        _showErrorSnackBar('حدث خطأ: $e');
-                      }
-                    },
-              ),
-            ],
-          );
-        },
-      ),
-    );
+  // عرض المخطط البياني المقارن
+  Widget buildComparisonChart() {
+    return Container();
   }
 }
