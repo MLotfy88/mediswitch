@@ -29,6 +29,7 @@
       }
     }
   },
+  "remoteUser": "codespace",
   "forwardPorts": [8080, 8000, 3000],
   "portsAttributes": {
     "8080": {
