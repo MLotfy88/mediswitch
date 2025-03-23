@@ -34,7 +34,7 @@ void main() async {
 
   // Initialize database
   await DatabaseService.instance.initDatabase();
-  
+
   // Update database with new tables for dose comparison and weight calculator
   await DatabaseUpdate.instance.updateDatabase();
 
@@ -131,8 +131,14 @@ class _MainScreenState extends State<MainScreen> {
         destinations: const [
           NavigationDestination(icon: Icon(Icons.search), label: 'بحث'),
           NavigationDestination(icon: Icon(Icons.home), label: 'الرئيسية'),
-          NavigationDestination(icon: Icon(Icons.compare_arrows), label: 'مقارنة الجرعات'),
-          NavigationDestination(icon: Icon(Icons.monitor_weight), label: 'حاسبة الجرعة'),
+          NavigationDestination(
+            icon: Icon(Icons.compare_arrows),
+            label: 'مقارنة الجرعات',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.monitor_weight),
+            label: 'حاسبة الجرعة',
+          ),
           NavigationDestination(icon: Icon(Icons.favorite), label: 'المفضلة'),
           NavigationDestination(icon: Icon(Icons.settings), label: 'الإعدادات'),
         ],

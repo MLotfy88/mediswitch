@@ -7,7 +7,7 @@ class DatabaseUpdate {
   
   DatabaseUpdate._init();
   
-  /// تحديث قاعدة البيانات لإضافة الجداول الجديدة المطلوبة لميزات مقارنة الجرعات وحاسبة الجرعة
+  /// تحديث قاعدة البيانات لإضافة الجداول الجديدة المطلوبة لميزات مقارنة الجرعات وحاسبة الجرعة والتفاعلات الدوائية
   Future<void> updateDatabase() async {
     try {
       final db = await DatabaseService.instance.database;
@@ -22,6 +22,12 @@ class DatabaseUpdate {
       final weightDoseCalculatorsTableExists = await _checkIfTableExists(db, 'weight_dose_calculators');
       if (!weightDoseCalculatorsTableExists) {
         await _createWeightDoseCalculatorsTable(db);
+      }
+      
+      // التحقق من وجود جدول drug_interactions
+      final drugInteractionsTableExists = await _checkIfTableExists(db, 'drug_interactions');
+      if (!drugInteractionsTableExists) {
+        await _createDrugInteractionsTable(db);
       }
       
       debugPrint('تم تحديث قاعدة البيانات بنجاح');
@@ -131,5 +137,105 @@ class DatabaseUpdate {
       return result.first;
     }
     return null;
+  }
+  
+  /// إنشاء جدول التفاعلات الدوائية
+  Future<void> _createDrugInteractionsTable(Database db) async {
+    const idType = 'INTEGER PRIMARY KEY AUTOINCREMENT';
+    const intType = 'INTEGER';
+    const textType = 'TEXT';
+    
+    await db.execute('''
+    CREATE TABLE drug_interactions (
+      id $idType,
+      medication_id $intType NOT NULL,
+      interacting_medication_id $intType NOT NULL,
+      severity_level $textType NOT NULL,
+      effect $textType NOT NULL,
+      effect_ar $textType NOT NULL,
+      mechanism $textType NOT NULL,
+      mechanism_ar $textType NOT NULL,
+      management $textType NOT NULL,
+      management_ar $textType NOT NULL,
+      reference $textType,
+      FOREIGN KEY (medication_id) REFERENCES medications (id) ON DELETE CASCADE,
+      FOREIGN KEY (interacting_medication_id) REFERENCES medications (id) ON DELETE CASCADE
+    )
+    ''');
+    
+    // إنشاء فهارس للبحث السريع
+    await db.execute('CREATE INDEX idx_medication_id_interaction ON drug_interactions(medication_id)');
+    await db.execute('CREATE INDEX idx_interacting_medication_id ON drug_interactions(interacting_medication_id)');
+    await db.execute('CREATE INDEX idx_severity_level ON drug_interactions(severity_level)');
+  }
+  
+  /// إضافة تفاعل دوائي جديد
+  Future<int> insertDrugInteraction(Map<String, dynamic> drugInteraction) async {
+    final db = await DatabaseService.instance.database;
+    return await db.insert('drug_interactions', drugInteraction);
+  }
+  
+  /// الحصول على التفاعلات الدوائية لدواء معين
+  Future<List<Map<String, dynamic>>> getDrugInteractions(int medicationId) async {
+    final db = await DatabaseService.instance.database;
+    return await db.query(
+      'drug_interactions',
+      where: 'medication_id = ?',
+      whereArgs: [medicationId],
+    );
+  }
+  
+  /// البحث عن التفاعلات الدوائية بين دواءين
+  Future<List<Map<String, dynamic>>> findInteractionsBetweenMedications(
+    int medicationId1, 
+    int medicationId2
+  ) async {
+    final db = await DatabaseService.instance.database;
+    return await db.rawQuery('''
+      SELECT * FROM drug_interactions 
+      WHERE (medication_id = ? AND interacting_medication_id = ?) 
+      OR (medication_id = ? AND interacting_medication_id = ?)
+    ''', [medicationId1, medicationId2, medicationId2, medicationId1]);
+  }
+  
+  /// تحديث تفاعل دوائي موجود
+  Future<int> updateDrugInteraction(Map<String, dynamic> drugInteraction) async {
+    final db = await DatabaseService.instance.database;
+    return await db.update(
+      'drug_interactions',
+      drugInteraction,
+      where: 'id = ?',
+      whereArgs: [drugInteraction['id']],
+    );
+  }
+  
+  /// حذف تفاعل دوائي
+  Future<int> deleteDrugInteraction(int id) async {
+    final db = await DatabaseService.instance.database;
+    return await db.delete(
+      'drug_interactions',
+      where: 'id = ?',
+      whereArgs: [id],
+    );
+  }
+  
+  /// الحصول على قائمة الأدوية التي لها تفاعلات دوائية
+  Future<List<Map<String, dynamic>>> getMedicationsWithInteractions() async {
+    final db = await DatabaseService.instance.database;
+    return await db.rawQuery('''
+      SELECT DISTINCT m.* FROM medications m
+      INNER JOIN drug_interactions di ON m.id = di.medication_id
+      ORDER BY m.trade_name ASC
+    ''');
+  }
+  
+  /// الحصول على التفاعلات الدوائية حسب مستوى الخطورة
+  Future<List<Map<String, dynamic>>> getDrugInteractionsBySeverity(String severityLevel) async {
+    final db = await DatabaseService.instance.database;
+    return await db.query(
+      'drug_interactions',
+      where: 'severity_level = ?',
+      whereArgs: [severityLevel],
+    );
   }
 }

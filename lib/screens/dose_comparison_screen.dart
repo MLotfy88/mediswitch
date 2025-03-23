@@ -10,6 +10,14 @@ import 'dart:math' as math;
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+// Chart data class for visualization
+class _ChartData {
+  final String x;
+  final double y;
+  
+  _ChartData(this.x, this.y);
+}
+
 class DoseComparisonScreen extends StatefulWidget {
   const DoseComparisonScreen({super.key});
 
@@ -415,8 +423,28 @@ class _DoseComparisonScreenState extends State<DoseComparisonScreen> with Single
                                       return Card(
                                         margin: const EdgeInsets.symmetric(vertical: 8.0),
                                         child: Padding(
-                                          padding: const EdgeInsets.all(12.0
-                            ListView.builder(
+                                          padding: const EdgeInsets.all(12.0),
+                                          child: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              // Content for the card
+                                              ListTile(
+                                                title: Text(eqMed.tradeName),
+                                                subtitle: Text(eqMed.arabicName),
+                                                trailing: Text(
+                                                  '$equivalentDose ${equivalent.unit}',
+                                                  style: const TextStyle(fontWeight: FontWeight.bold),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                  
+                                  // عرض المخطط
+                                  ListView.builder(
                               shrinkWrap: true,
                               physics: const NeverScrollableScrollPhysics(),
                               itemCount: _equivalents.length,
@@ -546,15 +574,16 @@ class _DoseComparisonScreenState extends State<DoseComparisonScreen> with Single
                                         ],
                                       ),
                                     ),
-                                  );
-                                },
+                                  ),
+                                ),
                               ),
-                              
-                              // عرض المخطط البياني المقارن
-                              _showComparisonChart ? _buildComparisonChart() : Container(),
-                              
-                              // عرض الجدول
-                              SingleChildScrollView(
+                            );
+                            
+                            // عرض المخطط البياني المقارن
+                            _showComparisonChart ? _buildComparisonChart() : Container(),
+                            
+                            // عرض الجدول
+                            SingleChildScrollView(
                                 scrollDirection: Axis.horizontal,
                                 child: DataTable(
                                   headingRowColor: MaterialStateProperty.all(Colors.grey[200]),
@@ -617,8 +646,7 @@ class _DoseComparisonScreenState extends State<DoseComparisonScreen> with Single
                                               Text('${equivalent.toxicityPercentage.toStringAsFixed(0)}%'),
                                             ],
                                           ),
-                                        ),
-                                      ],
+                                        ]
                                     );
                                   }).toList(),
                                 ),
@@ -629,7 +657,7 @@ class _DoseComparisonScreenState extends State<DoseComparisonScreen> with Single
                       ],
                     ),
                   ),
-                ),
+                )
               ],
             ),
           ),
@@ -645,7 +673,7 @@ class _DoseComparisonScreenState extends State<DoseComparisonScreen> with Single
               child: const Icon(Icons.add),
             )
           : null,
-    );
+    )
   }
   
   // بناء مخطط المقارنة

@@ -23,7 +23,7 @@ class _WeightDoseCalculatorScreenState extends State<WeightDoseCalculatorScreen>
   WeightDoseCalculator? _doseCalculator;
   List<Medication> _searchResults = [];
   bool _isLoading = false;
-  bool _isWeightInKg = true; // true for kg, false for lb
+  final bool _isWeightInKg = true; // true for kg, false for lb
   Map<String, double>? _calculatedDoses;
   String _warningLevel = 'none';
   
@@ -204,6 +204,86 @@ class _WeightDoseCalculatorScreenState extends State<WeightDoseCalculatorScreen>
       SnackBar(content: Text(message)),
     );
   }
+  
+  void _showErrorSnackBar(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(message)),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('حاسبة جرعة الدواء'),
+        actions: [
+          if (_selectedMedication != null && _calculatedDoses != null)
+            IconButton(
+              icon: const Icon(Icons.share),
+              onPressed: _shareResults,
+              tooltip: 'مشاركة النتائج',
+            ),
+        ],
+      ),
+      body: _isLoading
+          ? const Center(child: CircularProgressIndicator())
+          : SingleChildScrollView(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // قسم البحث عن الدواء
+                  Card(
+                    elevation: 4,
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            'اختر الدواء',
+                            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                          ),
+                          const SizedBox(height: 8),
+                          TextField(
+                            controller: _searchController,
+                            decoration: const InputDecoration(
+                              hintText: 'ابحث عن الدواء باسمه التجاري أو المادة الفعالة',
+                              prefixIcon: Icon(Icons.search),
+                              border: OutlineInputBorder(),
+                            ),
+                            onChanged: _searchMedications,
+                          ),
+                          if (_searchResults.isNotEmpty)
+                            Container(
+                              margin: const EdgeInsets.only(top: 8),
+                              height: 200,
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Colors.grey),
+                                borderRadius: BorderRadius.circular(4),
+                              ),
+                              child: ListView.builder(
+                                itemCount: _searchResults.length,
+                                itemBuilder: (context, index) {
+                                  final medication = _searchResults[index];
+                                  return ListTile(
+                                    title: Text(medication.tradeName),
+                                    subtitle: Text(medication.arabicName),
+                                    onTap: () => _selectMedication(medication),
+                                  );
+                                },
+                              ),
+                            ),
+                        ],
+                      ),
+                    ),
+                  ),
+  
+  void _showErrorSnackBar(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(message)),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -305,18 +385,132 @@ class _WeightDoseCalculatorScreenState extends State<WeightDoseCalculatorScreen>
                                   Expanded(
                                     flex: 2,
                                     child: TextField(
-                                      controller: _weightController,
+                                      controller: _ageYearsController,
                                       keyboardType: TextInputType.number,
                                       decoration: const InputDecoration(
-                                        hintText: 'الوزن',
+                                        hintText: 'السنوات',
                                         border: OutlineInputBorder(),
                                       ),
                                     ),
                                   ),
                                   const SizedBox(width: 8),
                                   Expanded(
-                                    flex: 1,
-                                    child: DropdownButtonFormField<bool>(
+                                    child: TextField(
+                                      controller: _ageMonthsController,
+                                      keyboardType: TextInputType.number,
+                                      decoration: const InputDecoration(
+                                        hintText: 'الشهور',
+                                        border: OutlineInputBorder(),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 16),
+                              ElevatedButton(
+                                onPressed: _calculateDose,
+                                child: const Text('حساب الجرعة'),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  
+                  const SizedBox(height: 16),
+                  
+                  // قسم عرض النتائج
+                  if (_selectedMedication != null && _calculatedDoses != null)
+                    Card(
+                      elevation: 4,
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'نتائج حساب الجرعة',
+                              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                            ),
+                            const SizedBox(height: 16),
+                            Text('الدواء: ${_selectedMedication!.tradeName}'),
+                            Text('المادة الفعالة: ${_selectedMedication!.active}'),
+                            
+                            // تحويل الوزن إلى كيلوجرام إذا كان بالرطل
+                            double.parse(_weightController.text).isNaN
+                                ? const Text('الوزن: غير محدد')
+                                : Text(
+                                    'وزن المريض: ${_weightController.text} ${_isWeightInKg ? 'كجم' : 'رطل'} ${!_isWeightInKg ? '(${(double.parse(_weightController.text) * 0.453592).toStringAsFixed(2)} كجم)' : ''}',
+                                  ),
+                            
+                            const SizedBox(height: 8),
+                            const Divider(),
+                            const SizedBox(height: 8),
+                            
+                            Text(
+                              'الجرعة الفردية: ${_calculatedDoses!['minSingleDose']?.toStringAsFixed(2)} - ${_calculatedDoses!['maxSingleDose']?.toStringAsFixed(2)} ${_doseCalculator!.unit}',
+                              style: const TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              'الجرعة اليومية: ${_calculatedDoses!['minDailyDose']?.toStringAsFixed(2)} - ${_calculatedDoses!['maxDailyDose']?.toStringAsFixed(2)} ${_doseCalculator!.unit}',
+                            ),
+                            Text(
+                              'عدد الجرعات في اليوم: ${_calculatedDoses!['dosesPerDay']?.toInt()}',
+                            ),
+                            
+                            if (_doseCalculator!.notes.isNotEmpty) ...[  
+                              const SizedBox(height: 8),
+                              const Divider(),
+                              const SizedBox(height: 8),
+                              const Text('ملاحظات:', style: TextStyle(fontWeight: FontWeight.bold)),
+                              Text(_doseCalculator!.notes),
+                            ],
+                            
+                            if (_warningLevel != 'none') ...[  
+                              const SizedBox(height: 8),
+                              const Divider(),
+                              const SizedBox(height: 8),
+                              Text(
+                                'تحذير: ${_getWarningText()}',
+                                style: TextStyle(
+                                  color: _warningLevel == 'high' ? Colors.red : Colors.orange,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ],
+                        ),
+                      ),
+                    ),
+                ],
+              ),
+            ),
+    );
+  }
+  
+  String _getWarningText() {
+    switch (_warningLevel) {
+      case 'low':
+        return 'الجرعة المحسوبة منخفضة عن المعدل الطبيعي';
+      case 'high':
+        return 'الجرعة المحسوبة مرتفعة عن المعدل الطبيعي';
+      default:
+        return '';
+    }
+  }
+}
+                                      controller: _weightController,
+                                      keyboardType: TextInputType.number,
+                                      decoration: InputDecoration(
+                                        hintText = 'الوزن',
+                                        border = OutlineInputBorder(),
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(width = 8),
+                                  Expanded(
+                                    flex = 1,
+                                    child = DropdownButtonFormField<bool>(
                                       value: _isWeightInKg,
                                       decoration: const InputDecoration(
                                         border: OutlineInputBorder(),
@@ -342,10 +536,124 @@ class _WeightDoseCalculatorScreenState extends State<WeightDoseCalculatorScreen>
                                   ),
                                 ],
                               ),
-                              const SizedBox(height: 16),
-                              const Text('عمر المريض (اختياري):'),
-                              const SizedBox(height: 8),
+                              SizedBox(height = 16),
+                              Text('عمر المريض (اختياري):'),
+                              SizedBox(height = 8),
                               Row(
-                                children: [
+                                children = [
                                   Expanded(
                                     child: TextField(
+                                      controller: _ageYearsController,
+                                      keyboardType: TextInputType.number,
+                                      decoration: const InputDecoration(
+                                        hintText: 'السنوات',
+                                        border: OutlineInputBorder(),
+                                      ),
+                                    ),
+                                  ),
+                                  const SizedBox(width: 8),
+                                  Expanded(
+                                    child: TextField(
+                                      controller: _ageMonthsController,
+                                      keyboardType: TextInputType.number,
+                                      decoration: const InputDecoration(
+                                        hintText: 'الشهور',
+                                        border: OutlineInputBorder(),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(height = 16),
+                              ElevatedButton(
+                                onPressed = _calculateDose,
+                                child = const Text('حساب الجرعة'),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  
+                  SizedBox(height = 16),
+                  
+                  // قسم عرض النتائج
+                  if (selectedMedication != null && _calculatedDoses != null)
+                    Card(
+                      elevation = 4,
+                      child = Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'نتائج حساب الجرعة',
+                              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                            ),
+                            const SizedBox(height: 16),
+                            Text('الدواء: ${_selectedMedication!.tradeName}'),
+                            Text('المادة الفعالة: ${_selectedMedication!.active}'),
+                            
+                            // تحويل الوزن إلى كيلوجرام إذا كان بالرطل
+                            double.parse(_weightController.text).isNaN
+                                ? const Text('الوزن: غير محدد')
+                                : Text(
+                                    'وزن المريض: ${_weightController.text} ${_isWeightInKg ? 'كجم' : 'رطل'} ${!_isWeightInKg ? '(${(double.parse(_weightController.text) * 0.453592).toStringAsFixed(2)} كجم)' : ''}',
+                                  ),
+                            
+                            const SizedBox(height: 8),
+                            const Divider(),
+                            const SizedBox(height: 8),
+                            
+                            Text(
+                              'الجرعة الفردية: ${_calculatedDoses!['minSingleDose']?.toStringAsFixed(2)} - ${_calculatedDoses!['maxSingleDose']?.toStringAsFixed(2)} ${_doseCalculator!.unit}',
+                              style: const TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              'الجرعة اليومية: ${_calculatedDoses!['minDailyDose']?.toStringAsFixed(2)} - ${_calculatedDoses!['maxDailyDose']?.toStringAsFixed(2)} ${_doseCalculator!.unit}',
+                            ),
+                            Text(
+                              'عدد الجرعات في اليوم: ${_calculatedDoses!['dosesPerDay']?.toInt()}',
+                            ),
+                            
+                            if (_doseCalculator!.notes.isNotEmpty) ...[  
+                              const SizedBox(height: 8),
+                              const Divider(),
+                              const SizedBox(height: 8),
+                              const Text('ملاحظات:', style: TextStyle(fontWeight: FontWeight.bold)),
+                              Text(_doseCalculator!.notes),
+                            ],
+                            
+                            if (_warningLevel != 'none') ...[  
+                              const SizedBox(height: 8),
+                              const Divider(),
+                              const SizedBox(height: 8),
+                              Text(
+                                'تحذير: ${_getWarningText()}',
+                                style: TextStyle(
+                                  color: _warningLevel == 'high' ? Colors.red : Colors.orange,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ],
+                        ),
+                      ),
+                    ),
+                ],
+              ),
+            ),
+    );
+  }
+  
+  String _getWarningText() {
+    switch (_warningLevel) {
+      case 'low':
+        return 'الجرعة المحسوبة منخفضة عن المعدل الطبيعي';
+      case 'high':
+        return 'الجرعة المحسوبة مرتفعة عن المعدل الطبيعي';
+      default:
+        return '';
+    }
+  }
+}

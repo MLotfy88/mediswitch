@@ -6,6 +6,7 @@ import 'package:mediswitch/utils/app_theme.dart';
 import 'package:mediswitch/widgets/medication_card.dart';
 import 'package:mediswitch/widgets/search_filter_sheet.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:fuzzywuzzy/fuzzywuzzy.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -18,32 +19,32 @@ class _SearchScreenState extends State<SearchScreen> {
   final TextEditingController _searchController = TextEditingController();
   final FocusNode _searchFocusNode = FocusNode();
   final ScrollController _scrollController = ScrollController();
-  
+
   List<Medication> _medications = [];
   List<Medication> _filteredMedications = [];
   List<String> _suggestions = [];
   bool _isLoading = false;
   bool _isSearching = false;
   String _currentQuery = '';
-  
+
   // Filter options
   String? _selectedCategory;
   double? _minPrice;
   double? _maxPrice;
   String? _dosageForm;
-  
+
   @override
   void initState() {
     super.initState();
     _loadInitialData();
-    
+
     // Add scroll listener for pagination
     _scrollController.addListener(_scrollListener);
-    
+
     // Add listener to search controller for auto-complete
     _searchController.addListener(_onSearchChanged);
   }
-  
+
   @override
   void dispose() {
     _searchController.dispose();
@@ -52,19 +53,20 @@ class _SearchScreenState extends State<SearchScreen> {
     _scrollController.dispose();
     super.dispose();
   }
-  
+
   void _scrollListener() {
-    if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
+    if (_scrollController.position.pixels ==
+        _scrollController.position.maxScrollExtent) {
       // Load more data when reaching the end of the list
       if (!_isSearching && _currentQuery.isEmpty) {
         _loadMoreData();
       }
     }
   }
-  
+
   void _onSearchChanged() {
     final query = _searchController.text.trim();
-    
+
     if (query.isEmpty) {
       setState(() {
         _suggestions = [];
@@ -74,14 +76,14 @@ class _SearchScreenState extends State<SearchScreen> {
       });
       return;
     }
-    
+
     if (query.length < 2) {
       setState(() {
         _suggestions = [];
       });
       return;
     }
-    
+
     // Debounce search to avoid too many database queries
     Future.delayed(const Duration(milliseconds: 300), () {
       if (query == _searchController.text.trim()) {
@@ -89,14 +91,17 @@ class _SearchScreenState extends State<SearchScreen> {
       }
     });
   }
-  
+
   Future<void> _loadInitialData() async {
     setState(() {
       _isLoading = true;
     });
-    
+
     try {
-      final medications = await DatabaseService.instance.getMedications(limit: 20, offset: 0);
+      final medications = await DatabaseService.instance.getMedications(
+        limit: 20,
+        offset: 0,
+      );
       setState(() {
         _medications = medications;
         _filteredMedications = medications;
@@ -109,20 +114,20 @@ class _SearchScreenState extends State<SearchScreen> {
       _showErrorSnackBar('حدث خطأ أثناء تحميل البيانات');
     }
   }
-  
+
   Future<void> _loadMoreData() async {
     if (_isLoading) return;
-    
+
     setState(() {
       _isLoading = true;
     });
-    
+
     try {
       final medications = await DatabaseService.instance.getMedications(
-        limit: 20, 
+        limit: 20,
         offset: _medications.length,
       );
-      
+
       if (medications.isNotEmpty) {
         setState(() {
           _medications.addAll(medications);
@@ -141,17 +146,20 @@ class _SearchScreenState extends State<SearchScreen> {
       _showErrorSnackBar('حدث خطأ أثناء تحميل المزيد من البيانات');
     }
   }
-  
+
   Future<void> _searchMedications(String query) async {
     setState(() {
       _isSearching = true;
       _currentQuery = query;
     });
-    
+
     try {
       // Get search suggestions
-      final medications = await DatabaseService.instance.searchMedications(query, limit: 30);
-      
+      final medications = await DatabaseService.instance.searchMedications(
+        query,
+        limit: 30,
+      );
+
       // Extract unique suggestions from search results
       final suggestions = <String>{};
       for (final med in medications) {
@@ -162,7 +170,7 @@ class _SearchScreenState extends State<SearchScreen> {
           suggestions.add(med.arabicName);
         }
       }
-      
+
       setState(() {
         _suggestions = suggestions.take(5).toList(); // Limit to 5 suggestions
         _filteredMedications = medications;
@@ -175,20 +183,25 @@ class _SearchScreenState extends State<SearchScreen> {
       _showErrorSnackBar('حدث خطأ أثناء البحث');
     }
   }
-  
+
   void _applyFilters() {
-    List<Medication> filtered = _currentQuery.isNotEmpty 
-        ? _filteredMedications 
-        : List.from(_medications);
-    
+    List<Medication> filtered =
+        _currentQuery.isNotEmpty
+            ? _filteredMedications
+            : List.from(_medications);
+
     // Apply category filter
     if (_selectedCategory != null && _selectedCategory!.isNotEmpty) {
-      filtered = filtered.where((med) => 
-        med.mainCategory == _selectedCategory || 
-        med.mainCategoryAr == _selectedCategory
-      ).toList();
+      filtered =
+          filtered
+              .where(
+                (med) =>
+                    med.mainCategory == _selectedCategory ||
+                    med.mainCategoryAr == _selectedCategory,
+              )
+              .toList();
     }
-    
+
     // Apply price range filter
     if (_minPrice != null) {
       filtered = filtered.where((med) => med.price >= _minPrice!).toList();
@@ -196,54 +209,58 @@ class _SearchScreenState extends State<SearchScreen> {
     if (_maxPrice != null) {
       filtered = filtered.where((med) => med.price <= _maxPrice!).toList();
     }
-    
+
     // Apply dosage form filter
     if (_dosageForm != null && _dosageForm!.isNotEmpty) {
-      filtered = filtered.where((med) => 
-        med.dosageForm == _dosageForm || 
-        med.dosageFormAr == _dosageForm
-      ).toList();
+      filtered =
+          filtered
+              .where(
+                (med) =>
+                    med.dosageForm == _dosageForm ||
+                    med.dosageFormAr == _dosageForm,
+              )
+              .toList();
     }
-    
+
     setState(() {
       _filteredMedications = filtered;
     });
   }
-  
+
   void _showFilterBottomSheet() {
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
-      backgroundColor: Colors.transparent,
-      builder: (context) => SearchFilterSheet(
-        selectedCategory: _selectedCategory,
-        minPrice: _minPrice,
-        maxPrice: _maxPrice,
-        dosageForm: _dosageForm,
-        onApplyFilters: (category, minPrice, maxPrice, dosageForm) {
-          setState(() {
-            _selectedCategory = category;
-            _minPrice = minPrice;
-            _maxPrice = maxPrice;
-            _dosageForm = dosageForm;
-          });
-          _applyFilters();
-          Navigator.pop(context);
-        },
-        onResetFilters: () {
-          setState(() {
-            _selectedCategory = null;
-            _minPrice = null;
-            _maxPrice = null;
-            _dosageForm = null;
-          });
-          _applyFilters();
-          Navigator.pop(context);
-        },
-      ),
+      builder:
+          (context) => SearchFilterSheet(
+            selectedCategory: _selectedCategory,
+            minPrice: _minPrice,
+            maxPrice: _maxPrice,
+            dosageForm: _dosageForm,
+            onApplyFilters: (category, minPrice, maxPrice, dosageForm) {
+              setState(() {
+                _selectedCategory = category;
+                _minPrice = minPrice;
+                _maxPrice = maxPrice;
+                _dosageForm = dosageForm;
+              });
+              _applyFilters();
+              Navigator.pop(context);
+            },
+            onResetFilters: () {
+              setState(() {
+                _selectedCategory = null;
+                _minPrice = null;
+                _maxPrice = null;
+                _dosageForm = null;
+              });
+              _applyFilters();
+              Navigator.pop(context);
+            },
+          ),
     );
   }
-  
+
   void _showErrorSnackBar(String message) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
@@ -280,15 +297,16 @@ class _SearchScreenState extends State<SearchScreen> {
                 hintText: 'ابحث عن اسم الدواء...',
                 hintTextDirection: TextDirection.rtl,
                 prefixIcon: const Icon(Icons.search),
-                suffixIcon: _searchController.text.isNotEmpty
-                    ? IconButton(
-                        icon: const Icon(Icons.clear),
-                        onPressed: () {
-                          _searchController.clear();
-                          _searchFocusNode.unfocus();
-                        },
-                      )
-                    : null,
+                suffixIcon:
+                    _searchController.text.isNotEmpty
+                        ? IconButton(
+                          icon: const Icon(Icons.clear),
+                          onPressed: () {
+                            _searchController.clear();
+                            _searchFocusNode.unfocus();
+                          },
+                        )
+                        : null,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
@@ -300,7 +318,7 @@ class _SearchScreenState extends State<SearchScreen> {
               },
             ),
           ),
-          
+
           // Search suggestions
           if (_suggestions.isNotEmpty)
             Container(
@@ -322,9 +340,12 @@ class _SearchScreenState extends State<SearchScreen> {
                 },
               ),
             ),
-          
+
           // Filter chips
-          if (_selectedCategory != null || _minPrice != null || _maxPrice != null || _dosageForm != null)
+          if (_selectedCategory != null ||
+              _minPrice != null ||
+              _maxPrice != null ||
+              _dosageForm != null)
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: SingleChildScrollView(
@@ -377,10 +398,13 @@ class _SearchScreenState extends State<SearchScreen> {
                 ),
               ),
             ),
-          
+
           // Results count
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 16.0,
+              vertical: 8.0,
+            ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -397,69 +421,76 @@ class _SearchScreenState extends State<SearchScreen> {
               ],
             ),
           ),
-          
+
           // Medication list
           Expanded(
-            child: _isLoading && _filteredMedications.isEmpty
-                ? _buildLoadingShimmer()
-                : _filteredMedications.isEmpty
+            child:
+                _isLoading && _filteredMedications.isEmpty
+                    ? _buildLoadingShimmer()
+                    : _filteredMedications.isEmpty
                     ? Center(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.medication_outlined,
-                              size: 64,
-                              color: Theme.of(context).colorScheme.primary.withValues(alpha: 128),
-                            ),
-                            const SizedBox(height: 16),
-                            Text(
-                              'لا توجد أدوية مطابقة للبحث',
-                              style: Theme.of(context).textTheme.titleLarge,
-                            ),
-                            const SizedBox(height: 8),
-                            Text(
-                              'حاول تغيير كلمات البحث أو إزالة الفلاتر',
-                              style: Theme.of(context).textTheme.bodyMedium,
-                            ),
-                          ],
-                        ),
-                      )
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.medication_outlined,
+                            size: 64,
+                            color: Theme.of(
+                              context,
+                            ).colorScheme.primary.withValues(alpha: 128),
+                          ),
+                          const SizedBox(height: 16),
+                          Text(
+                            'لا توجد أدوية مطابقة للبحث',
+                            style: Theme.of(context).textTheme.titleLarge,
+                          ),
+                          const SizedBox(height: 8),
+                          Text(
+                            'حاول تغيير كلمات البحث أو إزالة الفلاتر',
+                            style: Theme.of(context).textTheme.bodyMedium,
+                          ),
+                        ],
+                      ),
+                    )
                     : ListView.builder(
-                        controller: _scrollController,
-                        padding: const EdgeInsets.all(16),
-                        itemCount: _filteredMedications.length + (_isLoading ? 1 : 0),
-                        itemBuilder: (context, index) {
-                          if (index == _filteredMedications.length) {
-                            return const Center(
-                              child: Padding(
-                                padding: EdgeInsets.all(16.0),
-                                child: CircularProgressIndicator(),
+                      controller: _scrollController,
+                      padding: const EdgeInsets.all(16),
+                      itemCount:
+                          _filteredMedications.length + (_isLoading ? 1 : 0),
+                      itemBuilder: (context, index) {
+                        if (index == _filteredMedications.length) {
+                          return const Center(
+                            child: Padding(
+                              padding: EdgeInsets.all(16.0),
+                              child: CircularProgressIndicator(),
+                            ),
+                          );
+                        }
+
+                        final medication = _filteredMedications[index];
+                        return MedicationCard(
+                          medication: medication,
+                          onTap: () {
+                            // Navigate to medication details screen
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder:
+                                    (context) => MedicationDetailsScreen(
+                                      medication: medication,
+                                    ),
                               ),
                             );
-                          }
-                          
-                          final medication = _filteredMedications[index];
-                          return MedicationCard(
-                            medication: medication,
-                            onTap: () {
-                              // Navigate to medication details screen
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => MedicationDetailsScreen(medication: medication),
-                                ),
-                              );
-                            },
-                          );
-                        },
-                      ),
+                          },
+                        );
+                      },
+                    ),
           ),
         ],
       ),
     );
   }
-  
+
   Widget _buildLoadingShimmer() {
     return Shimmer.fromColors(
       baseColor: Colors.grey[300]!,
@@ -467,16 +498,17 @@ class _SearchScreenState extends State<SearchScreen> {
       child: ListView.builder(
         padding: const EdgeInsets.all(16),
         itemCount: 10,
-        itemBuilder: (_, __) => Padding(
-          padding: const EdgeInsets.only(bottom: 16),
-          child: Container(
-            height: 120,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(12),
+        itemBuilder:
+            (_, __) => Padding(
+              padding: const EdgeInsets.only(bottom: 16),
+              child: Container(
+                height: 120,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+              ),
             ),
-          ),
-        ),
       ),
     );
   }
