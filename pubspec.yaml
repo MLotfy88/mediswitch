@@ -67,7 +67,7 @@ dependencies:
   excel: ^4.0.2
   archive: ^3.4.10
   http: ^1.2.0
-  fuzzywuzzy: ^2.0.1
+  fuzzywuzzy: ^1.2.0
 
 dev_dependencies:
   flutter_test:

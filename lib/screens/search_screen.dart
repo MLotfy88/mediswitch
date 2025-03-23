@@ -7,6 +7,7 @@ import 'package:mediswitch/widgets/medication_card.dart';
 import 'package:mediswitch/widgets/search_filter_sheet.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:fuzzywuzzy/fuzzywuzzy.dart';
+import 'package:fuzzywuzzy/process.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -154,21 +155,32 @@ class _SearchScreenState extends State<SearchScreen> {
     });
 
     try {
-      // Get search suggestions
-      final medications = await DatabaseService.instance.searchMedications(
+      // Get all medications from the database
+      final allMedications = await DatabaseService.instance.getMedications();
+
+      // Use fuzzywuzzy to find the best matches for the search query
+      final results = process.extract(
         query,
+        allMedications.map((m) => m.tradeName).toList(),
         limit: 30,
+        cutoff: 60,
       );
+
+      // Extract the matched medication names
+      final matchedMedicationNames =
+          results.map((r) => r[0] as String).toList();
+
+      // Filter the medications based on the matched names
+      final medications =
+          allMedications
+              .where((m) => matchedMedicationNames.contains(m.tradeName))
+              .toList();
 
       // Extract unique suggestions from search results
       final suggestions = <String>{};
       for (final med in medications) {
-        if (med.tradeName.toLowerCase().contains(query.toLowerCase())) {
-          suggestions.add(med.tradeName);
-        }
-        if (med.arabicName.toLowerCase().contains(query.toLowerCase())) {
-          suggestions.add(med.arabicName);
-        }
+        suggestions.add(med.tradeName);
+        suggestions.add(med.arabicName);
       }
 
       setState(() {
