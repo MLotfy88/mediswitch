@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:mediswitch/services/backup_service.dart';
 import 'package:mediswitch/services/logging_service.dart';
@@ -336,4 +337,4 @@ class _BackupRestoreScreenState extends State<BackupRestoreScreen> {
                   ? const Center(child: CircularProgressIndicator())
                   : _backupFiles.isEmpty
                       ? Center(
-                          child: Text(
+                          child: Text('لا توجد نسخ احتياطية متاحة', style: theme.textTheme.bodyLarge),

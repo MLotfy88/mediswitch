@@ -178,6 +178,16 @@ class BackupService {
     }
   }
   
+  /// الحصول على قائمة النسخ الاحتياطية
+  Future<List<String>> getBackups() async {
+    try {
+      return await DatabaseService.instance.getBackups();
+    } catch (e) {
+      debugPrint('خطأ أثناء الحصول على قائمة النسخ الاحتياطية: $e');
+      return [];
+    }
+  }
+  
   /// حذف نسخة احتياطية
   Future<bool> deleteBackup(String backupPath) async {
     try {

@@ -1,0 +1,2786 @@
+[{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/backup_restore_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "undefined_method",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/undefined_method",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The method 'getBackups' isn't defined for the type 'BackupService'.\nTry correcting the name to the name of an existing method, or defining a method named 'getBackups'.",
+	"source": "dart",
+	"startLineNumber": 44,
+	"startColumn": 52,
+	"endLineNumber": 44,
+	"endColumn": 62
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/backup_restore_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "undefined_method",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/undefined_method",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The method 'jsonDecode' isn't defined for the type '_BackupRestoreScreenState'.\nTry correcting the name to the name of an existing method, or defining a method named 'jsonDecode'.",
+	"source": "dart",
+	"startLineNumber": 233,
+	"startColumn": 52,
+	"endLineNumber": 233,
+	"endColumn": 62
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/backup_restore_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": "expected_token",
+	"severity": 8,
+	"message": "Expected to find ';'.",
+	"source": "dart",
+	"startLineNumber": 339,
+	"startColumn": 38,
+	"endLineNumber": 339,
+	"endColumn": 39
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/backup_restore_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": "expected_token",
+	"severity": 8,
+	"message": "Expected to find ':'.",
+	"source": "dart",
+	"startLineNumber": 339,
+	"startColumn": 39,
+	"endLineNumber": 339,
+	"endColumn": 39
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/backup_restore_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": "missing_identifier",
+	"severity": 8,
+	"message": "Expected an identifier.",
+	"source": "dart",
+	"startLineNumber": 339,
+	"startColumn": 39,
+	"endLineNumber": 339,
+	"endColumn": 39
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/backup_restore_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "not_enough_positional_arguments",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/not_enough_positional_arguments",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "1 positional argument expected by 'Text.new', but 0 found.\nTry adding the missing argument.",
+	"source": "dart",
+	"startLineNumber": 339,
+	"startColumn": 39,
+	"endLineNumber": 339,
+	"endColumn": 39
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/backup_restore_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": "expected_token",
+	"severity": 8,
+	"message": "Expected to find ')'.",
+	"source": "dart",
+	"startLineNumber": 339,
+	"startColumn": 39,
+	"endLineNumber": 339,
+	"endColumn": 40
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/backup_restore_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": "expected_token",
+	"severity": 8,
+	"message": "Expected to find ']'.",
+	"source": "dart",
+	"startLineNumber": 339,
+	"startColumn": 39,
+	"endLineNumber": 339,
+	"endColumn": 40
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/backup_restore_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": "expected_token",
+	"severity": 8,
+	"message": "Expected to find '}'.",
+	"source": "dart",
+	"startLineNumber": 339,
+	"startColumn": 39,
+	"endLineNumber": 339,
+	"endColumn": 40
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/backup_restore_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "unused_field",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/unused_field",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 4,
+	"message": "The value of the field '_selectedBackupMetadata' isn't used.\nTry removing the field, or using it.",
+	"source": "dart",
+	"startLineNumber": 28,
+	"startColumn": 25,
+	"endLineNumber": 28,
+	"endColumn": 48
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/backup_restore_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "unused_element",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/unused_element",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 4,
+	"message": "The declaration '_restoreBackup' isn't referenced.\nTry removing the declaration of '_restoreBackup'.",
+	"source": "dart",
+	"startLineNumber": 94,
+	"startColumn": 16,
+	"endLineNumber": 94,
+	"endColumn": 30
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/backup_restore_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "unused_element",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/unused_element",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 4,
+	"message": "The declaration '_shareBackup' isn't referenced.\nTry removing the declaration of '_shareBackup'.",
+	"source": "dart",
+	"startLineNumber": 146,
+	"startColumn": 16,
+	"endLineNumber": 146,
+	"endColumn": 28
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/backup_restore_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "unused_element",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/unused_element",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 4,
+	"message": "The declaration '_deleteBackup' isn't referenced.\nTry removing the declaration of '_deleteBackup'.",
+	"source": "dart",
+	"startLineNumber": 168,
+	"startColumn": 16,
+	"endLineNumber": 168,
+	"endColumn": 29
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/backup_restore_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "unused_element",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/unused_element",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 4,
+	"message": "The declaration '_loadBackupMetadata' isn't referenced.\nTry removing the declaration of '_loadBackupMetadata'.",
+	"source": "dart",
+	"startLineNumber": 228,
+	"startColumn": 16,
+	"endLineNumber": 228,
+	"endColumn": 35
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/backup_restore_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "deprecated_member_use",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/deprecated_member_use",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 2,
+	"message": "'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss.\nTry replacing the use of the deprecated member with the replacement.",
+	"source": "dart",
+	"startLineNumber": 298,
+	"startColumn": 36,
+	"endLineNumber": 298,
+	"endColumn": 47,
+	"tags": [
+		2
+	]
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/backup_restore_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "deprecated_member_use",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/deprecated_member_use",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 2,
+	"message": "'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss.\nTry replacing the use of the deprecated member with the replacement.",
+	"source": "dart",
+	"startLineNumber": 299,
+	"startColumn": 38,
+	"endLineNumber": 299,
+	"endColumn": 49,
+	"tags": [
+		2
+	]
+}]
+
+[{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/dose_comparison_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "missing_required_argument",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/missing_required_argument",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The named parameter 'widget' is required, but there's no corresponding argument.\nTry adding the required argument.",
+	"source": "dart",
+	"startLineNumber": 532,
+	"startColumn": 23,
+	"endLineNumber": 532,
+	"endColumn": 46
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/dose_comparison_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "undefined_named_parameter",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/undefined_named_parameter",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The named parameter 'child' isn't defined.\nTry correcting the name to an existing named parameter's name, or defining a named parameter with the name 'child'.",
+	"source": "dart",
+	"startLineNumber": 533,
+	"startColumn": 25,
+	"endLineNumber": 533,
+	"endColumn": 30
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/dose_comparison_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "const_with_non_const",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/const_with_non_const",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The constructor being called isn't a const constructor.\nTry removing 'const' from the constructor invocation.",
+	"source": "dart",
+	"startLineNumber": 546,
+	"startColumn": 69,
+	"endLineNumber": 547,
+	"endColumn": 77
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/dose_comparison_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "non_constant_list_element",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/non_constant_list_element",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The values in a const list literal must be constants.\nTry removing the keyword 'const' from the list literal.",
+	"source": "dart",
+	"startLineNumber": 546,
+	"startColumn": 69,
+	"endLineNumber": 547,
+	"endColumn": 77
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/dose_comparison_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "const_with_non_const",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/const_with_non_const",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The constructor being called isn't a const constructor.\nTry removing 'const' from the constructor invocation.",
+	"source": "dart",
+	"startLineNumber": 548,
+	"startColumn": 69,
+	"endLineNumber": 549,
+	"endColumn": 75
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/dose_comparison_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "non_constant_list_element",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/non_constant_list_element",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The values in a const list literal must be constants.\nTry removing the keyword 'const' from the list literal.",
+	"source": "dart",
+	"startLineNumber": 548,
+	"startColumn": 69,
+	"endLineNumber": 549,
+	"endColumn": 75
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/dose_comparison_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "missing_required_argument",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/missing_required_argument",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The named parameter 'widget' is required, but there's no corresponding argument.\nTry adding the required argument.",
+	"source": "dart",
+	"startLineNumber": 604,
+	"startColumn": 65,
+	"endLineNumber": 604,
+	"endColumn": 88
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/dose_comparison_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "undefined_named_parameter",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/undefined_named_parameter",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The named parameter 'child' isn't defined.\nTry correcting the name to an existing named parameter's name, or defining a named parameter with the name 'child'.",
+	"source": "dart",
+	"startLineNumber": 605,
+	"startColumn": 67,
+	"endLineNumber": 605,
+	"endColumn": 72
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/dose_comparison_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "const_with_non_const",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/const_with_non_const",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The constructor being called isn't a const constructor.\nTry removing 'const' from the constructor invocation.",
+	"source": "dart",
+	"startLineNumber": 618,
+	"startColumn": 69,
+	"endLineNumber": 619,
+	"endColumn": 75
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/dose_comparison_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "non_constant_list_element",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/non_constant_list_element",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The values in a const list literal must be constants.\nTry removing the keyword 'const' from the list literal.",
+	"source": "dart",
+	"startLineNumber": 618,
+	"startColumn": 69,
+	"endLineNumber": 619,
+	"endColumn": 75
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/dose_comparison_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "const_with_non_const",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/const_with_non_const",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The constructor being called isn't a const constructor.\nTry removing 'const' from the constructor invocation.",
+	"source": "dart",
+	"startLineNumber": 620,
+	"startColumn": 69,
+	"endLineNumber": 621,
+	"endColumn": 77
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/dose_comparison_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "non_constant_list_element",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/non_constant_list_element",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The values in a const list literal must be constants.\nTry removing the keyword 'const' from the list literal.",
+	"source": "dart",
+	"startLineNumber": 620,
+	"startColumn": 69,
+	"endLineNumber": 621,
+	"endColumn": 77
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/dose_comparison_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": "missing_identifier",
+	"severity": 8,
+	"message": "Expected an identifier.",
+	"source": "dart",
+	"startLineNumber": 649,
+	"startColumn": 47,
+	"endLineNumber": 649,
+	"endColumn": 48
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/dose_comparison_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": "expected_token",
+	"severity": 8,
+	"message": "Expected to find ']'.",
+	"source": "dart",
+	"startLineNumber": 649,
+	"startColumn": 47,
+	"endLineNumber": 649,
+	"endColumn": 48
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/dose_comparison_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": "expected_token",
+	"severity": 8,
+	"message": "Expected to find ')'.",
+	"source": "dart",
+	"startLineNumber": 652,
+	"startColumn": 43,
+	"endLineNumber": 652,
+	"endColumn": 44
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/dose_comparison_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": "missing_identifier",
+	"severity": 8,
+	"message": "Expected an identifier.",
+	"source": "dart",
+	"startLineNumber": 652,
+	"startColumn": 43,
+	"endLineNumber": 652,
+	"endColumn": 45
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/dose_comparison_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": "expected_token",
+	"severity": 8,
+	"message": "Expected to find ','.",
+	"source": "dart",
+	"startLineNumber": 652,
+	"startColumn": 43,
+	"endLineNumber": 652,
+	"endColumn": 45
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/dose_comparison_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "unused_local_variable",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/unused_local_variable",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 4,
+	"message": "The value of the local variable 'equivalentDose' isn't used.\nTry removing the variable or using it.",
+	"source": "dart",
+	"startLineNumber": 193,
+	"startColumn": 15,
+	"endLineNumber": 193,
+	"endColumn": 29
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/dose_comparison_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "unused_local_variable",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/unused_local_variable",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 4,
+	"message": "The value of the local variable 'equivalentDose' isn't used.\nTry removing the variable or using it.",
+	"source": "dart",
+	"startLineNumber": 441,
+	"startColumn": 45,
+	"endLineNumber": 441,
+	"endColumn": 59
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/dose_comparison_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "unused_local_variable",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/unused_local_variable",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 4,
+	"message": "The value of the local variable 'equivalentDose' isn't used.\nTry removing the variable or using it.",
+	"source": "dart",
+	"startLineNumber": 481,
+	"startColumn": 45,
+	"endLineNumber": 481,
+	"endColumn": 59
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/dose_comparison_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "unused_local_variable",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/unused_local_variable",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 4,
+	"message": "The value of the local variable 'equivalentDose' isn't used.\nTry removing the variable or using it.",
+	"source": "dart",
+	"startLineNumber": 682,
+	"startColumn": 47,
+	"endLineNumber": 682,
+	"endColumn": 61
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/dose_comparison_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "deprecated_member_use",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/deprecated_member_use",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 2,
+	"message": "'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss.\nTry replacing the use of the deprecated member with the replacement.",
+	"source": "dart",
+	"startLineNumber": 725,
+	"startColumn": 71,
+	"endLineNumber": 725,
+	"endColumn": 82,
+	"tags": [
+		2
+	]
+}]
+
+[{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/drug_interactions_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": "expected_token",
+	"severity": 8,
+	"message": "Expected to find '}'.",
+	"source": "dart",
+	"startLineNumber": 531,
+	"startColumn": 4,
+	"endLineNumber": 531,
+	"endColumn": 5
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/drug_interactions_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "unused_import",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/unused_import",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 4,
+	"message": "Unused import: 'package:flutter_bloc/flutter_bloc.dart'.\nTry removing the import directive.",
+	"source": "dart",
+	"startLineNumber": 2,
+	"startColumn": 8,
+	"endLineNumber": 2,
+	"endColumn": 48
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/drug_interactions_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "unused_import",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/unused_import",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 4,
+	"message": "Unused import: 'package:url_launcher/url_launcher.dart'.\nTry removing the import directive.",
+	"source": "dart",
+	"startLineNumber": 8,
+	"startColumn": 8,
+	"endLineNumber": 8,
+	"endColumn": 48
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/drug_interactions_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "unused_field",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/unused_field",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 4,
+	"message": "The value of the field '_interactingMedications' isn't used.\nTry removing the field, or using it.",
+	"source": "dart",
+	"startLineNumber": 26,
+	"startColumn": 30,
+	"endLineNumber": 26,
+	"endColumn": 53
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/drug_interactions_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "unused_local_variable",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/unused_local_variable",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 4,
+	"message": "The value of the local variable 'isDarkMode' isn't used.\nTry removing the variable or using it.",
+	"source": "dart",
+	"startLineNumber": 225,
+	"startColumn": 11,
+	"endLineNumber": 225,
+	"endColumn": 21
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/drug_interactions_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "unused_local_variable",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/unused_local_variable",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 4,
+	"message": "The value of the local variable 'primaryColor' isn't used.\nTry removing the variable or using it.",
+	"source": "dart",
+	"startLineNumber": 226,
+	"startColumn": 11,
+	"endLineNumber": 226,
+	"endColumn": 23
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/drug_interactions_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "non_constant_identifier_names",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/non_constant_identifier_names",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 2,
+	"message": "The variable name 'StringBuilder' isn't a lowerCamelCase identifier.\nTry changing the name to follow the lowerCamelCase style.",
+	"source": "dart",
+	"startLineNumber": 160,
+	"startColumn": 11,
+	"endLineNumber": 160,
+	"endColumn": 24
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/drug_interactions_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "deprecated_member_use",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/deprecated_member_use",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 2,
+	"message": "'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss.\nTry replacing the use of the deprecated member with the replacement.",
+	"source": "dart",
+	"startLineNumber": 437,
+	"startColumn": 87,
+	"endLineNumber": 437,
+	"endColumn": 98,
+	"tags": [
+		2
+	]
+}]
+
+[{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/import_data_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "undefined_method",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/undefined_method",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The method '_buildImportResultSummary' isn't defined for the type '_ImportDataScreenState'.\nTry correcting the name to the name of an existing method, or defining a method named '_buildImportResultSummary'.",
+	"source": "dart",
+	"startLineNumber": 149,
+	"startColumn": 29,
+	"endLineNumber": 149,
+	"endColumn": 54
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/import_data_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "undefined_method",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/undefined_method",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The method '_buildDataPreview' isn't defined for the type '_ImportDataScreenState'.\nTry correcting the name to the name of an existing method, or defining a method named '_buildDataPreview'.",
+	"source": "dart",
+	"startLineNumber": 193,
+	"startColumn": 34,
+	"endLineNumber": 193,
+	"endColumn": 51
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/import_data_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": "catch_syntax",
+	"severity": 8,
+	"message": "'catch' must be followed by '(identifier)' or '(identifier, identifier)'.\nNo types are needed, the first is given by 'on', the second is always 'StackTrace'.",
+	"source": "dart",
+	"startLineNumber": 313,
+	"startColumn": 14,
+	"endLineNumber": 313,
+	"endColumn": 14
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/import_data_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": "expected_body",
+	"severity": 8,
+	"message": "A catch clause must have a body, even if it is empty.\nTry adding an empty body.",
+	"source": "dart",
+	"startLineNumber": 313,
+	"startColumn": 14,
+	"endLineNumber": 313,
+	"endColumn": 14
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/import_data_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": "expected_token",
+	"severity": 8,
+	"message": "Expected to find ')'.",
+	"source": "dart",
+	"startLineNumber": 313,
+	"startColumn": 14,
+	"endLineNumber": 313,
+	"endColumn": 15
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/import_data_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": "expected_token",
+	"severity": 8,
+	"message": "Expected to find '}'.",
+	"source": "dart",
+	"startLineNumber": 313,
+	"startColumn": 14,
+	"endLineNumber": 313,
+	"endColumn": 15
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/import_data_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "unused_field",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/unused_field",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 4,
+	"message": "The value of the field '_importResult' isn't used.\nTry removing the field, or using it.",
+	"source": "dart",
+	"startLineNumber": 24,
+	"startColumn": 25,
+	"endLineNumber": 24,
+	"endColumn": 38
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/import_data_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "deprecated_member_use",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/deprecated_member_use",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 2,
+	"message": "'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss.\nTry replacing the use of the deprecated member with the replacement.",
+	"source": "dart",
+	"startLineNumber": 85,
+	"startColumn": 72,
+	"endLineNumber": 85,
+	"endColumn": 83,
+	"tags": [
+		2
+	]
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/import_data_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "empty_catches",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/empty_catches",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 2,
+	"message": "Empty catch block.\nTry adding statements to the block, adding a comment to the block, or removing the 'catch' clause.",
+	"source": "dart",
+	"startLineNumber": 313,
+	"startColumn": 14,
+	"endLineNumber": 313,
+	"endColumn": 14
+}]
+
+[{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/manage_dose_equivalent_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "undefined_method",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/undefined_method",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The method 'updateDoseEquivalent' isn't defined for the type 'DatabaseService'.\nTry correcting the name to the name of an existing method, or defining a method named 'updateDoseEquivalent'.",
+	"source": "dart",
+	"startLineNumber": 154,
+	"startColumn": 40,
+	"endLineNumber": 154,
+	"endColumn": 60
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/manage_dose_equivalent_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "undefined_method",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/undefined_method",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The method 'insertDoseEquivalent' isn't defined for the type 'DatabaseService'.\nTry correcting the name to the name of an existing method, or defining a method named 'insertDoseEquivalent'.",
+	"source": "dart",
+	"startLineNumber": 156,
+	"startColumn": 40,
+	"endLineNumber": 156,
+	"endColumn": 60
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/manage_dose_equivalent_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "undefined_method",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/undefined_method",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The method 'deleteDoseEquivalent' isn't defined for the type 'DatabaseService'.\nTry correcting the name to the name of an existing method, or defining a method named 'deleteDoseEquivalent'.",
+	"source": "dart",
+	"startLineNumber": 205,
+	"startColumn": 38,
+	"endLineNumber": 205,
+	"endColumn": 58
+}]
+
+[{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/manage_weight_dose_calculator_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "undefined_method",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/undefined_method",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The method 'updateWeightDoseCalculator' isn't defined for the type 'DatabaseService'.\nTry correcting the name to the name of an existing method, or defining a method named 'updateWeightDoseCalculator'.",
+	"source": "dart",
+	"startLineNumber": 115,
+	"startColumn": 40,
+	"endLineNumber": 115,
+	"endColumn": 66
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/manage_weight_dose_calculator_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "undefined_method",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/undefined_method",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The method 'insertWeightDoseCalculator' isn't defined for the type 'DatabaseService'.\nTry correcting the name to the name of an existing method, or defining a method named 'insertWeightDoseCalculator'.",
+	"source": "dart",
+	"startLineNumber": 117,
+	"startColumn": 40,
+	"endLineNumber": 117,
+	"endColumn": 66
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/manage_weight_dose_calculator_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "undefined_method",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/undefined_method",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The method 'deleteWeightDoseCalculator' isn't defined for the type 'DatabaseService'.\nTry correcting the name to the name of an existing method, or defining a method named 'deleteWeightDoseCalculator'.",
+	"source": "dart",
+	"startLineNumber": 167,
+	"startColumn": 38,
+	"endLineNumber": 167,
+	"endColumn": 64
+}]
+
+[{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/search_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "uri_does_not_exist",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/uri_does_not_exist",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "Target of URI doesn't exist: 'package:fuzzywuzzy/process.dart'.\nTry creating the file referenced by the URI, or try using a URI for a file that does exist.",
+	"source": "dart",
+	"startLineNumber": 10,
+	"startColumn": 8,
+	"endLineNumber": 10,
+	"endColumn": 41
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/search_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "undefined_identifier",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/undefined_identifier",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "Undefined name 'process'.\nTry correcting the name to one that is defined, or defining the name.",
+	"source": "dart",
+	"startLineNumber": 162,
+	"startColumn": 23,
+	"endLineNumber": 162,
+	"endColumn": 30
+}]
+
+[{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/weight_dose_calculator_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "undefined_method",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/undefined_method",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The method '_showErrorSnackBar' isn't defined for the type '_WeightDoseCalculatorScreenState'.\nTry correcting the name to the name of an existing method, or defining a method named '_showErrorSnackBar'.",
+	"source": "dart",
+	"startLineNumber": 80,
+	"startColumn": 7,
+	"endLineNumber": 80,
+	"endColumn": 25
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/weight_dose_calculator_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "undefined_method",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/undefined_method",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The method '_showErrorSnackBar' isn't defined for the type '_WeightDoseCalculatorScreenState'.\nTry correcting the name to the name of an existing method, or defining a method named '_showErrorSnackBar'.",
+	"source": "dart",
+	"startLineNumber": 105,
+	"startColumn": 9,
+	"endLineNumber": 105,
+	"endColumn": 27
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/weight_dose_calculator_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "undefined_method",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/undefined_method",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The method '_showErrorSnackBar' isn't defined for the type '_WeightDoseCalculatorScreenState'.\nTry correcting the name to the name of an existing method, or defining a method named '_showErrorSnackBar'.",
+	"source": "dart",
+	"startLineNumber": 116,
+	"startColumn": 7,
+	"endLineNumber": 116,
+	"endColumn": 25
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/weight_dose_calculator_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "undefined_method",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/undefined_method",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The method '_showErrorSnackBar' isn't defined for the type '_WeightDoseCalculatorScreenState'.\nTry correcting the name to the name of an existing method, or defining a method named '_showErrorSnackBar'.",
+	"source": "dart",
+	"startLineNumber": 122,
+	"startColumn": 7,
+	"endLineNumber": 122,
+	"endColumn": 25
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/weight_dose_calculator_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "undefined_method",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/undefined_method",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The method '_showErrorSnackBar' isn't defined for the type '_WeightDoseCalculatorScreenState'.\nTry correcting the name to the name of an existing method, or defining a method named '_showErrorSnackBar'.",
+	"source": "dart",
+	"startLineNumber": 127,
+	"startColumn": 7,
+	"endLineNumber": 127,
+	"endColumn": 25
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/weight_dose_calculator_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "undefined_method",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/undefined_method",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The method '_showErrorSnackBar' isn't defined for the type '_WeightDoseCalculatorScreenState'.\nTry correcting the name to the name of an existing method, or defining a method named '_showErrorSnackBar'.",
+	"source": "dart",
+	"startLineNumber": 155,
+	"startColumn": 7,
+	"endLineNumber": 155,
+	"endColumn": 25
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/weight_dose_calculator_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": "expected_token",
+	"severity": 8,
+	"message": "Expected to find ']'.",
+	"source": "dart",
+	"startLineNumber": 372,
+	"startColumn": 27,
+	"endLineNumber": 372,
+	"endColumn": 28
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/weight_dose_calculator_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": "expected_token",
+	"severity": 8,
+	"message": "Expected to find ']'.",
+	"source": "dart",
+	"startLineNumber": 375,
+	"startColumn": 21,
+	"endLineNumber": 375,
+	"endColumn": 22
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/weight_dose_calculator_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": "missing_identifier",
+	"severity": 8,
+	"message": "Expected an identifier.",
+	"source": "dart",
+	"startLineNumber": 380,
+	"startColumn": 19,
+	"endLineNumber": 380,
+	"endColumn": 21
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/weight_dose_calculator_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": "expected_token",
+	"severity": 8,
+	"message": "Expected to find ')'.",
+	"source": "dart",
+	"startLineNumber": 380,
+	"startColumn": 19,
+	"endLineNumber": 380,
+	"endColumn": 21
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/weight_dose_calculator_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": "expected_token",
+	"severity": 8,
+	"message": "Expected to find ';'.",
+	"source": "dart",
+	"startLineNumber": 444,
+	"startColumn": 13,
+	"endLineNumber": 444,
+	"endColumn": 14
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/weight_dose_calculator_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": "missing_identifier",
+	"severity": 8,
+	"message": "Expected an identifier.",
+	"source": "dart",
+	"startLineNumber": 444,
+	"startColumn": 14,
+	"endLineNumber": 444,
+	"endColumn": 15
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/weight_dose_calculator_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": "unexpected_token",
+	"severity": 8,
+	"message": "Unexpected text ';'.\nTry removing the text.",
+	"source": "dart",
+	"startLineNumber": 444,
+	"startColumn": 14,
+	"endLineNumber": 444,
+	"endColumn": 15
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/weight_dose_calculator_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": "expected_token",
+	"severity": 8,
+	"message": "Expected to find ';'.",
+	"source": "dart",
+	"startLineNumber": 444,
+	"startColumn": 14,
+	"endLineNumber": 444,
+	"endColumn": 15
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/weight_dose_calculator_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": "missing_identifier",
+	"severity": 8,
+	"message": "Expected an identifier.",
+	"source": "dart",
+	"startLineNumber": 445,
+	"startColumn": 5,
+	"endLineNumber": 445,
+	"endColumn": 6
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/weight_dose_calculator_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": "unexpected_token",
+	"severity": 8,
+	"message": "Unexpected text ';'.\nTry removing the text.",
+	"source": "dart",
+	"startLineNumber": 445,
+	"startColumn": 5,
+	"endLineNumber": 445,
+	"endColumn": 6
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/weight_dose_calculator_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "unused_import",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/unused_import",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 4,
+	"message": "Unused import: 'package:flutter_bloc/flutter_bloc.dart'.\nTry removing the import directive.",
+	"source": "dart",
+	"startLineNumber": 2,
+	"startColumn": 8,
+	"endLineNumber": 2,
+	"endColumn": 48
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/weight_dose_calculator_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "unnecessary_non_null_assertion",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/unnecessary_non_null_assertion",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 4,
+	"message": "The '!' will have no effect because the receiver can't be null.\nTry removing the '!' operator.",
+	"source": "dart",
+	"startLineNumber": 330,
+	"startColumn": 66,
+	"endLineNumber": 330,
+	"endColumn": 67
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/weight_dose_calculator_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "dead_code",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/dead_code",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 4,
+	"message": "Dead code.\nTry removing the code, or fixing the code before it so that it can be reached.",
+	"source": "dart",
+	"startLineNumber": 444,
+	"startColumn": 14,
+	"endLineNumber": 445,
+	"endColumn": 7,
+	"tags": [
+		1
+	]
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/weight_dose_calculator_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "unused_element",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/unused_element",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 4,
+	"message": "The declaration '_getWarningText' isn't referenced.\nTry removing the declaration of '_getWarningText'.",
+	"source": "dart",
+	"startLineNumber": 448,
+	"startColumn": 10,
+	"endLineNumber": 448,
+	"endColumn": 25
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/weight_dose_calculator_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "empty_statements",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/empty_statements",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 2,
+	"message": "Unnecessary empty statement.\nTry removing the empty statement or restructuring the code.",
+	"source": "dart",
+	"startLineNumber": 445,
+	"startColumn": 6,
+	"endLineNumber": 445,
+	"endColumn": 7
+}]
+
+[{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/backup_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "undefined_method",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/undefined_method",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The method 'restoreFromBackup' isn't defined for the type 'DatabaseService'.\nTry correcting the name to the name of an existing method, or defining a method named 'restoreFromBackup'.",
+	"source": "dart",
+	"startLineNumber": 95,
+	"startColumn": 55,
+	"endLineNumber": 95,
+	"endColumn": 72
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/backup_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "argument_type_not_assignable",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/argument_type_not_assignable",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The argument type 'dynamic Function(dynamic)' can't be assigned to the parameter type 'String'. ",
+	"source": "dart",
+	"startLineNumber": 258,
+	"startColumn": 39,
+	"endLineNumber": 258,
+	"endColumn": 74
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/backup_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "argument_type_not_assignable",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/argument_type_not_assignable",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The argument type 'dynamic Function(dynamic)' can't be assigned to the parameter type 'String'. ",
+	"source": "dart",
+	"startLineNumber": 281,
+	"startColumn": 41,
+	"endLineNumber": 281,
+	"endColumn": 78
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/backup_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": "expected_token",
+	"severity": 8,
+	"message": "Expected to find '}'.",
+	"source": "dart",
+	"startLineNumber": 399,
+	"startColumn": 4,
+	"endLineNumber": 399,
+	"endColumn": 5
+}][{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/database_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "duplicate_definition",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/duplicate_definition",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The name 'getMedicationsByCategory' is already defined.\nTry renaming one of the declarations.",
+	"source": "dart",
+	"startLineNumber": 302,
+	"startColumn": 28,
+	"endLineNumber": 302,
+	"endColumn": 52,
+	"relatedInformation": [
+		{
+			"startLineNumber": 206,
+			"startColumn": 28,
+			"endLineNumber": 206,
+			"endColumn": 52,
+			"message": "The first definition of this name.",
+			"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/database_service.dart"
+		}
+	]
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/database_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "duplicate_definition",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/duplicate_definition",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The name 'getMedicationById' is already defined.\nTry renaming one of the declarations.",
+	"source": "dart",
+	"startLineNumber": 317,
+	"startColumn": 23,
+	"endLineNumber": 317,
+	"endColumn": 40,
+	"relatedInformation": [
+		{
+			"startLineNumber": 221,
+			"startColumn": 23,
+			"endLineNumber": 221,
+			"endColumn": 40,
+			"message": "The first definition of this name.",
+			"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/database_service.dart"
+		}
+	]
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/database_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "duplicate_definition",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/duplicate_definition",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The name 'getAlternatives' is already defined.\nTry renaming one of the declarations.",
+	"source": "dart",
+	"startLineNumber": 333,
+	"startColumn": 28,
+	"endLineNumber": 333,
+	"endColumn": 43,
+	"relatedInformation": [
+		{
+			"startLineNumber": 237,
+			"startColumn": 28,
+			"endLineNumber": 237,
+			"endColumn": 43,
+			"message": "The first definition of this name.",
+			"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/database_service.dart"
+		}
+	]
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/database_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "duplicate_definition",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/duplicate_definition",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The name 'toggleFavorite' is already defined.\nTry renaming one of the declarations.",
+	"source": "dart",
+	"startLineNumber": 347,
+	"startColumn": 15,
+	"endLineNumber": 347,
+	"endColumn": 29,
+	"relatedInformation": [
+		{
+			"startLineNumber": 251,
+			"startColumn": 15,
+			"endLineNumber": 251,
+			"endColumn": 29,
+			"message": "The first definition of this name.",
+			"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/database_service.dart"
+		}
+	]
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/database_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "duplicate_definition",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/duplicate_definition",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The name 'getFavorites' is already defined.\nTry renaming one of the declarations.",
+	"source": "dart",
+	"startLineNumber": 358,
+	"startColumn": 28,
+	"endLineNumber": 358,
+	"endColumn": 40,
+	"relatedInformation": [
+		{
+			"startLineNumber": 262,
+			"startColumn": 28,
+			"endLineNumber": 262,
+			"endColumn": 40,
+			"message": "The first definition of this name.",
+			"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/database_service.dart"
+		}
+	]
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/database_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "duplicate_definition",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/duplicate_definition",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The name 'getCategories' is already defined.\nTry renaming one of the declarations.",
+	"source": "dart",
+	"startLineNumber": 372,
+	"startColumn": 38,
+	"endLineNumber": 372,
+	"endColumn": 51,
+	"relatedInformation": [
+		{
+			"startLineNumber": 276,
+			"startColumn": 38,
+			"endLineNumber": 276,
+			"endColumn": 51,
+			"message": "The first definition of this name.",
+			"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/database_service.dart"
+		}
+	]
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/database_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "referenced_before_declaration",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/referenced_before_declaration",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "Local variable 'recoverFromFailedRestore' can't be referenced before it is declared.\nTry moving the declaration to before the first use, or renaming the local variable so that it doesn't hide a name from an enclosing scope.",
+	"source": "dart",
+	"startLineNumber": 566,
+	"startColumn": 19,
+	"endLineNumber": 566,
+	"endColumn": 43,
+	"relatedInformation": [
+		{
+			"startLineNumber": 581,
+			"startColumn": 16,
+			"endLineNumber": 581,
+			"endColumn": 40,
+			"message": "The declaration of 'recoverFromFailedRestore' is here.",
+			"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/database_service.dart"
+		}
+	]
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/database_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": "expected_token",
+	"severity": 8,
+	"message": "Expected to find '}'.",
+	"source": "dart",
+	"startLineNumber": 841,
+	"startColumn": 2,
+	"endLineNumber": 841,
+	"endColumn": 3
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/database_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "unused_local_variable",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/unused_local_variable",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 4,
+	"message": "The value of the local variable 'secureKey' isn't used.\nTry removing the variable or using it.",
+	"source": "dart",
+	"startLineNumber": 38,
+	"startColumn": 11,
+	"endLineNumber": 38,
+	"endColumn": 20
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/database_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "unused_element",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/unused_element",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 4,
+	"message": "The declaration '_createBackup' isn't referenced.\nTry removing the declaration of '_createBackup'.",
+	"source": "dart",
+	"startLineNumber": 442,
+	"startColumn": 16,
+	"endLineNumber": 442,
+	"endColumn": 29
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/database_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "unused_element",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/unused_element",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 4,
+	"message": "The declaration '_checkIfTableExists' isn't referenced.\nTry removing the declaration of '_checkIfTableExists'.",
+	"source": "dart",
+	"startLineNumber": 447,
+	"startColumn": 16,
+	"endLineNumber": 447,
+	"endColumn": 35
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/database_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "unused_element",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/unused_element",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 4,
+	"message": "The declaration '_createWeightDoseCalculatorsTable' isn't referenced.\nTry removing the declaration of '_createWeightDoseCalculatorsTable'.",
+	"source": "dart",
+	"startLineNumber": 456,
+	"startColumn": 16,
+	"endLineNumber": 456,
+	"endColumn": 49
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/database_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "dead_code",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/dead_code",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 4,
+	"message": "Dead code.\nTry removing the code, or fixing the code before it so that it can be reached.",
+	"source": "dart",
+	"startLineNumber": 513,
+	"startColumn": 3,
+	"endLineNumber": 841,
+	"endColumn": 2,
+	"tags": [
+		1
+	]
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/database_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "unused_element",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/unused_element",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 4,
+	"message": "The declaration 'restoreFromBackup' isn't referenced.\nTry removing the declaration of 'restoreFromBackup'.",
+	"source": "dart",
+	"startLineNumber": 513,
+	"startColumn": 16,
+	"endLineNumber": 513,
+	"endColumn": 33
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/database_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "unused_element",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/unused_element",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 4,
+	"message": "The declaration 'updateDatabaseFromCsv' isn't referenced.\nTry removing the declaration of 'updateDatabaseFromCsv'.",
+	"source": "dart",
+	"startLineNumber": 608,
+	"startColumn": 16,
+	"endLineNumber": 608,
+	"endColumn": 37
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/database_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "unused_element",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/unused_element",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 4,
+	"message": "The declaration 'insertDoseEquivalent' isn't referenced.\nTry removing the declaration of 'insertDoseEquivalent'.",
+	"source": "dart",
+	"startLineNumber": 668,
+	"startColumn": 15,
+	"endLineNumber": 668,
+	"endColumn": 35
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/database_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "unused_element",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/unused_element",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 4,
+	"message": "The declaration 'updateDoseEquivalent' isn't referenced.\nTry removing the declaration of 'updateDoseEquivalent'.",
+	"source": "dart",
+	"startLineNumber": 674,
+	"startColumn": 15,
+	"endLineNumber": 674,
+	"endColumn": 35
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/database_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "unused_element",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/unused_element",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 4,
+	"message": "The declaration 'deleteDoseEquivalent' isn't referenced.\nTry removing the declaration of 'deleteDoseEquivalent'.",
+	"source": "dart",
+	"startLineNumber": 685,
+	"startColumn": 15,
+	"endLineNumber": 685,
+	"endColumn": 35
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/database_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "unused_element",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/unused_element",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 4,
+	"message": "The declaration 'getDoseEquivalents' isn't referenced.\nTry removing the declaration of 'getDoseEquivalents'.",
+	"source": "dart",
+	"startLineNumber": 695,
+	"startColumn": 38,
+	"endLineNumber": 695,
+	"endColumn": 56
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/database_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "unused_element",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/unused_element",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 4,
+	"message": "The declaration 'getMedicationsWithDoseEquivalents' isn't referenced.\nTry removing the declaration of 'getMedicationsWithDoseEquivalents'.",
+	"source": "dart",
+	"startLineNumber": 705,
+	"startColumn": 28,
+	"endLineNumber": 705,
+	"endColumn": 61
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/database_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "unused_element",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/unused_element",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 4,
+	"message": "The declaration 'initializeSqlCipherLibs' isn't referenced.\nTry removing the declaration of 'initializeSqlCipherLibs'.",
+	"source": "dart",
+	"startLineNumber": 718,
+	"startColumn": 16,
+	"endLineNumber": 718,
+	"endColumn": 39
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/database_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "unused_element",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/unused_element",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 4,
+	"message": "The declaration 'insertWeightDoseCalculator' isn't referenced.\nTry removing the declaration of 'insertWeightDoseCalculator'.",
+	"source": "dart",
+	"startLineNumber": 765,
+	"startColumn": 15,
+	"endLineNumber": 765,
+	"endColumn": 41
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/database_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "unused_element",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/unused_element",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 4,
+	"message": "The declaration 'updateWeightDoseCalculator' isn't referenced.\nTry removing the declaration of 'updateWeightDoseCalculator'.",
+	"source": "dart",
+	"startLineNumber": 777,
+	"startColumn": 15,
+	"endLineNumber": 777,
+	"endColumn": 41
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/database_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "unused_element",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/unused_element",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 4,
+	"message": "The declaration 'deleteWeightDoseCalculator' isn't referenced.\nTry removing the declaration of 'deleteWeightDoseCalculator'.",
+	"source": "dart",
+	"startLineNumber": 788,
+	"startColumn": 15,
+	"endLineNumber": 788,
+	"endColumn": 41
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/database_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "unused_element",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/unused_element",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 4,
+	"message": "The declaration 'getWeightDoseCalculator' isn't referenced.\nTry removing the declaration of 'getWeightDoseCalculator'.",
+	"source": "dart",
+	"startLineNumber": 798,
+	"startColumn": 33,
+	"endLineNumber": 798,
+	"endColumn": 56
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/database_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "unused_element",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/unused_element",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 4,
+	"message": "The declaration 'getWeightDoseCalculatorById' isn't referenced.\nTry removing the declaration of 'getWeightDoseCalculatorById'.",
+	"source": "dart",
+	"startLineNumber": 814,
+	"startColumn": 33,
+	"endLineNumber": 814,
+	"endColumn": 60
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/database_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "unused_element",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/unused_element",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 4,
+	"message": "The declaration 'getMedicationsWithDoseCalculators' isn't referenced.\nTry removing the declaration of 'getMedicationsWithDoseCalculators'.",
+	"source": "dart",
+	"startLineNumber": 830,
+	"startColumn": 28,
+	"endLineNumber": 830,
+	"endColumn": 61
+}]
+
+[{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/enhanced_excel_import_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "undefined_method",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/undefined_method",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The method '_createMedicationFromRow' isn't defined for the type 'EnhancedExcelImportService'.\nTry correcting the name to the name of an existing method, or defining a method named '_createMedicationFromRow'.",
+	"source": "dart",
+	"startLineNumber": 200,
+	"startColumn": 30,
+	"endLineNumber": 200,
+	"endColumn": 54
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/enhanced_excel_import_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "body_might_complete_normally",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/body_might_complete_normally",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The body might complete normally, causing 'null' to be returned, but the return type, 'Map<String, int>', is a potentially non-nullable type.\nTry adding either a return or a throw statement at the end.",
+	"source": "dart",
+	"startLineNumber": 248,
+	"startColumn": 20,
+	"endLineNumber": 248,
+	"endColumn": 31
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/enhanced_excel_import_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": "expected_token",
+	"severity": 8,
+	"message": "Expected to find ';'.",
+	"source": "dart",
+	"startLineNumber": 278,
+	"startColumn": 40,
+	"endLineNumber": 278,
+	"endColumn": 41
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/enhanced_excel_import_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": "expected_token",
+	"severity": 8,
+	"message": "Expected to find '}'.",
+	"source": "dart",
+	"startLineNumber": 278,
+	"startColumn": 41,
+	"endLineNumber": 278,
+	"endColumn": 42
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/enhanced_excel_import_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": "expected_token",
+	"severity": 8,
+	"message": "Expected to find ')'.",
+	"source": "dart",
+	"startLineNumber": 278,
+	"startColumn": 41,
+	"endLineNumber": 278,
+	"endColumn": 42
+}]
+
+[{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/excel_import_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "undefined_getter",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/undefined_getter",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The getter 'cellType' isn't defined for the type 'CellValue'.\nTry importing the library that defines 'cellType', correcting the name to the name of an existing getter, or defining a getter or field named 'cellType'.",
+	"source": "dart",
+	"startLineNumber": 50,
+	"startColumn": 29,
+	"endLineNumber": 50,
+	"endColumn": 37
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/excel_import_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "undefined_identifier",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/undefined_identifier",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "Undefined name 'CellType'.\nTry correcting the name to one that is defined, or defining the name.",
+	"source": "dart",
+	"startLineNumber": 50,
+	"startColumn": 41,
+	"endLineNumber": 50,
+	"endColumn": 49
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/excel_import_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "undefined_getter",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/undefined_getter",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The getter 'value' isn't defined for the type 'CellValue'.\nTry importing the library that defines 'value', correcting the name to the name of an existing getter, or defining a getter or field named 'value'.",
+	"source": "dart",
+	"startLineNumber": 51,
+	"startColumn": 31,
+	"endLineNumber": 51,
+	"endColumn": 36
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/excel_import_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "undefined_getter",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/undefined_getter",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The getter 'value' isn't defined for the type 'CellValue'.\nTry importing the library that defines 'value', correcting the name to the name of an existing getter, or defining a getter or field named 'value'.",
+	"source": "dart",
+	"startLineNumber": 52,
+	"startColumn": 37,
+	"endLineNumber": 52,
+	"endColumn": 42
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/excel_import_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "undefined_getter",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/undefined_getter",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The getter 'value' isn't defined for the type 'CellValue'.\nTry importing the library that defines 'value', correcting the name to the name of an existing getter, or defining a getter or field named 'value'.",
+	"source": "dart",
+	"startLineNumber": 54,
+	"startColumn": 52,
+	"endLineNumber": 54,
+	"endColumn": 57
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/excel_import_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "undefined_getter",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/undefined_getter",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The getter 'value' isn't defined for the type 'CellValue'.\nTry importing the library that defines 'value', correcting the name to the name of an existing getter, or defining a getter or field named 'value'.",
+	"source": "dart",
+	"startLineNumber": 54,
+	"startColumn": 117,
+	"endLineNumber": 54,
+	"endColumn": 122
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/excel_import_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "undefined_getter",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/undefined_getter",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The getter 'value' isn't defined for the type 'CellValue'.\nTry importing the library that defines 'value', correcting the name to the name of an existing getter, or defining a getter or field named 'value'.",
+	"source": "dart",
+	"startLineNumber": 57,
+	"startColumn": 34,
+	"endLineNumber": 57,
+	"endColumn": 39
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/excel_import_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "undefined_method",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/undefined_method",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The method 'toDouble' isn't defined for the type 'CellValue'.\nTry correcting the name to the name of an existing method, or defining a method named 'toDouble'.",
+	"source": "dart",
+	"startLineNumber": 191,
+	"startColumn": 33,
+	"endLineNumber": 191,
+	"endColumn": 41
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/excel_import_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "undefined_getter",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/undefined_getter",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The getter 'cellType' isn't defined for the type 'CellValue'.\nTry importing the library that defines 'cellType', correcting the name to the name of an existing getter, or defining a getter or field named 'cellType'.",
+	"source": "dart",
+	"startLineNumber": 193,
+	"startColumn": 27,
+	"endLineNumber": 193,
+	"endColumn": 35
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/excel_import_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "undefined_identifier",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/undefined_identifier",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "Undefined name 'CellType'.\nTry correcting the name to one that is defined, or defining the name.",
+	"source": "dart",
+	"startLineNumber": 193,
+	"startColumn": 39,
+	"endLineNumber": 193,
+	"endColumn": 47
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/excel_import_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "undefined_getter",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/undefined_getter",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The getter 'value' isn't defined for the type 'CellValue'.\nTry importing the library that defines 'value', correcting the name to the name of an existing getter, or defining a getter or field named 'value'.",
+	"source": "dart",
+	"startLineNumber": 196,
+	"startColumn": 31,
+	"endLineNumber": 196,
+	"endColumn": 36
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/excel_import_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "undefined_getter",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/undefined_getter",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The getter 'value' isn't defined for the type 'CellValue'.\nTry importing the library that defines 'value', correcting the name to the name of an existing getter, or defining a getter or field named 'value'.",
+	"source": "dart",
+	"startLineNumber": 197,
+	"startColumn": 38,
+	"endLineNumber": 197,
+	"endColumn": 43
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/excel_import_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "undefined_getter",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/undefined_getter",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The getter 'value' isn't defined for the type 'CellValue'.\nTry importing the library that defines 'value', correcting the name to the name of an existing getter, or defining a getter or field named 'value'.",
+	"source": "dart",
+	"startLineNumber": 200,
+	"startColumn": 53,
+	"endLineNumber": 200,
+	"endColumn": 58
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/excel_import_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "undefined_getter",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/undefined_getter",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The getter 'value' isn't defined for the type 'CellValue'.\nTry importing the library that defines 'value', correcting the name to the name of an existing getter, or defining a getter or field named 'value'.",
+	"source": "dart",
+	"startLineNumber": 204,
+	"startColumn": 51,
+	"endLineNumber": 204,
+	"endColumn": 56
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/excel_import_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "undefined_getter",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/undefined_getter",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The getter 'value' isn't defined for the type 'CellValue'.\nTry importing the library that defines 'value', correcting the name to the name of an existing getter, or defining a getter or field named 'value'.",
+	"source": "dart",
+	"startLineNumber": 208,
+	"startColumn": 49,
+	"endLineNumber": 208,
+	"endColumn": 54
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/excel_import_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "undefined_getter",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/undefined_getter",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The getter 'cellType' isn't defined for the type 'CellValue'.\nTry importing the library that defines 'cellType', correcting the name to the name of an existing getter, or defining a getter or field named 'cellType'.",
+	"source": "dart",
+	"startLineNumber": 478,
+	"startColumn": 28,
+	"endLineNumber": 478,
+	"endColumn": 36
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/excel_import_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "undefined_identifier",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/undefined_identifier",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "Undefined name 'CellType'.\nTry correcting the name to one that is defined, or defining the name.",
+	"source": "dart",
+	"startLineNumber": 478,
+	"startColumn": 40,
+	"endLineNumber": 478,
+	"endColumn": 48
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/excel_import_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "undefined_getter",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/undefined_getter",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The getter 'value' isn't defined for the type 'CellValue'.\nTry importing the library that defines 'value', correcting the name to the name of an existing getter, or defining a getter or field named 'value'.",
+	"source": "dart",
+	"startLineNumber": 479,
+	"startColumn": 30,
+	"endLineNumber": 479,
+	"endColumn": 35
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/excel_import_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "undefined_getter",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/undefined_getter",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The getter 'value' isn't defined for the type 'CellValue'.\nTry importing the library that defines 'value', correcting the name to the name of an existing getter, or defining a getter or field named 'value'.",
+	"source": "dart",
+	"startLineNumber": 479,
+	"startColumn": 74,
+	"endLineNumber": 479,
+	"endColumn": 79
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/excel_import_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "undefined_getter",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/undefined_getter",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The getter 'value' isn't defined for the type 'CellValue'.\nTry importing the library that defines 'value', correcting the name to the name of an existing getter, or defining a getter or field named 'value'.",
+	"source": "dart",
+	"startLineNumber": 482,
+	"startColumn": 51,
+	"endLineNumber": 482,
+	"endColumn": 56
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/excel_import_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": "expected_token",
+	"severity": 8,
+	"message": "Expected to find '}'.",
+	"source": "dart",
+	"startLineNumber": 610,
+	"startColumn": 6,
+	"endLineNumber": 610,
+	"endColumn": 7
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/excel_import_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "unused_local_variable",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/unused_local_variable",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 4,
+	"message": "The value of the local variable 'rowCount' isn't used.\nTry removing the variable or using it.",
+	"source": "dart",
+	"startLineNumber": 447,
+	"startColumn": 13,
+	"endLineNumber": 447,
+	"endColumn": 21
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/excel_import_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "unused_local_variable",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/unused_local_variable",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 4,
+	"message": "The value of the local variable 'rowCount' isn't used.\nTry removing the variable or using it.",
+	"source": "dart",
+	"startLineNumber": 553,
+	"startColumn": 13,
+	"endLineNumber": 553,
+	"endColumn": 21
+}]
+
+[{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/enhanced_secure_storage_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": "await_in_wrong_context",
+	"severity": 8,
+	"message": "The await expression can only be used in an async function.\nTry marking the function body with either 'async' or 'async*'.",
+	"source": "dart",
+	"startLineNumber": 199,
+	"startColumn": 7,
+	"endLineNumber": 199,
+	"endColumn": 12
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/enhanced_secure_storage_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": "await_in_wrong_context",
+	"severity": 8,
+	"message": "The await expression can only be used in an async function.\nTry marking the function body with either 'async' or 'async*'.",
+	"source": "dart",
+	"startLineNumber": 227,
+	"startColumn": 7,
+	"endLineNumber": 227,
+	"endColumn": 12
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/enhanced_secure_storage_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": "expected_token",
+	"severity": 8,
+	"message": "Expected to find '}'.",
+	"source": "dart",
+	"startLineNumber": 288,
+	"startColumn": 4,
+	"endLineNumber": 288,
+	"endColumn": 5
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/enhanced_secure_storage_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "unused_local_variable",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/unused_local_variable",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 4,
+	"message": "The value of the local variable 'iv' isn't used.\nTry removing the variable or using it.",
+	"source": "dart",
+	"startLineNumber": 210,
+	"startColumn": 13,
+	"endLineNumber": 210,
+	"endColumn": 15
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/enhanced_secure_storage_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "unused_local_variable",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/unused_local_variable",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 4,
+	"message": "The value of the local variable 'keyLength' isn't used.\nTry removing the variable or using it.",
+	"source": "dart",
+	"startLineNumber": 238,
+	"startColumn": 11,
+	"endLineNumber": 238,
+	"endColumn": 20
+}]
+
+[{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/update_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "body_might_complete_normally",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/body_might_complete_normally",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The body might complete normally, causing 'null' to be returned, but the return type, 'FutureOr<bool>', is a potentially non-nullable type.\nTry adding either a return or a throw statement at the end.",
+	"source": "dart",
+	"startLineNumber": 282,
+	"startColumn": 16,
+	"endLineNumber": 282,
+	"endColumn": 44
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/update_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": "missing_catch_or_finally",
+	"severity": 8,
+	"message": "A try block must be followed by an 'on', 'catch', or 'finally' clause.\nTry adding either a catch or finally clause, or remove the try statement.",
+	"source": "dart",
+	"startLineNumber": 283,
+	"startColumn": 5,
+	"endLineNumber": 283,
+	"endColumn": 8
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/update_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": "expected_token",
+	"severity": 8,
+	"message": "Expected to find '}'.",
+	"source": "dart",
+	"startLineNumber": 301,
+	"startColumn": 8,
+	"endLineNumber": 301,
+	"endColumn": 9
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/update_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "constant_identifier_names",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/constant_identifier_names",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 2,
+	"message": "The constant name 'DEFAULT_UPDATE_INTERVAL_DAYS' isn't a lowerCamelCase identifier.\nTry changing the name to follow the lowerCamelCase style.",
+	"source": "dart",
+	"startLineNumber": 22,
+	"startColumn": 20,
+	"endLineNumber": 22,
+	"endColumn": 48
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/update_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "constant_identifier_names",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/constant_identifier_names",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 2,
+	"message": "The constant name 'UPDATE_CHECK_URL' isn't a lowerCamelCase identifier.\nTry changing the name to follow the lowerCamelCase style.",
+	"source": "dart",
+	"startLineNumber": 25,
+	"startColumn": 23,
+	"endLineNumber": 25,
+	"endColumn": 39
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/services/update_service.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "constant_identifier_names",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/constant_identifier_names",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 2,
+	"message": "The constant name 'UPDATE_DOWNLOAD_URL' isn't a lowerCamelCase identifier.\nTry changing the name to follow the lowerCamelCase style.",
+	"source": "dart",
+	"startLineNumber": 28,
+	"startColumn": 23,
+	"endLineNumber": 28,
+	"endColumn": 42
+}]
+
+[{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/medication_details_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "use_build_context_synchronously",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/use_build_context_synchronously",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 2,
+	"message": "Don't use 'BuildContext's across async gaps, guarded by an unrelated 'mounted' check.\nGuard a 'State.context' use with a 'mounted' check on the State, and other BuildContext use with a 'mounted' check on the BuildContext.",
+	"source": "dart",
+	"startLineNumber": 96,
+	"startColumn": 40,
+	"endLineNumber": 96,
+	"endColumn": 47
+},{
+	"resource": "/G:/App/myapps/mediswitch/mediswitch/lib/screens/medication_details_screen.dart",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": {
+		"value": "use_build_context_synchronously",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/use_build_context_synchronously",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 2,
+	"message": "Don't use 'BuildContext's across async gaps, guarded by an unrelated 'mounted' check.\nGuard a 'State.context' use with a 'mounted' check on the State, and other BuildContext use with a 'mounted' check on the BuildContext.",
+	"source": "dart",
+	"startLineNumber": 106,
+	"startColumn": 38,
+	"endLineNumber": 106,
+	"endColumn": 45
+}]

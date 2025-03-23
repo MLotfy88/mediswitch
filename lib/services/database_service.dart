@@ -508,6 +508,7 @@ class DatabaseService {
       debugPrint('Error getting backups: $e');
       return [];
     }
+  }
   
   // Restore database from backup with validation
   Future<bool> restoreFromBackup(String backupPath) async {

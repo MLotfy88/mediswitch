@@ -1,11 +1,68 @@
-# TODOdebug.md
+# قائمة مهام إصلاح الأخطاء في تطبيق MediSwitch
 
-## Tasks
+## ملخص المشاكل
 
-- [ ] Analyze the project to identify potential errors.
-- [ ] List the identified errors as tasks to be addressed.
-- [ ] **Error Handling:** Implement logging for errors in `_loadInitialData`, `_loadMoreData`, and `_searchMedications` using `logging_service.dart`.
-- [ ] **Fuzzy Search:** Investigate the performance of `fuzzywuzzy` and adjust the cutoff value in `_searchMedications` if necessary.
-- [ ] **Filtering:** Simplify the filtering logic in `_applyFilters`.
-- [ ] **Loading Shimmer:** Improve the `_buildLoadingShimmer` widget to better match the look and feel of the `MedicationCard`.
-- [ ] **Data Loading:** Improve the initial data loading and loading more data logic to handle different scenarios, such as no data available or network errors.
+بعد تحليل ملف errors.txt، تم تحديد المشاكل التالية التي تعيق تشغيل التطبيق:
+
+## 1. مشاكل في ملف backup_restore_screen.dart
+
+### 1.1 مشاكل بناء الجملة وطرق غير معرفة
+
+- [x] **خطأ**: طريقة `getBackups` غير معرفة في الكلاس `BackupService`
+  - **السطر**: 44
+  - **الحل**: تم إضافة طريقة `getBackups()` في ملف `backup_service.dart`
+
+- [x] **خطأ**: طريقة `jsonDecode` غير معرفة في الكلاس `_BackupRestoreScreenState`
+  - **السطر**: 233
+  - **الحل**: تم إضافة استيراد مكتبة `dart:convert` في بداية الملف
+
+- [x] **خطأ**: خطأ في بناء الجملة في السطر 339 - نقص نص في widget Text
+  - **السطر**: 339
+  - **الحل**: تم إضافة النص المفقود للـ Text widget
+
+### 1.2 تحذيرات
+
+- [ ] **تحذير**: الحقل `_selectedBackupMetadata` غير مستخدم
+  - **السطر**: 28
+  - **الحل**: استخدام الحقل في واجهة المستخدم أو إزالته
+
+- [ ] **تحذير**: الطريقة `_restoreBackup` غير مستخدمة
+  - **السطر**: 94
+  - **الحل**: استخدام الطريقة في واجهة المستخدم أو إزالتها
+
+- [ ] **تحذير**: الطريقة `_shareBackup` غير مستخدمة
+  - **السطر**: 146
+  - **الحل**: استخدام الطريقة في واجهة المستخدم أو إزالتها
+
+- [ ] **تحذير**: الطريقة `_deleteBackup` غير مستخدمة
+  - **السطر**: 168
+  - **الحل**: استخدام الطريقة في واجهة المستخدم أو إزالتها
+
+## 2. مشاكل في ملف database_service.dart
+
+### 2.1 مشاكل بناء الجملة
+
+- [x] **خطأ**: نقص قوس إغلاق في طريقة `getBackups`
+  - **الحل**: تم إضافة قوس الإغلاق المفقود
+
+## 3. خطة العمل
+
+1. [x] إصلاح أخطاء بناء الجملة في ملف database_service.dart
+   - [x] إضافة قوس الإغلاق المفقود في طريقة getBackups
+
+2. [x] إصلاح أخطاء في ملف backup_service.dart
+   - [x] إضافة طريقة getBackups() المفقودة
+
+3. [x] إصلاح أخطاء في ملف backup_restore_screen.dart
+   - [x] إضافة استيراد مكتبة dart:convert
+   - [x] إصلاح خطأ في السطر 339 بإضافة النص المفقود للـ Text widget
+
+4. [ ] معالجة التحذيرات في ملف backup_restore_screen.dart
+   - [ ] استخدام الحقل _selectedBackupMetadata أو إزالته
+   - [ ] استخدام الطرق غير المستخدمة (_restoreBackup, _shareBackup, _deleteBackup) أو إزالتها
+
+## ملاحظات
+
+- تم إصلاح الأخطاء الرئيسية التي تعيق تشغيل التطبيق
+- التحذيرات المتبقية لا تؤثر على تشغيل التطبيق ولكن يجب معالجتها لتحسين جودة الكود
+- يمكن اختبار التطبيق الآن للتأكد من عمله بشكل صحيح
