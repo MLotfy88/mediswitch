@@ -1,0 +1,28 @@
+image:
+  file: .gitpod/Dockerfile
+
+ports:
+  - port: 8080
+    onOpen: open-preview
+  - port: 8000
+    onOpen: open-preview
+  - port: 3000
+    onOpen: open-preview
+
+vscode:
+  extensions:
+    - dart-code.flutter
+    - dart-code.dart-code
+    - redhat.java
+    - vscjava.vscode-java-debug
+    - vscjava.vscode-java-test
+    - vscjava.vscode-gradle
+    - ms-azuretools.vscode-docker
+    - pkief.material-icon-theme
+    - usernamehw.errorlens
+    - streetsidesoftware.code-spell-checker
+    - naco-siren.gradle-language
+
+tasks:
+  - init: flutter pub get
+    command: sleep 5
