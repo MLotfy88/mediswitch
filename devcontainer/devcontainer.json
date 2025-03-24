@@ -1,24 +1,14 @@
 {
-    "name": "Flutter Android Dev",
-    "image": "ghcr.io/cirruslabs/flutter:3.29.2",
-    "features": {
-      "ghcr.io/devcontainers/features/docker-in-docker:1": {}
-    },
-    "customizations": {
-      "vscode": {
-        "extensions": [
-          "dart-code.flutter",
-          "ms-vscode.cpptools",
-          "redhat.java"
-        ]
-      }
-    },
-    "containerEnv": {
-      "ANDROID_HOME": "/opt/android-sdk",
-      "ANDROID_SDK_ROOT": "/opt/android-sdk",
-      "ANDROID_NDK_HOME": "/opt/android-sdk/ndk/27.0.12077973",
-      "JAVA_HOME": "/usr/lib/jvm/java-23-openjdk-amd64",
-      "PATH": "/opt/android-sdk/platform-tools:/opt/android-sdk/cmdline-tools/latest/bin:/opt/android-sdk/build-tools/36.0.0:/flutter/bin:/usr/lib/jvm/java-23-openjdk-amd64/bin:$PATH"
-    },
-    "postCreateCommand": "sdkmanager --install 'platforms;android-28' 'platforms;android-29' 'platforms;android-33' 'platforms;android-34' 'platforms;android-35' 'build-tools;30.0.3' 'build-tools;34.0.0' 'build-tools;36.0.0' 'ndk;27.0.12077973' && flutter doctor"
-  }
+  "name": "Flutter & Android Dev Container",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dart-code.flutter"
+      ]
+    }
+  },
+  "remoteUser": "codespace"
+}
