@@ -1,4 +1,4 @@
-name: Legacy APK Builder
+name: Stable APK Builder
 on:
   push:
     branches: [main]
@@ -13,13 +13,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Restore Gradle Cache
-        uses: actions/cache@v3
-        with:
-          path: |
-            ~/.gradle/caches
-            android/gradle/wrapper
-          key: ${{ runner.os }}-gradle-${{ hashFiles('android/gradle/wrapper/gradle-wrapper.properties') }}
+      - name: Set Gradle Version
+        run: |
+          echo "distributionUrl=https\\://services.gradle.org/distributions/gradle-7.6.3-bin.zip" > android/gradle/wrapper/gradle-wrapper.properties
 
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
@@ -27,22 +23,14 @@ jobs:
           flutter-version: ${{ env.FLUTTER_VERSION }}
           cache: true
 
-      - name: Setup Android SDK
-        uses: android-actions/setup-android@v2
-        with:
-          ndk-version: 23.1.7779620
-          build-tools-version: 30.0.3
-          cmake-version: 3.22.1
-
       - name: Apply Critical Fixes
         run: |
-          # إصلاح file_picker
-          find ~/.pub-cache/hosted/pub.dev/file_picker-6.2.1 -name '*.java' -exec sed -i \
+          FILE_PICKER_PATH=$(find ${{ github.workspace }}/.pub-cache/hosted/pub.dev -type d -name "file_picker-*" | head -n 1)
+          find "$FILE_PICKER_PATH" -name 'FilePickerPlugin.java' -exec sed -i \
           's/PluginRegistry.Registrar/FlutterPlugin.FlutterPluginBinding/g;
            s/registrar.activity()/binding.getActivity()/g;
            s/registrar.context()/binding.getApplicationContext()/g' {} \;
 
-          # إصلاح compileSdkVersion
           sed -i 's/compileSdkVersion flutter.compileSdkVersion/compileSdkVersion 33/g' android/app/build.gradle
 
       - name: Build APK
