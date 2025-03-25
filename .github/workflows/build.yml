@@ -1,6 +1,6 @@
 name: Cloud APK Builder
 on:
-  workflow_dispatch:  # تشغيل يدوي عند الحاجة
+  workflow_dispatch:
   push:
     branches: [main]
 
@@ -8,11 +8,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      FLUTTER_VERSION: "3.29.2"  # نفس إصدارك المحلي
+      FLUTTER_VERSION: "3.29.2"
 
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
@@ -20,36 +19,23 @@ jobs:
           flutter-version: ${{ env.FLUTTER_VERSION }}
           cache: true
 
-      - name: Temporary FilePicker Fix
-        if: contains(github.event.head_commit.message, 'build')  # يعمل فقط عند الطلب
+      - name: Apply FilePicker Fix
         run: |
           find . -name FilePickerPlugin.java -exec sed -i \
           's/PluginRegistry.Registrar/FlutterPlugin.FlutterPluginBinding/g;
            s/registrar\.activity()/binding.getActivity()/g;
            s/registrar\.context()/binding.getApplicationContext()/g' {} \;
 
-      - name: Debug Info
-        run: |
-          flutter --version
-          flutter pub deps --style=compact
-          echo "Build started at: $(date)"
+      - name: Update dependencies
+        run: flutter pub upgrade --major-versions
 
       - name: Build APK
         run: |
           flutter pub get
-          flutter build apk --release --verbose > build_log.txt 2>&1
-          cat build_log.txt  # يعرض السجل كاملاً
-
+          flutter build apk --release --verbose
+          
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: app-release
           path: build/app/outputs/flutter-apk/app-release.apk
-          retention-days: 7
-
-      - name: Upload Build Logs
-        uses: actions/upload-artifact@v4
-        if: always()  # يرفع السجل حتى لو فشل البناء
-        with:
-          name: build-logs
-          path: build_log.txt
