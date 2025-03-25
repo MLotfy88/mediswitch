@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y \
 
 # تثبيت JDK 23
 RUN mkdir -p /usr/local/jdk && \
-    wget https://download.java.net/java/GA/jdk23.0.2/a4c7a5d0bbd9426b4954b6c7c4d5a8db/8/GPL/openjdk-23.0.2_linux-x64_bin.tar.gz -O jdk.tar.gz && \
+    wget https://download.oracle.com/java/23/archive/jdk-23.0.1_linux-x64_bin.tar.gz -O jdk.tar.gz && \
     tar -xzf jdk.tar.gz -C /usr/local/jdk --strip-components=1 && \
     rm jdk.tar.gz
 
