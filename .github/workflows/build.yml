@@ -1,27 +1,25 @@
-name: Stable APK Builder
+name: Legacy APK Builder
 on:
-  workflow_dispatch:
   push:
     branches: [main]
+  workflow_dispatch:
 
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     env:
       FLUTTER_VERSION: "3.29.2"
 
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
-      - name: Restore Cache
-        uses: actions/cache@v4
+      - name: Restore Gradle Cache
+        uses: actions/cache@v3
         with:
           path: |
-            ~/.pub-cache
-            pubspec.lock
-          key: ${{ runner.os }}-pub-${{ hashFiles('pubspec.lock') }}
+            ~/.gradle/caches
+            android/gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('android/gradle/wrapper/gradle-wrapper.properties') }}
 
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
@@ -29,18 +27,31 @@ jobs:
           flutter-version: ${{ env.FLUTTER_VERSION }}
           cache: true
 
-      - name: Enforce Dependencies
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v2
+        with:
+          ndk-version: 23.1.7779620
+          build-tools-version: 30.0.3
+          cmake-version: 3.22.1
+
+      - name: Apply Critical Fixes
         run: |
-          flutter pub get --enforce-lockfile
-          if ! grep -q 'file_picker:' pubspec.lock; then
-            echo "❌ Critical Error: file_picker missing from lockfile"
-            exit 1
-          fi
+          # إصلاح file_picker
+          find ~/.pub-cache/hosted/pub.dev/file_picker-6.2.1 -name '*.java' -exec sed -i \
+          's/PluginRegistry.Registrar/FlutterPlugin.FlutterPluginBinding/g;
+           s/registrar.activity()/binding.getActivity()/g;
+           s/registrar.context()/binding.getApplicationContext()/g' {} \;
+
+          # إصلاح compileSdkVersion
+          sed -i 's/compileSdkVersion flutter.compileSdkVersion/compileSdkVersion 33/g' android/app/build.gradle
 
       - name: Build APK
-        run: flutter build apk --release --no-tree-shake-icons
+        run: |
+          flutter clean
+          flutter pub get
+          flutter build apk --release --no-tree-shake-icons
 
-      - name: Upload Artifact
+      - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: app-release
