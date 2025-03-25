@@ -67,7 +67,10 @@ ENV DART_SDK="/usr/local/dart-sdk"
 ENV PATH="$DART_SDK/bin:$PATH"
 
 # تهيئة نهائية
-RUN flutter precache && \
+RUN mkdir -p /usr/local/flutter/bin/cache/artifacts/gradle_wrapper && \
+    chmod -R 777 /usr/local/flutter/bin/cache
+
+RUN flutter precache --verbose && \
     flutter config --no-analytics && \
     flutter doctor
 
