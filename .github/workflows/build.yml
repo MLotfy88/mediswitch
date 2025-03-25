@@ -1,4 +1,4 @@
-name: Cloud APK Builder
+name: Stable APK Builder
 on:
   workflow_dispatch:
   push:
@@ -6,12 +6,22 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     env:
       FLUTTER_VERSION: "3.29.2"
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # لسحب كل التاريخ
+
+      - name: Restore Lock File
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.pub-cache
+            pubspec.lock
+          key: ${{ runner.os }}-pub-${{ hashFiles('pubspec.lock') }}
 
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
@@ -19,23 +29,15 @@ jobs:
           flutter-version: ${{ env.FLUTTER_VERSION }}
           cache: true
 
-      - name: Apply FilePicker Fix
+      - name: Enforce Dependencies
         run: |
-          find . -name FilePickerPlugin.java -exec sed -i \
-          's/PluginRegistry.Registrar/FlutterPlugin.FlutterPluginBinding/g;
-           s/registrar\.activity()/binding.getActivity()/g;
-           s/registrar\.context()/binding.getApplicationContext()/g' {} \;
-
-      - name: Update dependencies
-        run: flutter pub upgrade --major-versions
+          flutter pub get --no-upgrade
+          if grep -q '^  file_picker:' pubspec.lock; then
+            echo "File picker version locked successfully"
+          else
+            echo "Error: file_picker not in lockfile"
+            exit 1
+          fi
 
       - name: Build APK
-        run: |
-          flutter pub get
-          flutter build apk --release --verbose
-          
-      - name: Upload APK
-        uses: actions/upload-artifact@v4
-        with:
-          name: app-release
-          path: build/app/outputs/flutter-apk/app-release.apk
+        run: flutter build apk --release --no-tree-shake-icons
