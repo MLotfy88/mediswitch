@@ -1,4 +1,4 @@
-name: Legacy APK Builder
+name: Stable APK Builder
 on:
   push:
     branches: [main]
@@ -27,7 +27,8 @@ jobs:
           FILE_PICKER_PATH=$(find ${{ github.workspace }}/.pub-cache/hosted/pub.dev -type d -name "file_picker-*" | head -n 1)
           
           if [ -z "$FILE_PICKER_PATH" ]; then
-            echo "❌ Error: file_picker package not found!"
+            echo "❌ Error: file_picker not found in pub cache!"
+            echo "Verify that 'flutter pub get' ran successfully"
             exit 1
           fi
 
