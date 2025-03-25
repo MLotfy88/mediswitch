@@ -20,13 +20,10 @@ jobs:
           cache: true
 
       - name: Install Dependencies
-        run: |
-          flutter pub get
-          echo "Pub cache location: $(flutter pub cache directory)"
+        run: flutter pub get
 
       - name: Apply Critical Fixes
         run: |
-          PUB_CACHE=$(flutter pub cache directory)
           FILE_PICKER_PATH=$(find "$PUB_CACHE/hosted/pub.dev" -type d -name "file_picker-*" | head -n 1)
           
           if [ -z "$FILE_PICKER_PATH" ]; then
