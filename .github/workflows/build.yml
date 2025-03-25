@@ -20,15 +20,18 @@ jobs:
           cache: true
 
       - name: Install Dependencies
-        run: flutter pub get
+        run: |
+          flutter pub get
+          echo "Pub cache location: $(flutter pub cache directory)"
 
       - name: Apply Critical Fixes
         run: |
-          FILE_PICKER_PATH=$(find ${{ github.workspace }}/.pub-cache/hosted/pub.dev -type d -name "file_picker-*" | head -n 1)
+          PUB_CACHE=$(flutter pub cache directory)
+          FILE_PICKER_PATH=$(find "$PUB_CACHE/hosted/pub.dev" -type d -name "file_picker-*" | head -n 1)
           
           if [ -z "$FILE_PICKER_PATH" ]; then
-            echo "❌ Error: file_picker not found in pub cache!"
-            echo "Verify that 'flutter pub get' ran successfully"
+            echo "❌ Error: file_picker package not found in pub cache!"
+            echo "Verify 'flutter pub get' executed successfully"
             exit 1
           fi
 
