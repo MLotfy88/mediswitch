@@ -1,4 +1,4 @@
-name: Stable APK Builder
+name: Legacy APK Builder
 on:
   push:
     branches: [main]
@@ -13,19 +13,24 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set Gradle Version
-        run: |
-          echo "distributionUrl=https\\://services.gradle.org/distributions/gradle-7.6.3-bin.zip" > android/gradle/wrapper/gradle-wrapper.properties
-
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
           flutter-version: ${{ env.FLUTTER_VERSION }}
           cache: true
 
+      - name: Install Dependencies
+        run: flutter pub get
+
       - name: Apply Critical Fixes
         run: |
           FILE_PICKER_PATH=$(find ${{ github.workspace }}/.pub-cache/hosted/pub.dev -type d -name "file_picker-*" | head -n 1)
+          
+          if [ -z "$FILE_PICKER_PATH" ]; then
+            echo "❌ Error: file_picker package not found!"
+            exit 1
+          fi
+
           find "$FILE_PICKER_PATH" -name 'FilePickerPlugin.java' -exec sed -i \
           's/PluginRegistry.Registrar/FlutterPlugin.FlutterPluginBinding/g;
            s/registrar.activity()/binding.getActivity()/g;
@@ -34,10 +39,7 @@ jobs:
           sed -i 's/compileSdkVersion flutter.compileSdkVersion/compileSdkVersion 33/g' android/app/build.gradle
 
       - name: Build APK
-        run: |
-          flutter clean
-          flutter pub get
-          flutter build apk --release --no-tree-shake-icons
+        run: flutter build apk --release --no-tree-shake-icons
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
