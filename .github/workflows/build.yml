@@ -13,9 +13,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # لسحب كل التاريخ
+          fetch-depth: 0
 
-      - name: Restore Lock File
+      - name: Restore Cache
         uses: actions/cache@v4
         with:
           path: |
@@ -31,13 +31,17 @@ jobs:
 
       - name: Enforce Dependencies
         run: |
-          flutter pub get --no-upgrade
-          if grep -q '^  file_picker:' pubspec.lock; then
-            echo "File picker version locked successfully"
-          else
-            echo "Error: file_picker not in lockfile"
+          flutter pub get --enforce-lockfile
+          if ! grep -q 'file_picker:' pubspec.lock; then
+            echo "❌ Critical Error: file_picker missing from lockfile"
             exit 1
           fi
 
       - name: Build APK
         run: flutter build apk --release --no-tree-shake-icons
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-release
+          path: build/app/outputs/flutter-apk/app-release.apk
