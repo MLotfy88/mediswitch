@@ -1,6 +1,10 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'dev.flutter.flutter-gradle-plugin'
+}
+ext.kotlin_version = "1.9.22"
+ext.flutterRoot = "/usr/local/flutter"
 
 android {
     signingConfigs {
@@ -12,6 +16,11 @@ android {
         }
     }
     compileSdkVersion flutter.compileSdkVersion
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
 
     defaultConfig {
         namespace 'com.example.mediswitch'

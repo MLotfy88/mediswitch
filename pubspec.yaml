@@ -63,7 +63,7 @@ dependencies:
   share_plus: ^10.1.4
   device_info_plus: ^9.1.1
   url_launcher: ^6.2.5
-  file_picker: ^6.1.1
+  file_picker: ^9.2.1
   excel: ^4.0.2
   archive: ^3.4.10
   http: ^1.2.0
