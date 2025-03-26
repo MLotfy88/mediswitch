@@ -20,7 +20,7 @@
       ],
       "settings": {
         "java.configuration.updateBuildConfiguration": "automatic",
-        "java.import.gradle.version": "7.6.3",
+        "java.import.gradle.version": "8.9",
         "editor.formatOnSave": true,
         "editor.formatOnType": true,
         "dart.lineLength": 100,
