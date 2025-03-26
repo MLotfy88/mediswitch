@@ -43,25 +43,6 @@ jobs:
           flutter pub add file_picker:any
           flutter pub upgrade file_picker
 
-      - name: Apply Essential Fixes
-        run: |
-          # تحديث إعدادات Gradle
-          sed -i "s/gradle-.*-bin.zip/gradle-${{ env.GRADLE_VERSION }}-bin.zip/g" android/gradle/wrapper/gradle-wrapper.properties
-          
-          # تحديث compileSdkVersion
-          sed -i "s/compileSdkVersion flutter.compileSdkVersion/compileSdkVersion ${{ env.COMPILE_SDK }}/g" android/app/build.gradle
-          
-          # إصلاحات file_picker
-          FILE_PICKER_PATH=$(find ${{ github.workspace }}/.pub-cache/hosted/pub.dev -type d -name "file_picker-*" | head -n 1)
-          if [ -z "$FILE_PICKER_PATH" ]; then
-            echo "❌ Error: file_picker not found!"
-            exit 1
-          fi
-          find "$FILE_PICKER_PATH" -name 'FilePickerPlugin.java' -exec sed -i \
-          's/PluginRegistry.Registrar/FlutterPlugin.FlutterPluginBinding/g;
-           s/registrar.activity()/binding.getActivity()/g;
-           s/registrar.context()/binding.getApplicationContext()/g' {} \;
-
       - name: Build APK
         run: |
           flutter clean
