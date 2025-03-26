@@ -1,258 +1,282 @@
-# قائمة مهام مشروع MediSwitch الموحدة
+# MediSwitch - Unified TODO List
 
-هذه قائمة المهام الموحدة لاستكمال تطوير تطبيق **MediSwitch** - المنصة الذكية الشاملة لإدارة الأدوية وتبديلها بذكاء. تم دمج المهام من ملفي TODO.md و TODO_ENHANCED.md مع تحديد المهام التي تم إلغاؤها والتي سيتم إعادة العمل عليها من جديد.
+This is a unified TODO list for the MediSwitch project, combining tasks from previous TODO files. The goal is to create a comprehensive and well-organized list to guide the remaining development efforts.
 
-## تحديثات البنية التحتية
+## I. Project Setup and Infrastructure
 
-### 1. تحديث أدوات البناء
-- [x] ترقية Gradle من الإصدار 7.6.3 إلى الإصدار 8.10
-- [ ] تحديث تبعيات Flutter إلى أحدث إصدار متوافق
-- [ ] تحسين زمن البناء وتقليل حجم التطبيق النهائي
+*   [x] **Gradle Upgrade:** Upgraded Gradle from version 7.6.3 to 8.9.
+*   [ ] **Flutter Dependencies Update:** Update Flutter dependencies to the latest compatible versions.
+*   [x] **Gradle Plugin Version Update:** Updated com.android.application Gradle plugin version to 8.1.0 in android/settings.gradle.kts
+*   [x] **Gradle Version Update:** Updated Gradle version to 8.9 in android/gradle/wrapper/gradle-wrapper.properties
+*   [x] **File Picker Version Update:** Updated file_picker version to 9.2.1 in pubspec.yaml
+*   [x] **Updated compileSdk:** Updated compileSdk to 30 in android/app/build.gradle.kts
+*   [x] **Updated sourceCompatibility and targetCompatibility:** Updated sourceCompatibility and targetCompatibility to JavaVersion.VERSION_17 in android/app/build.gradle.kts
+*   [x] **Updated jvmTarget:** Updated jvmTarget to JavaVersion.VERSION_17.toString() in android/app/build.gradle.kts
+*   [x] **Updated sourceCompatibility and targetCompatibility in android/app/build.gradle**
+*   [x] **Added ext.kotlin_version and ext.flutterRoot in android/app/build.gradle**
+*   [x] **Updated ndk.dir in android/gradle.properties**
+*   [x] **Generated debug keystore**
+*   [ ] **Build Time Optimization:** Improve build times and reduce the final application size.
 
-## المهام ذات الأولوية القصوى
+## II. Core Functionality
 
-### 1. استكمال تشفير قاعدة البيانات باستخدام SQLCipher (AES-256)
+### A. Database Encryption (SQLCipher)
 
-- [x] إضافة مكتبة SQLCipher إلى المشروع
-- [x] تنفيذ آلية توليد وتخزين مفتاح التشفير بشكل آمن (تم إنجازه جزئيًا)
-- [ ] **إصلاح مشكلة تهيئة SQLCipher في ملف database_service.dart** (خطأ في الأقواس المتداخلة):
-  - [ ] تصحيح طريقة فتح قاعدة البيانات المشفرة باستخدام المفتاح الآمن
-  - [ ] إضافة استدعاء `initializeSqlCipherLibs()` بشكل صحيح
-  - [ ] تنفيذ معالجة الأخطاء المناسبة عند فشل فتح قاعدة البيانات
-- [ ] تحسين آلية تخزين مفتاح التشفير باستخدام flutter_secure_storage:
-  - [ ] إضافة طبقة إضافية من التشفير للمفتاح نفسه
-  - [ ] ربط المفتاح بمعرف الجهاز الفريد لمنع نقل قاعدة البيانات بين الأجهزة
-  - [ ] تنفيذ آلية استعادة المفتاح في حالة فقدانه
-- [ ] تنفيذ اختبارات أداء لقياس تأثير التشفير على سرعة الاستعلامات
-- [ ] تنفيذ آلية للتحقق من سلامة قاعدة البيانات عند فتحها
-- [ ] إضافة خيار في الإعدادات لتغيير كلمة المرور/المفتاح (اختياري للمستخدمين المتقدمين)
+*   [x] **SQLCipher Library Integration:** Added the SQLCipher library to the project.
+*   [x] **Secure Key Generation and Storage (Partial):** Implemented a mechanism for generating and storing the encryption key securely.
+*   [ ] **SQLCipher Initialization Fix (database\_service.dart):** Address the SQLCipher initialization issue in `database_service.dart` (nested parentheses error).
+    *   [ ] Correct the method for opening the encrypted database using the secure key.
+    *   [ ] Ensure proper invocation of `initializeSqlCipherLibs()`.
+    *   [ ] Implement robust error handling for database opening failures.
+*   [ ] **Enhanced Key Storage with `flutter_secure_storage`:**
+    *   [ ] Implement an additional layer of encryption for the key itself.
+    *   [ ] Bind the key to the device's unique identifier to prevent database transfer between devices.
+    *   [ ] Implement a key recovery mechanism in case of loss.
+*   [ ] **Performance Testing:** Conduct performance tests to measure the impact of encryption on query speeds.
+*   [ ] **Database Integrity Check:** Implement a mechanism to verify the integrity of the database upon opening.
+*   [ ] **Password/Key Change Option (Optional):** Add an option in the settings for advanced users to change the password/key.
 
-### 2. إصلاح أخطاء ملف dose_comparison_screen.dart
+### B. Data Import from Excel/CSV
 
-- [ ] إصلاح خطأ في السطر 120: طريقة `getMedicationById` غير معرفة في الكلاس `DatabaseService`
-- [ ] إصلاح أخطاء بناء الجملة في الأسطر 577-587 (أخطاء في الأقواس المتداخلة والفواصل المنقوطة)
-- [ ] إعادة هيكلة الكود لعرض المخطط البياني المقارن والجدول بشكل صحيح
+*   [x] **Basic CSV Import:** Implemented a basic data import system from CSV files.
+*   [ ] **`excel_import_service.dart` Enhancement:**
+    *   [ ] Fix errors in processing cell values of type `CellValue`.
+    *   [ ] Add support for various Excel formats (.xlsx, .xls).
+    *   [ ] Implement automatic column recognition, even if the order differs in the file.
+    *   [ ] Add support for Arabic encoding (UTF-8) to ensure correct import of Arabic text.
+    *   [ ] Implement a mechanism for handling empty cells or invalid values.
+*   [ ] **User Interface for Data Import:**
+    *   [ ] Add a screen to select Excel/CSV files from the device.
+    *   [ ] Display a preview of the data before importing.
+    *   [ ] Show the progress of the import process.
+    *   [ ] Display a report of the import results (number of records added/updated/rejected).
+*   [ ] **Remote Data Update Mechanism:**
+    *   [ ] Create a simple cloud service to host update files.
+    *   [ ] Implement a mechanism to check for new updates.
+    *   [ ] Download and apply updates automatically or upon user request.
+    *   [ ] Add scheduling for checking updates (daily/weekly/monthly).
+*   [ ] **Security Enhancements for Updates:**
+    *   [ ] Verify the file signature to ensure its source.
+    *   [ ] Encrypt update files during transfer.
+    *   [ ] Create a backup before applying the update.
 
-### 3. تطوير نظام تحديث البيانات من ملفات Excel/CSV
+### C. Backup and Restore System
 
-- [x] تنفيذ نظام استيراد البيانات الأساسي من ملف CSV
-- [ ] **تحسين خدمة excel_import_service.dart**:
-  - [ ] إصلاح الأخطاء في معالجة قيم الخلايا من نوع CellValue
-  - [ ] إضافة دعم لتنسيقات Excel المختلفة (.xlsx, .xls)
-  - [ ] تنفيذ آلية التعرف التلقائي على أعمدة الملف حتى لو اختلف ترتيبها
-  - [ ] إضافة دعم للترميز العربي (UTF-8) لضمان استيراد النصوص العربية بشكل صحيح
-  - [ ] تنفيذ آلية للتعامل مع الخلايا الفارغة أو القيم غير الصالحة
-- [ ] تطوير واجهة مستخدم لاستيراد البيانات:
-  - [ ] إضافة شاشة لاختيار ملف Excel/CSV من الجهاز
-  - [ ] عرض معاينة للبيانات قبل الاستيراد
-  - [ ] إظهار تقدم عملية الاستيراد
-  - [ ] عرض تقرير بنتائج الاستيراد (عدد السجلات المضافة/المحدثة/المرفوضة)
-- [ ] تنفيذ آلية تحديث البيانات عن بُعد:
-  - [ ] إنشاء خدمة سحابية بسيطة لاستضافة ملفات التحديث
-  - [ ] تنفيذ آلية للتحقق من وجود تحديثات جديدة
-  - [ ] تنزيل وتطبيق التحديثات تلقائيًا أو بناءً على طلب المستخدم
-  - [ ] إضافة جدولة للتحقق من التحديثات (يوميًا/أسبوعيًا/شهريًا)
-- [ ] تحسين أمان عملية التحديث:
-  - [ ] التحقق من توقيع الملف للتأكد من مصدره
-  - [ ] تشفير ملفات التحديث أثناء النقل
-  - [ ] إنشاء نسخة احتياطية قبل تطبيق التحديث
+*   [x] **Basic Backup Mechanism:** Implemented a basic backup creation mechanism.
+*   [ ] **`backup_service.dart` Enhancement:**
+    *   [ ] Fix errors in `backup_restore_screen.dart` related to the backup service.
+    *   [ ] Encrypt backups using the user's password.
+    *   [ ] Compress backups to reduce their size.
+    *   [ ] Add metadata to the backup (version, creation date, number of records).
+    *   [ ] Implement a mechanism to verify the integrity of the backup before restoring.
+*   [ ] **User Interface for Backup and Restore:**
+    *   [ ] Add a screen to manage backups.
+    *   [ ] Display a list of available backups with their details.
+    *   [ ] Allow sharing backups via email or cloud storage.
+    *   [ ] Allow scheduling automatic backups (daily/weekly).
+*   [ ] **Cloud Storage Support for Backups:**
+    *   [ ] Add support for Google Drive and Dropbox services.
+    *   [ ] Synchronize backups automatically with cloud services.
+    *   [ ] Restore data from cloud backups.
 
-### 4. تحسين نظام النسخ الاحتياطي واستعادة البيانات
+## III. Frontend Development
 
-- [x] تنفيذ آلية إنشاء نسخة احتياطية أساسية
-- [ ] **تحسين خدمة backup_service.dart**:
-  - [ ] إصلاح الأخطاء في ملف backup_restore_screen.dart المرتبطة بخدمة النسخ الاحتياطي
-  - [ ] تشفير النسخ الاحتياطية باستخدام كلمة مرور المستخدم
-  - [ ] ضغط النسخ الاحتياطية لتقليل حجمها
-  - [ ] إضافة بيانات تعريفية للنسخة الاحتياطية (الإصدار، تاريخ الإنشاء، عدد السجلات)
-  - [ ] تنفيذ آلية للتحقق من سلامة النسخة الاحتياطية قبل الاستعادة
-- [ ] تطوير واجهة مستخدم للنسخ الاحتياطي والاستعادة:
-  - [ ] إضافة شاشة لإدارة النسخ الاحتياطية
-  - [ ] عرض قائمة بالنسخ الاحتياطية المتاحة مع تفاصيلها
-  - [ ] إمكانية مشاركة النسخ الاحتياطية عبر البريد الإلكتروني أو التخزين السحابي
-  - [ ] إمكانية جدولة النسخ الاحتياطي التلقائي (يوميًا/أسبوعيًا)
-- [ ] دعم التخزين السحابي للنسخ الاحتياطية:
-  - [ ] إضافة دعم لخدمات Google Drive و Dropbox
-  - [ ] مزامنة النسخ الاحتياطية تلقائيًا مع الخدمات السحابية
-  - [ ] استعادة البيانات من النسخ الاحتياطية السحابية
+### A. Core UI Development
 
-## مهام الواجهة الأمامية (Frontend)
+*   [x] **Basic App Structure:** Created the basic structure of the application.
+*   [x] **Screen Navigation:** Implemented a system for navigating between screens.
+*   [x] **Language Support (Arabic & English):** Implemented support for both Arabic and English languages.
+*   [x] **Dark Mode:** Implemented dark mode.
+*   [ ] **App Logo Design:** Design and implement the application logo (blue pill with a golden switch icon).
+*   [ ] **UX/UI Enhancement:** Improve the user experience (UX) and user interface (UI) design with calm colors (medical blue + gray).
+*   [ ] **Arabic Font Implementation:** Implement clear Arabic fonts (Noto Sans Arabic) with RTL support.
+*   [ ] **Smooth Transitions:** Add smooth transitions (animations) between screens.
+*   [x] **Bottom Navigation Tabs:** Implemented basic bottom navigation tabs (Home, Components).
+*   [ ] **Responsive Design:** Implement a responsive design for all screen sizes (from iPhone SE to Samsung S24 Ultra).
 
-### 1. تطوير واجهة المستخدم الأساسية
-- [x] إنشاء الهيكل الأساسي للتطبيق
-- [x] تنفيذ نظام التنقل بين الشاشات
-- [x] تنفيذ دعم اللغتين العربية والإنجليزية
-- [x] تنفيذ وضع الألوان الداكن (Dark Mode)
-- [ ] تصميم وتنفيذ شعار التطبيق (حبة دواء زرقاء مع أيقونة مفتاح تبديل ذهبي)
-- [ ] تحسين تجربة المستخدم (UX) وتصميم الواجهة (UI) بألوان هادئة (أزرق طبي + رمادي)
-- [ ] تنفيذ خطوط عربية واضحة (Noto Sans Arabic) مع دعم RTL
-- [ ] إضافة انتقالات سلسة (Animations) بين الشاشات
-- [ ] تصميم تبويبات سفلية للتنقل السريع (الصفحة الرئيسية، حاسبة الجرعات، الإعدادات)
-- [ ] تنفيذ تصميم متجاوب لجميع أحجام الشاشات (من iPhone SE إلى Samsung S24 Ultra)
+### B. Smart Drug Search Screen
 
-### 2. شاشة البحث الذكي عن بدائل الأدوية
-- [x] تنفيذ واجهة البحث الأساسية
-- [x] تطوير نظام الاقتراحات التلقائية أثناء الكتابة باللغتين (تم إنجازه جزئياً)
-- [ ] إضافة عرض الصور التوضيحية للأدوية في نتائج البحث
-- [x] تنفيذ فلاتر تصفية النتائج (حسب السعر، الآثار الجانبية، التفاعلات الدوائية) (تم إنجازه جزئياً)
-- [ ] إضافة خيار تصفية النتائج حسب "مصري/عالمي" أو "وصفة/غير وصفة"
-- [ ] تحسين عرض نتائج البحث مع معلومات إضافية (التوفر، السعر، الشركة المصنعة)
-- [ ] تنفيذ نظام تصحيح تلقائي للأخطاء الإملائية في البحث
-- [ ] إضافة فلترة النتائج حسب الفئة العلاجية (مُصنَّفة تلقائيًّا من CSV)
-- [ ] تنفيذ نظام Lazy Loading لعرض الأدوية عند التمرير
-- [ ] تخزين صور الأدوية مؤقتًا باستخدام CachedNetworkImage
+*   [x] **Basic Search Interface:** Implemented the basic search interface.
+*   [x] **Autosuggest System (Partial):** Developed an autosuggest system while typing in both languages (partially implemented).
+*   [ ] **Illustrative Drug Images:** Add display of illustrative images of drugs in the search results.
+*   [x] **Result Filtering (Partial):** Implemented filters for filtering results (by price, side effects, drug interactions) (partially implemented).
+*   [ ] **"Egyptian/International" or "Prescription/Non-Prescription" Filtering:** Add an option to filter results by "Egyptian/International" or "Prescription/Non-Prescription".
+*   [ ] **Enhanced Search Result Display:** Improve the display of search results with additional information (availability, price, manufacturer).
+*   [ ] **Automatic Spelling Correction:** Implement an automatic spelling correction system in the search.
+*   [ ] **Therapeutic Category Filtering:** Add filtering of results by therapeutic category (automatically classified from CSV).
+*   [ ] **Lazy Loading:** Implement lazy loading to display drugs upon scrolling.
+*   [ ] **Cached Network Images:** Store drug images temporarily using CachedNetworkImage.
 
-### 3. شاشة مقارنة الجرعات المكافئة
-- [x] تصميم وتنفيذ واجهة مقارنة الجرعات
-- [x] إنشاء نظام تحويل الجرعات بين الأدوية المشابهة
-- [x] تنفيذ دعم الوحدات المختلفة (ملجم/ميكروجرام) والتحويل التلقائي بينها
-- [x] تطوير رسوم بيانية توضح النسب المئوية للفعالية والسمية
-- [x] إضافة إمكانية مشاركة نتائج المقارنة
-- [ ] **إعادة تصميم وتنفيذ شاشة مقارنة الجرعات المكافئة** (بسبب الأخطاء الحالية):
-  - [ ] إصلاح مشكلة عرض المخطط البياني المقارن
-  - [ ] إصلاح مشكلة عرض جدول المقارنة
-  - [ ] تحسين واجهة المقارنة لتكون أكثر جاذبية وسهولة في الاستخدام
-- [ ] إضافة خاصية اقتراح بدائل مع نسبة تشابه دقيقة
+### C. Equivalent Dosage Comparison Screen
 
-### 4. شاشة حاسبة جرعة الدواء (حسب الوزن)
-- [x] تصميم وتنفيذ واجهة حاسبة الجرعات
-- [x] إنشاء نموذج إدخال وزن المريض (بالكجم أو الرطل) مع تحديد العمر
-- [x] تنفيذ نظام حساب الجرعات المخصصة بناءً على الوزن والعمر
-- [ ] **إعادة تصميم وتنفيذ شاشة حاسبة جرعة الدواء** (بسبب الأخطاء الحالية):
-  - [ ] إصلاح مشكلة طريقة `getMedicationById` غير المعرفة
-  - [ ] تحسين واجهة المستخدم وتجربة المستخدم
-- [ ] إضافة تنبيهات فورية (صوتية + نص أحمر) عند تجاوز الحدود الآمنة للجرعات
-- [ ] تطوير خاصية حفظ الحسابات ومشاركتها مع المريض أو الفريق الطبي
+*   [x] **Dosage Comparison Interface:** Designed and implemented the dosage comparison interface.
+*   [x] **Dosage Conversion System:** Created a system for converting dosages between similar drugs.
+*   [x] **Unit Support:** Implemented support for different units (mg/mcg) and automatic conversion between them.
+*   [x] **Effectiveness and Toxicity Charts:** Developed charts illustrating the percentages of effectiveness and toxicity.
+*   [x] **Shareable Comparison Results:** Added the ability to share comparison results.
+*   [ ] **Redesign and Reimplementation of Equivalent Dosage Comparison Screen:** (due to current errors):
+    *   [ ] Fix the issue of displaying the comparison chart.
+    *   [ ] Fix the issue of displaying the comparison table.
+    *   [ ] Improve the comparison interface to be more attractive and easy to use.
+*   [ ] Add a feature to suggest alternatives with an accurate similarity percentage.
 
-### 5. تحسينات عامة للواجهة
-- [ ] تحسين تجربة التنقل بين الشاشات
-- [ ] إضافة رسوم متحركة (animations) لتحسين تجربة المستخدم
-- [ ] تنفيذ نظام الإشعارات داخل التطبيق
-- [x] تحسين دعم اتجاه النص RTL للغة العربية
-- [ ] إضافة دليل تفاعلي (فيديوهات قصيرة) لشرح كيفية استخدام التطبيق
-- [ ] تحسين أداء التطبيق على الأجهزة ذات المواصفات المنخفضة
-- [ ] منع لقطات الشاشة لصفحات الجرعات (خاصة Android)
+### D. Drug Dosage Calculator Screen (by Weight)
 
-### 6. نظام الإعلانات والاشتراكات
-- [ ] تنفيذ نظام الإعلانات في الإصدار المجاني:
-  - [ ] إعلانات Banner غير مزعجة في أسفل الشاشة
-  - [ ] إعلانات Interstitial كل 10 استخدامات
-- [ ] تطوير نظام الاشتراكات المدفوعة (Premium):
-  - [ ] إزالة الإعلانات للمشتركين
-  - [ ] ميزة حفظ سجل البحث للمشتركين
-  - [ ] تنبيهات بتغيرات الأسعار للمشتركين
-- [ ] تنفيذ نظام الدفع الإلكتروني (سعر $1.99/شهريًّا)
-- [ ] ربط التطبيق بحساب Google AdMob لإدارة الإعلانات
+*   [x] **Dosage Calculator Interface:** Designed and implemented the dosage calculator interface.
+*   [x] **Patient Weight Input:** Created a form to enter the patient's weight (in kg or lbs) with age specification.
+*   [x] **Custom Dosage Calculation:** Implemented a system for calculating custom dosages based on weight and age.
+*   [ ] **Redesign and Reimplementation of Drug Dosage Calculator Screen:** (due to current errors):
+    *   [ ] Fix the issue of the undefined `getMedicationById` method.
+    *   [ ] Improve the user interface and user experience.
+*   [ ] Add immediate alerts (audio + red text) when exceeding safe dosage limits.
+*   [ ] Develop a feature to save calculations and share them with the patient or medical team.
 
-## مهام الخلفية (Backend)
+### E. General UI Improvements
 
-### 1. تطوير قاعدة البيانات
-- [x] إنشاء هيكل قاعدة البيانات الأساسي
-- [x] تنفيذ نظام استيراد البيانات من ملف CSV
-- [x] توسيع نموذج الدواء (Medication) ليشمل معلومات إضافية (التفاعلات، الآثار الجانبية، الصور)
-- [ ] إنشاء جداول إضافية للفئات والمواد الفعالة والشركات المصنعة
-- [ ] **إعادة تنفيذ نظام تشفير البيانات الحساسة باستخدام SQLCipher (AES-256)**
-- [ ] تحسين أداء الاستعلامات وإضافة فهارس (indexes) إضافية
-- [ ] إضافة نظام مزامنة البيانات مع خدمة سحابية
-- [ ] تنظيم الأدوية تلقائيًّا في فئات (مسكنات، مضادات حيوية، إلخ)
-- [ ] تنفيذ نظام عرض تاريخ التحديث والسعر بجانب كل دواء
+*   [ ] Improve the experience of navigating between screens.
+*   [ ] Add animations to improve the user experience.
+*   [ ] Implement an in-app notification system.
+*   [x] Improve RTL text direction support for the Arabic language.
+*   [ ] **Arabic Font Implementation:** Implement clear Arabic fonts (Noto Sans Arabic) with RTL support.
+*   [ ] Add an interactive guide (short videos) to explain how to use the application.
+*   [ ] Implement an in-app notification system.
+*   [ ] Improve application performance on low-spec devices.
+*   [ ] Prevent screenshots of dosage pages (especially Android).
 
-### 2. تطوير نظام تحديث البيانات من Excel/CSV
-- [ ] **إعادة تصميم وتنفيذ نظام استيراد البيانات من ملفات Excel**:
-  - [ ] تنفيذ آلية مسح كافة البيانات القديمة واستبدالها بالجديدة
-  - [ ] معالجة الأخطاء تلقائيًا (مثل أعمدة ناقصة)
-  - [ ] تحويل البيانات من Excel إلى SQLite
-- [ ] تنفيذ نظام تحديث البيانات دون الحاجة لإعادة نشر التطبيق
-- [ ] إضافة نظام التحقق من صحة البيانات المستوردة
-- [ ] تطوير آلية للاحتفاظ بتاريخ التحديثات
+### F. Advertising and Subscription System
 
-### 3. تطوير خدمات البحث والمقارنة
-- [x] تنفيذ خدمة البحث الأساسية
-- [ ] **إعادة تصميم وتنفيذ خدمة getMedicationById**
-- [ ] تطوير خوارزمية البحث الذكي (بالاسم التجاري أو المادة الفعالة)
-- [ ] إنشاء نظام اقتراحات البحث الذكية
-- [x] تنفيذ خدمة مقارنة الجرعات المكافئة
-- [x] تطوير خوارزمية حساب الجرعات بناءً على الوزن والعمر
-- [ ] إنشاء نظام تحليل التفاعلات الدوائية
-- [ ] تطوير نظام التصحيح التلقائي للأخطاء الإملائية
-- [ ] تحسين سرعة البحث (تحميل البيانات خلال <2 ثانية حتى على اتصال 2G)
+*   [ ] Implement the advertising system in the free version:
+    *   [ ] Non-intrusive banner ads at the bottom of the screen.
+    *   [ ] Interstitial ads every 10 uses.
+*   [ ] Develop a paid subscription system (Premium):
+    *   [ ] Remove ads for subscribers.
+    *   [ ] Search history saving feature for subscribers.
+    *   [ ] Price change alerts for subscribers.
+*   [ ] Implement the electronic payment system (price $1.99/month).
+*   [ ] Link the application to a Google AdMob account to manage ads.
 
-### 4. تطوير نظام الإدارة (Admin Dashboard - ويب)
-- [ ] تصميم وتنفيذ لوحة تحكم للمسؤولين (ويب):
-  - [ ] واجهة رفع ملفات Excel وتحديث قاعدة البيانات
-  - [ ] عرض إحصائيات التطبيق (عدد المستخدمين النشطين، عمليات البحث الشائعة)
-  - [ ] إدارة الإعلانات والاشتراكات
-- [ ] ربط لوحة التحكم بالتطبيق عبر Firebase (خطة مجانية)
-- [ ] تنفيذ نظام إدارة المستخدمين والصلاحيات
-- [ ] إضافة نظام تحليلات لمتابعة استخدام التطبيق وتحسين تجربة المستخدم
+## IV. Backend Development
 
-### 5. تحسينات أمان وأداء
-- [ ] **إعادة تنفيذ نظام تشفير البيانات المخزنة محليًا باستخدام SQLCipher**
-- [ ] تحسين أداء قاعدة البيانات للاستعلامات المعقدة
-- [ ] **إعادة تصميم وتنفيذ نظام النسخ الاحتياطي واستعادة البيانات**
-- [ ] إضافة تسجيل الأحداث (logging) لتتبع الأخطاء وتحسين الأداء
-- [ ] تنفيذ آلية للتحديثات التلقائية للتطبيق
-- [ ] منع لقطات الشاشة للمعلومات الحساسة
-- [ ] تحسين أداء التطبيق للعمل بدون اتصال دائم بالإنترنت
+### A. Database Development
 
-## أفكار جديدة لتطوير التطبيق
+*   [x] **Basic Database Structure:** Created the basic database structure.
+*   [x] **Data Import from CSV:** Implemented a system for importing data from CSV files.
+*   [x] **Medication Model Expansion:** Expanded the medication model to include information (interactions, side effects, images) in lib/models/medication.dart
+*   [ ] Create additional tables for categories, active ingredients, and manufacturers.
+*   [ ] **Reimplement Data Encryption using SQLCipher (AES-256).**
+*   [ ] Improve query performance and add additional indexes.
+*   [ ] Add a data synchronization system with a cloud service.
+*   [ ] Organize drugs automatically into categories (analgesics, antibiotics, etc.).
+*   [ ] Implement a system to display the update date and price next to each drug.
 
-### 1. نظام تنبيهات ذكي لتغيرات الأسعار
-- [ ] تنفيذ آلية لتتبع تغيرات أسعار الأدوية:
-  - [ ] مقارنة الأسعار الجديدة مع القديمة عند تحديث البيانات
-  - [ ] تخزين تاريخ تغير السعر ونسبة التغيير
-  - [ ] عرض رسم بياني لتغيرات السعر على مدار الوقت
-- [ ] إضافة نظام تنبيهات للمستخدمين:
-  - [ ] تنبيه المستخدم عند تغير سعر دواء في قائمة المفضلة
-  - [ ] إمكانية تعيين حد أقصى للسعر لتلقي تنبيه عند انخفاض السعر عنه
-  - [ ] تنبيهات بالأدوية البديلة الأرخص عند ارتفاع سعر دواء معين
+### B. Data Update System from Excel/CSV
 
-### 2. تحسين أداء البحث باستخدام تقنيات الفهرسة المتقدمة
-- [ ] تنفيذ فهرسة نصية متقدمة:
-  - [ ] استخدام تقنيات Full-Text Search لتحسين سرعة البحث
-  - [ ] دعم البحث بالكلمات المفتاحية المتعددة
-  - [ ] دعم البحث بالعبارات الدقيقة والبحث الضبابي
-- [ ] تحسين خوارزمية البحث الذكي:
-  - [ ] دعم تصحيح الأخطاء الإملائية تلقائيًا
-  - [ ] دعم البحث بالمرادفات والمصطلحات الطبية المختلفة
-  - [ ] ترتيب النتائج حسب الأهمية والملاءمة
+*   [ ] **Redesign and Implement a Data Import System from Excel files:**
+    *   [ ] Implement a mechanism to clear all old data and replace it with new data.
+    *   [ ] Process errors automatically (such as missing columns).
+    *   [ ] Convert data from Excel to SQLite.
+*   [ ] Implement a data update system without the need to republish the application.
+*   [ ] Add a system to verify the validity of the imported data.
+*   [ ] Develop a mechanism to maintain a history of updates.
 
-### 3. إضافة ميزات تحليلية للأطباء والصيادلة
-- [ ] تنفيذ نظام تحليل التفاعلات الدوائية المتقدم:
-  - [ ] تحليل التفاعلات بين أكثر من دواءين في نفس الوقت
-  - [ ] تصنيف التفاعلات حسب الخطورة والتأثير
-  - [ ] تقديم توصيات لتجنب التفاعلات الخطيرة
-- [ ] إضافة أداة تحليل الوصفات الطبية:
-  - [ ] إمكانية إدخال قائمة أدوية المريض
-  - [ ] تحليل التفاعلات والتداخلات بين الأدوية
-  - [ ] اقتراح بدائل أكثر أمانًا أو فعالية
+### C. Search and Comparison Services
 
-## خطة العمل لإصلاح الأخطاء وإعادة تصميم الأدوات
+*   [x] **Basic Search Service:** Implemented the basic search service.
+*   [ ] **Reimplement the `getMedicationById` service.**
+*   [ ] Develop a smart search algorithm (by trade name or active ingredient).
+*   [ ] Create a smart search suggestion system.
+*   [x] **Equivalent Dosage Comparison Service:** Implemented the equivalent dosage comparison service.
+*   [x] **Dosage Calculation Algorithm:** Developed a dosage calculation algorithm based on weight and age.
+*   [ ] Create a drug interaction analysis system.
+*   [ ] Develop an automatic spelling correction system.
+*   [ ] Improve search speed (load data in <2 seconds even on a 2G connection).
 
-### المرحلة الأولى: إصلاح الأخطاء الحرجة
-1. إصلاح مشكلة تهيئة SQLCipher في ملف database_service.dart
-2. إصلاح الأخطاء في ملف dose_comparison_screen.dart
-3. إضافة طريقة getMedicationById إلى DatabaseService
-4. إصلاح الأخطاء في ملف backup_restore_screen.dart
+### D. Management System Development (Admin Dashboard - Web)
 
-### المرحلة الثانية: إعادة تصميم الأدوات الأساسية
-1. إعادة تصميم وتنفيذ نظام تشفير البيانات باستخدام SQLCipher
-2. إعادة تصميم وتنفيذ نظام النسخ الاحتياطي واستعادة البيانات
-3. إعادة تصميم وتنفيذ نظام استيراد البيانات من ملفات Excel/CSV
+*   [ ] Design and implement a control panel for administrators (web):
+    *   [ ] Interface for uploading Excel files and updating the database.
+    *   [ ] Display application statistics (number of active users, popular searches).
+    *   [ ] Manage ads and subscriptions.
+*   [ ] Link the control panel to the application via Firebase (free plan).
+*   [ ] Implement a user and permissions management system.
+*   [ ] Add an analytics system to track application usage and improve the user experience.
 
-### المرحلة الثالثة: تحسين واجهات المستخدم
-1. إعادة تصميم وتنفيذ شاشة مقارنة الجرعات المكافئة
-2. إعادة تصميم وتنفيذ شاشة حاسبة جرعة الدواء
-3. تحسين واجهة البحث وعرض النتائج
+### E. Security and Performance Improvements
 
-### المرحلة الرابعة: إضافة الميزات الجديدة
-1. تنفيذ نظام تنبيهات تغيرات الأسعار
-2. تحسين أداء البحث باستخدام تقنيات الفهرسة المتقدمة
-3. إضافة ميزات تحليلية للأطباء والصيادلة
+*   [ ] **Reimplement the data encryption system stored locally using SQLCipher.**
+*   [ ] Improve database performance for complex queries.
+*   [ ] **Redesign and implement the backup and restore system.**
+*   [ ] Add event logging to track errors and improve performance.
+*   [ ] Implement a mechanism for automatic application updates.
+*   [ ] Prevent screenshots of sensitive information.
+*   [ ] Improve application performance to work without a permanent internet connection.
 
-## ملاحظات هامة
-- يجب اختبار كل أداة بشكل منفصل قبل دمجها في التطبيق
-- يجب إنشاء اختبارات وحدة (Unit Tests) لكل وظيفة جديدة
-- يجب التأكد من توافق التطبيق مع أنظمة التشغيل المستهدفة (Android 8.0+ و iOS 13+)
-- يجب الالتزام بمعايير أمان البيانات وخصوصية المستخدمين
-- يجب إجراء اختبارات أداء دورية للتأكد من سرعة استجابة التطبيق
+## V. New Ideas for Application Development
+
+### A. Smart Alert System for Price Changes
+
+*   [ ] Implement a mechanism to track drug price changes:
+    *   [ ] Compare new prices with old prices when updating data.
+    *   [ ] Store the date of the price change and the percentage of change.
+    *   [ ] Display a graph of price changes over time.
+*   [ ] Add an alert system for users:
+    *   [ ] Alert the user when the price of a drug in the favorites list changes.
+    *   [ ] Ability to set a maximum price to receive an alert when the price drops below it.
+    *   [ ] Alerts for cheaper alternative drugs when the price of a certain drug increases.
+
+### B. Improving Search Performance Using Advanced Indexing Techniques
+
+*   [ ] Implement advanced text indexing:
+    *   [ ] Use Full-Text Search techniques to improve search speed.
+    *   [ ] Support searching with multiple keywords.
+    *   [ ] Support searching with exact phrases and fuzzy searching.
+*   [ ] Improve the smart search algorithm:
+    *   [ ] Support automatic spelling correction.
+    *   [ ] Support searching with synonyms and different medical terms.
+    *   [ ] Sort results by importance and relevance.
+
+### C. Adding Analytical Features for Doctors and Pharmacists
+
+*   [ ] Implement an advanced drug interaction analysis system:
+    *   [ ] Analyze interactions between more than two drugs at the same time.
+    *   [ ] Classify interactions by severity and impact.
+    *   [ ] Provide recommendations to avoid dangerous interactions.
+*   [ ] Add a tool to analyze medical prescriptions:
+    *   [ ] Ability to enter a list of patient medications.
+    *   [ ] Analyze interactions and interferences between drugs.
+    *   [ ] Suggest safer or more effective alternatives.
+
+## VI. Action Plan for Fixing Bugs and Redesigning Tools
+
+### Phase 1: Fixing Critical Bugs
+
+1.  Fix SQLCipher initialization issue in `database_service.dart`.
+2.  Fix errors in `dose_comparison_screen.dart`.
+3.  Add the `getMedicationById` method to `DatabaseService`.
+4.  Fix errors in `backup_restore_screen.dart`.
+
+### Phase 2: Redesigning Core Tools
+
+1.  Redesign and implement the data encryption system using SQLCipher.
+2.  Redesign and implement the backup and restore system.
+3.  Redesign and implement the data import system from Excel/CSV files.
+
+### Phase 3: Improving User Interfaces
+
+1.  Redesign and implement the equivalent dosage comparison screen.
+2.  Redesign and implement the drug dosage calculator screen.
+3.  Improve the search interface and display of results.
+
+### Phase 4: Adding New Features
+
+1.  Implement the price change alert system.
+2.  Improve search performance using advanced indexing techniques.
+3.  Add analytical features for doctors and pharmacists.
+
+## VII. Important Notes
+
+*   Each tool must be tested separately before being integrated into the application.
+*   Unit tests must be created for each new function.
+*   The application must be compatible with the target operating systems (Android 8.0+ and iOS 13+).
+*   Data security and user privacy standards must be adhered to.
+*   Periodic performance tests must be performed to ensure the application's responsiveness.
