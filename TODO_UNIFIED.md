@@ -5,7 +5,7 @@ This is a unified TODO list for the MediSwitch project, combining tasks from pre
 ## I. Project Setup and Infrastructure
 
 *   [x] **Gradle Upgrade:** Upgraded Gradle from version 7.6.3 to 8.9.
-*   [ ] **Flutter Dependencies Update:** Update Flutter dependencies to the latest compatible versions.
+*   [x] **Flutter Dependencies Update:** Updated Flutter dependencies to the latest compatible versions.
 *   [x] **Gradle Plugin Version Update:** Updated com.android.application Gradle plugin version to 8.1.0 in android/settings.gradle.kts
 *   [x] **Gradle Version Update:** Updated Gradle version to 8.9 in android/gradle/wrapper/gradle-wrapper.properties
 *   [x] **File Picker Version Update:** Updated file_picker version to 9.2.1 in pubspec.yaml
@@ -19,6 +19,8 @@ This is a unified TODO list for the MediSwitch project, combining tasks from pre
 *   [x] **Created DrugInteraction model in lib/models/drug_interaction.dart**
 *   [x] **Created WeightDoseCalculator model in lib/models/weight_dose_calculator.dart**
 *   [x] **Updated JDK version in Dockerfile to 17.0.10**
+*   [x] Added sqflite_sqlcipher dependency to pubspec.yaml
+*   [x] Implemented SQLCipher initialization in lib/services/database_update.dart
 *   [ ] Create additional tables for categories, active ingredients, and manufacturers
 *   [ ] **Build Time Optimization:** Improve build times and reduce the final application size.
 
