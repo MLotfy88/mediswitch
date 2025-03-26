@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:csv/csv.dart';
 import 'package:mediswitch/models/medication.dart';
@@ -8,7 +9,8 @@ import 'package:path/path.dart';
 
 class CsvImportService {
   static Future<List<Medication>> loadMedicationsFromCsv() async {
-    final String csvData = await rootBundle.loadString('meds.csv');
+    final File file = File('/workspace/mediswitch/meds.csv');
+    final String csvData = await file.readAsString();
     List<List<dynamic>> csvTable = const CsvToListConverter().convert(csvData);
 
     // Assuming the first row is the header

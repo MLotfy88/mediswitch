@@ -1,7 +1,8 @@
 import 'dart:async';
-import 'dart:convert';
-import 'package:flutter/services.dart' show rootBundle;
 import 'package:csv/csv.dart';
+import 'package:mediswitch/services/csv_import_service.dart';
+import 'package:sqflite/sqflite.dart';
+import 'package:path/path.dart';
 
 class Medication {
   final String tradeName;
@@ -65,26 +66,75 @@ class Medication {
   }
 }
 
-
 class MedicationService {
   List<Medication> _medications = [];
 
   Future<void> loadMedicationsFromCSV() async {
-    final String csvData = await rootBundle.loadString('meds.csv');
-    List<List<dynamic>> csvTable = const CsvToListConverter().convert(csvData);
-    _medications = csvTable.skip(1).map((row) => Medication.fromJson(row)).toList();
+    await CsvImportService.importCsvData();
+    // After importing from CSV, load medications from the database
+    _medications = await _loadMedicationsFromDatabase();
+  }
+
+  Future<List<Medication>> _loadMedicationsFromDatabase() async {
+    // Open the database
+    var databasesPath = await getDatabasesPath();
+    String path = join(databasesPath, 'mediswitch.db');
+    Database db = await openDatabase(path);
+
+    // Query the medications table
+    List<Map<String, dynamic>> results = await db.query('medications');
+
+    // Convert the results to a list of Medication objects
+    List<Medication> medications =
+        results
+            .map(
+              (map) => Medication(
+                tradeName: map['trade_name'] as String,
+                arabicName: map['arabic_name'] as String,
+                oldPrice: map['old_price'] as String,
+                price: map['price'] as String,
+                active: map['active'] as String,
+                mainCategory: map['main_category'] as String,
+                mainCategoryAr: map['main_category_ar'] as String,
+                category: map['category'] as String,
+                categoryAr: map['category_ar'] as String,
+                company: map['company'] as String,
+                dosageForm: map['dosage_form'] as String,
+                dosageFormAr: map['dosage_form_ar'] as String,
+                unit: map['unit'] as String,
+                usage: map['usage'] as String,
+                usageAr: map['usage_ar'] as String,
+                description: map['description'] as String,
+                lastPriceUpdate: map['last_price_update'] as String,
+              ),
+            )
+            .toList();
+
+    // Close the database
+    await db.close();
+
+    return medications;
   }
 
   List<Medication> searchMedications(String query) {
-    return _medications.where((medication) =>
-        medication.tradeName.toLowerCase().contains(query.toLowerCase()) ||
-        medication.arabicName.toLowerCase().contains(query.toLowerCase()) ||
-        medication.active.toLowerCase().contains(query.toLowerCase())
-    ).toList();
+    return _medications
+        .where(
+          (medication) =>
+              medication.tradeName.toLowerCase().contains(
+                query.toLowerCase(),
+              ) ||
+              medication.arabicName.toLowerCase().contains(
+                query.toLowerCase(),
+              ) ||
+              medication.active.toLowerCase().contains(query.toLowerCase()),
+        )
+        .toList();
   }
 
   Future<void> updateMedicationPrice(String tradeName, String newPrice) async {
-    final medicationIndex = _medications.indexWhere((medication) => medication.tradeName == tradeName);
+    final medicationIndex = _medications.indexWhere(
+      (medication) => medication.tradeName == tradeName,
+    );
     if (medicationIndex != -1) {
       _medications[medicationIndex] = Medication(
         tradeName: _medications[medicationIndex].tradeName,
@@ -110,30 +160,36 @@ class MedicationService {
   }
 
   Future<void> _saveMedicationsToCSV() async {
-    List<List<dynamic>> medicationList = [_medications.map((medication) => [
-      medication.tradeName,
-      medication.arabicName,
-      medication.oldPrice,
-      medication.price,
-      medication.active,
-      medication.mainCategory,
-      medication.mainCategoryAr,
-      medication.category,
-      medication.categoryAr,
-      medication.company,
-      medication.dosageForm,
-      medication.dosageFormAr,
-      medication.unit,
-      medication.usage,
-      medication.usageAr,
-      medication.description,
-      medication.lastPriceUpdate,
-    ]).toList()];
+    List<List<dynamic>> medicationList = [
+      _medications
+          .map(
+            (medication) => [
+              medication.tradeName,
+              medication.arabicName,
+              medication.oldPrice,
+              medication.price,
+              medication.active,
+              medication.mainCategory,
+              medication.mainCategoryAr,
+              medication.category,
+              medication.categoryAr,
+              medication.company,
+              medication.dosageForm,
+              medication.dosageFormAr,
+              medication.unit,
+              medication.usage,
+              medication.usageAr,
+              medication.description,
+              medication.lastPriceUpdate,
+            ],
+          )
+          .toList(),
+    ];
 
     String csv = const ListToCsvConverter().convert(medicationList);
     // The following line is commented out because writing to rootBundle is not possible.
     // await rootBundle.writeString('meds.csv', csv);
     // Instead of writing to the rootBundle, I will print the CSV data to the console.
-    print(csv);
+    // print(csv);
   }
 }
