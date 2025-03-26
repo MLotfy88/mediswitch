@@ -58,8 +58,14 @@ class Medication extends Equatable {
       id: json['id'] as int?,
       tradeName: json['trade_name'] as String? ?? '',
       arabicName: json['arabic_name'] as String? ?? '',
-      oldPrice: json['old_price'] is double ? json['old_price'] : double.tryParse(json['old_price'].toString()) ?? 0.0,
-      price: json['price'] is double ? json['price'] : double.tryParse(json['price'].toString()) ?? 0.0,
+      oldPrice:
+          json['old_price'] is double
+              ? json['old_price']
+              : double.tryParse(json['old_price'].toString()) ?? 0.0,
+      price:
+          json['price'] is double
+              ? json['price']
+              : double.tryParse(json['price'].toString()) ?? 0.0,
       active: json['active'] as String? ?? '',
       mainCategory: json['main_category'] as String? ?? '',
       mainCategoryAr: json['main_category_ar'] as String? ?? '',
@@ -77,10 +83,39 @@ class Medication extends Equatable {
     );
   }
 
-  // Convert a Medication to a JSON map
-  Map<String, dynamic> toJson() {
+  // Factory constructor to create a Medication from a list
+  factory Medication.fromList(List<dynamic> list) {
+    return Medication(
+      tradeName: list[1] as String? ?? '',
+      arabicName: list[2] as String? ?? '',
+      oldPrice:
+          list[3] is double
+              ? list[3]
+              : double.tryParse(list[3].toString()) ?? 0.0,
+      price:
+          list[4] is double
+              ? list[4]
+              : double.tryParse(list[4].toString()) ?? 0.0,
+      active: list[5] as String? ?? '',
+      mainCategory: list[6] as String? ?? '',
+      mainCategoryAr: list[7] as String? ?? '',
+      category: list[8] as String? ?? '',
+      categoryAr: list[9] as String? ?? '',
+      company: list[10] as String? ?? '',
+      dosageForm: list[11] as String? ?? '',
+      dosageFormAr: list[12] as String? ?? '',
+      unit: list[13] as String? ?? '',
+      usage: list[14] as String? ?? '',
+      usageAr: list[15] as String? ?? '',
+      description: list[16] as String? ?? '',
+      lastPriceUpdate: list[17] as String? ?? '',
+      isFavorite: false,
+    );
+  }
+
+  // Convert a Medication to a map
+  Map<String, dynamic> toMap() {
     return {
-      'id': id,
       'trade_name': tradeName,
       'arabic_name': arabicName,
       'old_price': oldPrice,
@@ -149,24 +184,24 @@ class Medication extends Equatable {
 
   @override
   List<Object?> get props => [
-        id,
-        tradeName,
-        arabicName,
-        oldPrice,
-        price,
-        active,
-        mainCategory,
-        mainCategoryAr,
-        category,
-        categoryAr,
-        company,
-        dosageForm,
-        dosageFormAr,
-        unit,
-        usage,
-        usageAr,
-        description,
-        lastPriceUpdate,
-        isFavorite,
-      ];
+    id,
+    tradeName,
+    arabicName,
+    oldPrice,
+    price,
+    active,
+    mainCategory,
+    mainCategoryAr,
+    category,
+    categoryAr,
+    company,
+    dosageForm,
+    dosageFormAr,
+    unit,
+    usage,
+    usageAr,
+    description,
+    lastPriceUpdate,
+    isFavorite,
+  ];
 }

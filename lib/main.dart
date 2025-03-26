@@ -11,6 +11,7 @@ import 'package:mediswitch/screens/example_screen.dart';
 import 'package:mediswitch/screens/search_screen.dart';
 import 'package:mediswitch/utils/app_theme.dart';
 import 'package:mediswitch/services/database_update.dart';
+import 'package:mediswitch/services/csv_import_service.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 
@@ -30,6 +31,9 @@ void main() async {
 
   // Update database with new tables for dose comparison and weight calculator
   await DatabaseUpdate.instance.updateDatabase();
+
+  // Import CSV data into database
+  await CsvImportService.importCsvData();
 
   runApp(const MyApp());
 }

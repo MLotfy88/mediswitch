@@ -23,6 +23,7 @@ This is a unified TODO list for the MediSwitch project, combining tasks from pre
 *   [x] Implemented SQLCipher initialization in lib/services/database_update.dart
 *   [ ] Create additional tables for categories, active ingredients, and manufacturers
 *   [ ] **Build Time Optimization:** Improve build times and reduce the final application size.
+*   [ ] **Enable Mobile Connection via Wi-Fi Debugging:** Add instructions to enable mobile connection via Wi-Fi debugging for `flutter run`. Use `adb` or any other suitable tool that is efficient and lightweight.
 
 ## II. Core Functionality
 

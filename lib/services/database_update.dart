@@ -69,6 +69,31 @@ class DatabaseUpdate {
               FOREIGN KEY (medication_id) REFERENCES medications(id)
             )
           ''');
+
+          // Create medications table
+          await db.execute('''
+            CREATE TABLE medications (
+              id INTEGER PRIMARY KEY AUTOINCREMENT,
+              trade_name TEXT NOT NULL,
+              arabic_name TEXT NOT NULL,
+              old_price REAL NOT NULL,
+              price REAL NOT NULL,
+              active TEXT NOT NULL,
+              main_category TEXT NOT NULL,
+              main_category_ar TEXT NOT NULL,
+              category TEXT NOT NULL,
+              category_ar TEXT NOT NULL,
+              company TEXT NOT NULL,
+              dosage_form TEXT NOT NULL,
+              dosage_form_ar TEXT NOT NULL,
+              unit TEXT NOT NULL,
+              usage TEXT NOT NULL,
+              usage_ar TEXT NOT NULL,
+              description TEXT NOT NULL,
+              last_price_update TEXT NOT NULL,
+              is_favorite INTEGER NOT NULL
+            )
+          ''');
         },
       );
 

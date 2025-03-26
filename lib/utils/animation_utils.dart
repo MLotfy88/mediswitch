@@ -9,7 +9,7 @@ class AnimationUtils {
   static const Duration durationNormal = Duration(milliseconds: 300);
   static const Duration durationSlow = Duration(milliseconds: 500);
   static const Duration durationVerySlow = Duration(milliseconds: 800);
-  
+
   // Easing presets
   static const Curve easeIn = Curves.easeIn;
   static const Curve easeOut = Curves.easeOut;
@@ -19,9 +19,9 @@ class AnimationUtils {
   static const Curve bounceIn = Curves.bounceIn;
   static const Curve bounceOut = Curves.bounceOut;
   static const Curve bounceInOut = Curves.bounceInOut;
-  
+
   // Animation presets
-  
+
   /// Fade in animation
   static Effect fadeIn({
     Duration? duration,
@@ -36,12 +36,9 @@ class AnimationUtils {
       end: to,
     );
   }
-  
+
   /// Fade out animation
-  static Effect fadeOut({
-    Duration? duration,
-    Curve? curve,
-  }) {
+  static Effect fadeOut({Duration? duration, Curve? curve}) {
     return FadeEffect(
       duration: duration ?? durationNormal,
       curve: curve ?? easeOut,
@@ -49,7 +46,7 @@ class AnimationUtils {
       end: 0.0,
     );
   }
-  
+
   /// Scale animation
   static Effect scale({
     Duration? duration,
@@ -64,7 +61,7 @@ class AnimationUtils {
       end: Offset(to, to),
     );
   }
-  
+
   /// Slide animation
   static Effect slideX({
     Duration? duration,
@@ -79,7 +76,7 @@ class AnimationUtils {
       end: Offset(to, 0),
     );
   }
-  
+
   /// Slide animation (vertical)
   static Effect slideY({
     Duration? duration,
@@ -94,7 +91,7 @@ class AnimationUtils {
       end: Offset(0, to),
     );
   }
-  
+
   /// Blur animation
   static Effect blur({
     Duration? duration,
@@ -109,7 +106,7 @@ class AnimationUtils {
       end: Offset(to, to),
     );
   }
-  
+
   /// Shake animation
   static Effect shake({
     Duration? duration,
@@ -122,7 +119,7 @@ class AnimationUtils {
       offset: Offset(amount, 0),
     );
   }
-  
+
   /// Bounce animation
   static Effect bounce({
     Duration? duration,
@@ -136,7 +133,7 @@ class AnimationUtils {
       curve: Curves.bounceOut,
     );
   }
-  
+
   /// Flip animation
   static Effect flip({
     Duration? duration,
@@ -151,58 +148,43 @@ class AnimationUtils {
       end: to,
     );
   }
-  
+
   /// Common animation combinations
-  
+
   /// Fade in and slide from bottom
-  static List<Effect> fadeInUp({
-    Duration? duration,
-    Curve? curve,
-  }) {
+  static List<Effect> fadeInUp({Duration? duration, Curve? curve}) {
     return [
       fadeIn(duration: duration, curve: curve),
       slideY(from: 50, to: 0, duration: duration, curve: curve),
     ];
   }
-  
+
   /// Fade in and slide from top
-  static List<Effect> fadeInDown({
-    Duration? duration,
-    Curve? curve,
-  }) {
+  static List<Effect> fadeInDown({Duration? duration, Curve? curve}) {
     return [
       fadeIn(duration: duration, curve: curve),
       slideY(from: -50, to: 0, duration: duration, curve: curve),
     ];
   }
-  
+
   /// Fade in and slide from left
-  static List<Effect> fadeInLeft({
-    Duration? duration,
-    Curve? curve,
-  }) {
+  static List<Effect> fadeInLeft({Duration? duration, Curve? curve}) {
     return [
       fadeIn(duration: duration, curve: curve),
       slideX(from: -50, to: 0, duration: duration, curve: curve),
     ];
   }
-  
+
   /// Fade in and slide from right
-  static List<Effect> fadeInRight({
-    Duration? duration,
-    Curve? curve,
-  }) {
+  static List<Effect> fadeInRight({Duration? duration, Curve? curve}) {
     return [
       fadeIn(duration: duration, curve: curve),
       slideX(from: 50, to: 0, duration: duration, curve: curve),
     ];
   }
-  
+
   /// Fade in and scale up
-  static List<Effect> fadeInScale({
-    Duration? duration,
-    Curve? curve,
-  }) {
+  static List<Effect> fadeInScale({Duration? duration, Curve? curve}) {
     return [
       fadeIn(duration: duration, curve: curve),
       scale(from: 0.8, to: 1.0, duration: duration, curve: curve),
