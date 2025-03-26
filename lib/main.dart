@@ -68,8 +68,17 @@ class MyApp extends StatelessWidget {
               return MaterialApp(
                 title: 'MediSwitch',
                 debugShowCheckedModeBanner: false,
-                theme: AppTheme.lightTheme,
-                darkTheme: AppTheme.darkTheme,
+                theme: ThemeData.from(
+                  colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+                  useMaterial3: true,
+                ),
+                darkTheme: ThemeData.from(
+                  colorScheme: ColorScheme.fromSeed(
+                    seedColor: Colors.blue,
+                    brightness: Brightness.dark,
+                  ),
+                  useMaterial3: true,
+                ),
                 themeMode: themeMode,
                 locale: locale,
                 localizationsDelegates: const [
@@ -101,10 +110,7 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
 
-  final List<Widget> _screens = [
-    const SearchScreen(),
-    const ExampleScreen(),
-  ];
+  final List<Widget> _screens = [const SearchScreen(), const ExampleScreen()];
 
   @override
   Widget build(BuildContext context) {
@@ -119,7 +125,10 @@ class _MainScreenState extends State<MainScreen> {
         },
         destinations: const [
           NavigationDestination(icon: Icon(Icons.search), label: 'بحث'),
-          NavigationDestination(icon: Icon(TablerIcons.components), label: 'المكونات'),
+          NavigationDestination(
+            icon: Icon(TablerIcons.components),
+            label: 'المكونات',
+          ),
         ],
       ),
     );

@@ -9,13 +9,13 @@ RUN apt-get update && apt-get install -y \
     unzip curl git wget \
     && rm -rf /var/lib/apt/lists/*
 
-# تثبيت JDK 23.0.2
+# تثبيت JDK 17.0.10
 RUN mkdir -p /usr/local/jdk && \
-    wget https://download.java.net/java/GA/jdk23.0.2/a4c7a5d0bbd9426b4954b6c7c4d5a8db/8/GPL/openjdk-23.0.2_linux-x64_bin.tar.gz -O jdk.tar.gz && \
+    wget https://download.oracle.com/java/17/latest/jdk-17_linux-x64_bin.tar.gz -O jdk.tar.gz && \
     tar -xzf jdk.tar.gz -C /usr/local/jdk --strip-components=1 && \
     rm jdk.tar.gz
 
-# إعداد Java (JDK 23.0.2)
+# إعداد Java (JDK 17.0.10)
 ENV JAVA_HOME="/usr/local/jdk"
 ENV PATH="$JAVA_HOME/bin:$PATH"
 

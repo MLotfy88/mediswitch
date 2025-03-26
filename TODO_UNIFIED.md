@@ -16,6 +16,10 @@ This is a unified TODO list for the MediSwitch project, combining tasks from pre
 *   [x] **Added ext.kotlin_version and ext.flutterRoot in android/app/build.gradle**
 *   [x] **Updated ndk.dir in android/gradle.properties**
 *   [x] **Generated debug keystore**
+*   [x] **Created DrugInteraction model in lib/models/drug_interaction.dart**
+*   [x] **Created WeightDoseCalculator model in lib/models/weight_dose_calculator.dart**
+*   [x] **Updated JDK version in Dockerfile to 17.0.10**
+*   [ ] Create additional tables for categories, active ingredients, and manufacturers
 *   [ ] **Build Time Optimization:** Improve build times and reduce the final application size.
 
 ## II. Core Functionality
@@ -88,8 +92,11 @@ This is a unified TODO list for the MediSwitch project, combining tasks from pre
 *   [x] **Language Support (Arabic & English):** Implemented support for both Arabic and English languages.
 *   [x] **Dark Mode:** Implemented dark mode.
 *   [ ] **App Logo Design:** Design and implement the application logo (blue pill with a golden switch icon).
+*   [x] **Implemented Material 3 Theme:** Updated the application to use Material 3 theme in lib/main.dart
 *   [ ] **UX/UI Enhancement:** Improve the user experience (UX) and user interface (UI) design with calm colors (medical blue + gray).
 *   [ ] **Arabic Font Implementation:** Implement clear Arabic fonts (Noto Sans Arabic) with RTL support.
+*   [x] Implemented Settings Screen with Theme and Language Selection
+*   [x] **Implemented Smooth Transitions:** Added animations using flutter_animate in lib/screens/example_screen.dart
 *   [ ] **Smooth Transitions:** Add smooth transitions (animations) between screens.
 *   [x] **Bottom Navigation Tabs:** Implemented basic bottom navigation tabs (Home, Components).
 *   [ ] **Responsive Design:** Implement a responsive design for all screen sizes (from iPhone SE to Samsung S24 Ultra).
@@ -161,7 +168,7 @@ This is a unified TODO list for the MediSwitch project, combining tasks from pre
 
 *   [x] **Basic Database Structure:** Created the basic database structure.
 *   [x] **Data Import from CSV:** Implemented a system for importing data from CSV files.
-*   [x] **Medication Model Expansion:** Expanded the medication model to include information (interactions, side effects, images) in lib/models/medication.dart
+*   [x] **Medication Model Expansion:** Expanded the medication model to include information (interactions, side effects, images) in lib/models/medication.dart, created DoseEquivalent model in lib/models/dose_equivalent.dart, and created DrugInteraction model in lib/models/drug_interaction.dart
 *   [ ] Create additional tables for categories, active ingredients, and manufacturers.
 *   [ ] **Reimplement Data Encryption using SQLCipher (AES-256).**
 *   [ ] Improve query performance and add additional indexes.
@@ -280,3 +287,29 @@ This is a unified TODO list for the MediSwitch project, combining tasks from pre
 *   The application must be compatible with the target operating systems (Android 8.0+ and iOS 13+).
 *   Data security and user privacy standards must be adhered to.
 *   Periodic performance tests must be performed to ensure the application's responsiveness.
+
+</file_content>
+
+IMPORTANT: For any future changes to this file, use the final_file_content shown above as your reference. This content reflects the current state of the file, including any auto-formatting (e.g., if you used single quotes but the formatter converted them to double quotes). Always base your SEARCH/REPLACE operations on this final version to ensure accuracy.
+
+<environment_details>
+# VSCode Visible Files
+TODO_UNIFIED.md
+
+# VSCode Open Tabs
+android/gradle.properties
+android/settings.gradle.kts
+android/gradle/wrapper/gradle-wrapper.properties
+pubspec.yaml
+android/app/build.gradle.kts
+android/app/build.gradle
+lib/main.dart
+Dockerfile
+TODO_UNIFIED.md
+
+# Current Time
+3/26/2025, 2:00:44 AM (UTC, UTC+0:00)
+
+# Current Mode
+ACT MODE
+</environment_details>
