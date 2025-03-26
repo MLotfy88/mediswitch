@@ -7,9 +7,9 @@ RUN apt-get update && apt-get install -y \
     unzip curl git wget tar \
     && rm -rf /var/lib/apt/lists/*
 
-# 2. تثبيت JDK 23
+# 2. تثبيت JDK 17
 RUN mkdir -p /usr/local/jdk && \
-    wget https://download.oracle.com/java/23/latest/jdk-23_linux-x64_bin.tar.gz -O jdk.tar.gz && \
+   wget https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.10%2B7/OpenJDK17U-jdk_x64_linux_hotspot_17.0.10_7.tar.gz -O jdk.tar.gz && \
     tar -xzf jdk.tar.gz -C /usr/local/jdk --strip-components=1 && \
     rm jdk.tar.gz
 
@@ -20,7 +20,7 @@ ENV PATH="$JAVA_HOME/bin:$PATH"
 RUN git clone https://github.com/flutter/flutter.git /usr/local/flutter && \
     cd /usr/local/flutter && \
     git checkout 3.29.2 && \
-    chmod -R 755 /usr/local/flutter
+    chmod -R 777 /usr/local/flutter
 
 ENV PATH="/usr/local/flutter/bin:$PATH"
 ENV FLUTTER_HOME="/usr/local/flutter"
@@ -52,8 +52,8 @@ RUN yes | sdkmanager --licenses && \
 ENV NDK_HOME="$ANDROID_HOME/ndk/27.0.12077973"
 ENV PATH="$NDK_HOME:$PATH"
 
-# 6. تثبيت Gradle 7.6.3
-RUN wget https://services.gradle.org/distributions/gradle-7.6.3-all.zip -O gradle.zip && \
+# 6. تثبيت Gradle 8.9
+RUN wget https\://services.gradle.org/distributions/gradle-8.9-bin.zip && \
     unzip gradle.zip -d /usr/local/ && \
     mv /usr/local/gradle-* /usr/local/gradle && \
     rm gradle.zip
