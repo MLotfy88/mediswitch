@@ -19,10 +19,10 @@ samples, guidance on mobile development, and a full API reference.
 
 To enable mobile connection via Wi-Fi debugging for `flutter run`, follow these steps:
 
-1.  Connect your Android device to your computer using a USB cable.
-2.  Enable USB debugging on your device in the Developer options.
-3.  Open a terminal and run `adb tcpip 5555`.
-4.  Disconnect the USB cable from your device.
-5.  Find the IP address of your Android device (Settings -> About phone -> Status).
-6.  In the terminal, run `adb connect <device_ip_address>:5555`.
-7.  Now you can run `flutter run` and the application will be installed and run on your device via Wi-Fi.
+1. Connect your Android device to your computer using a USB cable.
+2. Enable USB debugging on your device in the Developer options.
+3. Open a terminal and run `adb tcpip 5555`.
+4. Disconnect the USB cable from your device.
+5. Find the IP address of your Android device (Settings -> About phone -> Status).
+6. In the terminal, run `adb connect <device_ip_address>:5555`. Replace `<device_ip_address>` with the actual IP address of your device.
+7. Now you can run `flutter run` and the application will be installed and run on your device via Wi-Fi.

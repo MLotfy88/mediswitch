@@ -94,6 +94,32 @@ class DatabaseUpdate {
               is_favorite INTEGER NOT NULL
             )
           ''');
+
+          // Create categories table
+          await db.execute('''
+            CREATE TABLE categories (
+              id INTEGER PRIMARY KEY AUTOINCREMENT,
+              name TEXT NOT NULL,
+              arabic_name TEXT NOT NULL
+            )
+          ''');
+
+          // Create active_ingredients table
+          await db.execute('''
+            CREATE TABLE active_ingredients (
+              id INTEGER PRIMARY KEY AUTOINCREMENT,
+              name TEXT NOT NULL,
+              arabic_name TEXT NOT NULL
+            )
+          ''');
+
+          // Create manufacturers table
+          await db.execute('''
+            CREATE TABLE manufacturers (
+              id INTEGER PRIMARY KEY AUTOINCREMENT,
+              name TEXT NOT NULL
+            )
+          ''');
         },
       );
 

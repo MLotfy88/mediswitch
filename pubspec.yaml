@@ -61,7 +61,6 @@ dependencies:
   path_provider: ^2.1.5
   in_app_review: ^2.0.10
   share_plus: ^10.1.4
-  device_info_plus: ^9.1.1
   url_launcher: ^6.2.5
   file_picker: ^9.2.1
   excel: ^4.0.2
