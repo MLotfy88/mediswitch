@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
-import 'package:mediswitch/models/medication.dart';
+import 'package:mediswitch/services/medication_service.dart';
 import 'package:mediswitch/utils/animation_utils.dart';
 import 'package:mediswitch/utils/tailwind_utils.dart';
 
@@ -16,6 +16,13 @@ class _SearchScreenState extends State<SearchScreen> {
   final TextEditingController _searchController = TextEditingController();
   List<Medication> _searchResults = [];
   bool _isLoading = false;
+  final MedicationService _medicationService = MedicationService();
+
+  @override
+  void initState() {
+    super.initState();
+    _loadMedications();
+  }
 
   @override
   void dispose() {
@@ -23,17 +30,25 @@ class _SearchScreenState extends State<SearchScreen> {
     super.dispose();
   }
 
+  Future<void> _loadMedications() async {
+    setState(() {
+      _isLoading = true;
+    });
+    await _medicationService.loadMedicationsFromCSV();
+    setState(() {
+      _isLoading = false;
+    });
+  }
+
   void _performSearch(String query) {
-    // في المستقبل، سيتم استبدال هذا بالبحث الفعلي في قاعدة البيانات
     setState(() {
       _isLoading = true;
     });
 
-    // محاكاة تأخير البحث
     Future.delayed(const Duration(milliseconds: 500), () {
       setState(() {
         _isLoading = false;
-        _searchResults = [];
+        _searchResults = _medicationService.searchMedications(query);
       });
     });
   }
@@ -41,7 +56,7 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('بحث الأدوية'),
@@ -75,16 +90,16 @@ class _SearchScreenState extends State<SearchScreen> {
               onChanged: _performSearch,
             ),
           )
-          .animate()
-          .fadeIn(duration: AnimationUtils.durationNormal)
-          .slideY(begin: -10, end: 0),
-          
+              .animate()
+              .fadeIn(duration: AnimationUtils.durationNormal)
+              .slideY(begin: -10, end: 0),
+
           // Loading indicator
           if (_isLoading)
             const Center(
               child: CircularProgressIndicator(),
             ),
-            
+
           // Search results or empty state
           Expanded(
             child: _searchResults.isEmpty
@@ -111,8 +126,13 @@ class _SearchScreenState extends State<SearchScreen> {
                     padding: TailwindUtils.p4,
                     itemCount: _searchResults.length,
                     itemBuilder: (context, index) {
-                      // سيتم استبدال هذا بعرض نتائج البحث الفعلية
-                      return const SizedBox.shrink();
+                      final medication = _searchResults[index];
+                      return Card(
+                        child: ListTile(
+                          title: Text(medication.tradeName),
+                          subtitle: Text(medication.active),
+                        ),
+                      );
                     },
                   ),
           ),
